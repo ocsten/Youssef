@@ -5,33 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="OCSTEN — Youssef. UX Copywriter & Digital Architect. Systems over emotions." />
+  <meta property="og:title" content="OCSTEN — Youssef" />
+  <meta property="og:description" content="UX Copywriter & Digital Architect. Systems over emotions." />
+  <meta property="og:type" content="website" />
   <title>OCSTEN — Youssef · UX Copywriter & Digital Architect</title>
 
-  <!-- Fonts: Unbounded (futuristic display) + Space Grotesk (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;800&family=Space+Grotesk:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
 <body id="top">
 
-  <!-- Film-grain / noise overlay -->
+  <div class="preloader" data-preloader aria-hidden="true">
+    <div class="preloader__inner">
+      <span class="preloader__word" data-preloader-word>OCSTEN</span>
+      <span class="preloader__bar"><span class="preloader__fill" data-preloader-fill></span></span>
+      <span class="preloader__count" data-preloader-count>00</span>
+    </div>
+  </div>
+
+  <div class="cursor" data-cursor aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__ring"></span>
+  </div>
+
   <div class="noise" aria-hidden="true"></div>
 
-  <!-- ============ NAV ============ -->
   <header class="nav">
-    <a class="nav__brand" href="#top" aria-label="OCSTEN home">
-      OCSTEN<span class="nav__dot">.</span>
-    </a>
-    <nav class="nav__links" aria-label="Primary">
-      <a href="#work" class="nav__link">Work</a>
-      <a href="#contact" class="nav__link">Contact</a>
-    </nav>
+    <a class="nav__brand" href="#top" data-cursor-hover>OCSTEN<span class="nav__dot">.</span></a>
+    <button class="nav__toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
   </header>
 
+  <div class="menu" data-menu aria-hidden="true">
+    <nav class="menu__list" aria-label="Menu">
+      <a class="menu__link" href="#manifesto" data-menu-link data-cursor-hover><span>01</span>Manifesto</a>
+      <a class="menu__link" href="#services" data-menu-link data-cursor-hover><span>02</span>Services</a>
+      <a class="menu__link" href="#work" data-menu-link data-cursor-hover><span>03</span>Work</a>
+      <a class="menu__link" href="#process" data-menu-link data-cursor-hover><span>04</span>Process</a>
+      <a class="menu__link" href="#contact" data-menu-link data-cursor-hover><span>05</span>Contact</a>
+    </nav>
+    <div class="menu__foot">
+      <p class="menu__foot-line">Algiers — Worldwide</p>
+      <p class="menu__foot-line menu__foot-line--dim">Systems over emotions.</p>
+    </div>
+  </div>
+
   <main>
-    <!-- ============ HERO ============ -->
     <section class="hero" aria-label="Introduction">
       <canvas class="hero__canvas" id="particles" aria-hidden="true"></canvas>
 
@@ -44,8 +67,20 @@
 
         <p class="hero__subtitle" data-reveal>
           UX Copywriter &amp; Digital Architect.
-          <span class="hero__accent">Systems over emotions.</span>
+          <em class="hero__accent">Systems over emotions.</em>
         </p>
+      </div>
+
+      <div class="hero__badge" data-reveal aria-hidden="true">
+        <svg viewBox="0 0 120 120" class="hero__badge-svg">
+          <defs>
+            <path id="circlePath" d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
+          </defs>
+          <text class="hero__badge-text">
+            <textPath href="#circlePath">SYSTEMS OVER EMOTIONS · DIGITAL ARCHITECT ·</textPath>
+          </text>
+        </svg>
+        <span class="hero__badge-core">✦</span>
       </div>
 
       <div class="hero__scroll" aria-hidden="true">
@@ -54,60 +89,201 @@
       </div>
     </section>
 
-    <!-- ============ SHOWCASE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" data-marquee>
+        <span>UX Copywriting</span><span class="marquee__sep">✦</span>
+        <span>Digital Architecture</span><span class="marquee__sep">✦</span>
+        <span>Brand Voice</span><span class="marquee__sep">✦</span>
+        <span>Interface Poetry</span><span class="marquee__sep">✦</span>
+        <span>Content Systems</span><span class="marquee__sep">✦</span>
+        <span>UX Copywriting</span><span class="marquee__sep">✦</span>
+        <span>Digital Architecture</span><span class="marquee__sep">✦</span>
+        <span>Brand Voice</span><span class="marquee__sep">✦</span>
+        <span>Interface Poetry</span><span class="marquee__sep">✦</span>
+        <span>Content Systems</span><span class="marquee__sep">✦</span>
+      </div>
+    </div>
+
+    <section class="manifesto" id="manifesto" aria-label="Manifesto">
+      <div class="manifesto__inner">
+        <p class="section-label" data-reveal>01 — Manifesto</p>
+        <h2 class="manifesto__title" data-reveal>
+          I build <em class="manifesto__em">clarity</em> out of
+          <em class="manifesto__em">noise</em>.
+        </h2>
+        <p class="manifesto__body" data-reveal>
+          Words are architecture. Every interface is a room, every sentence a load-bearing wall.
+          I design the language that holds digital products together — precise, deliberate,
+          and engineered to move people without them noticing.
+        </p>
+        <div class="manifesto__grid">
+          <div class="manifesto__col" data-reveal>
+            <span class="manifesto__num">A</span>
+            <p>Precision over decoration. Every word earns its place or it is removed.</p>
+          </div>
+          <div class="manifesto__col" data-reveal>
+            <span class="manifesto__num">B</span>
+            <p>Systems over emotions. Structure scales; feelings fade.</p>
+          </div>
+          <div class="manifesto__col" data-reveal>
+            <span class="manifesto__num">C</span>
+            <p>Silence over noise. The best copy is the line you never had to read.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services" aria-label="Services">
+      <div class="services__head">
+        <p class="section-label" data-reveal>02 — Services</p>
+        <h2 class="services__title" data-reveal>What I do</h2>
+      </div>
+      <div class="services__list">
+        <article class="service" data-reveal data-tilt>
+          <span class="service__num">01</span>
+          <h3 class="service__name">UX Copywriting</h3>
+          <p class="service__desc">Microcopy, flows, and error states that guide without friction.</p>
+        </article>
+        <article class="service" data-reveal data-tilt>
+          <span class="service__num">02</span>
+          <h3 class="service__name">Brand Voice</h3>
+          <p class="service__desc">A distinct, scalable voice system that survives every touchpoint.</p>
+        </article>
+        <article class="service" data-reveal data-tilt>
+          <span class="service__num">03</span>
+          <h3 class="service__name">Content Systems</h3>
+          <p class="service__desc">Structured content that scales across products and platforms.</p>
+        </article>
+        <article class="service" data-reveal data-tilt>
+          <span class="service__num">04</span>
+          <h3 class="service__name">Digital Architecture</h3>
+          <p class="service__desc">Information design and narrative structure for complex products.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="work" id="work" aria-label="Selected work">
       <div class="work__head">
-        <h2 class="work__title" data-reveal>Selected Work</h2>
-        <p class="work__index" data-reveal>01 — 04</p>
+        <p class="section-label" data-reveal>03 — Selected Work</p>
+        <p class="work__index" data-reveal>01 — 06</p>
       </div>
 
       <div class="work__grid">
         <article class="project" data-reveal data-tilt>
-          <a class="project__link" href="#work" aria-label="Narrative Systems project">
+          <a class="project__link" href="#work" data-cursor-hover>
             <span class="project__num">01</span>
             <h3 class="project__name">Narrative Systems</h3>
             <p class="project__meta">Brand Voice Architecture · 2025</p>
             <span class="project__arrow" aria-hidden="true">↗</span>
           </a>
         </article>
-
         <article class="project" data-reveal data-tilt>
-          <a class="project__link" href="#work" aria-label="Interface Poetry project">
+          <a class="project__link" href="#work" data-cursor-hover>
             <span class="project__num">02</span>
             <h3 class="project__name">Interface Poetry</h3>
             <p class="project__meta">UX Microcopy · 2024</p>
             <span class="project__arrow" aria-hidden="true">↗</span>
           </a>
         </article>
-
         <article class="project" data-reveal data-tilt>
-          <a class="project__link" href="#work" aria-label="Signal Noise project">
+          <a class="project__link" href="#work" data-cursor-hover>
             <span class="project__num">03</span>
             <h3 class="project__name">Signal / Noise</h3>
             <p class="project__meta">Content Strategy · 2024</p>
             <span class="project__arrow" aria-hidden="true">↗</span>
           </a>
         </article>
-
         <article class="project" data-reveal data-tilt>
-          <a class="project__link" href="#work" aria-label="The Quiet Grid project">
+          <a class="project__link" href="#work" data-cursor-hover>
             <span class="project__num">04</span>
             <h3 class="project__name">The Quiet Grid</h3>
             <p class="project__meta">Design System · 2023</p>
             <span class="project__arrow" aria-hidden="true">↗</span>
           </a>
         </article>
+        <article class="project" data-reveal data-tilt>
+          <a class="project__link" href="#work" data-cursor-hover>
+            <span class="project__num">05</span>
+            <h3 class="project__name">Monochrome</h3>
+            <p class="project__meta">Editorial Voice · 2023</p>
+            <span class="project__arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
+        <article class="project" data-reveal data-tilt>
+          <a class="project__link" href="#work" data-cursor-hover>
+            <span class="project__num">06</span>
+            <h3 class="project__name">Zero State</h3>
+            <p class="project__meta">Onboarding System · 2022</p>
+            <span class="project__arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
       </div>
     </section>
 
-    <!-- ============ CTA (hidden) ============ -->
+    <section class="stats" aria-label="Statistics">
+      <div class="stats__grid">
+        <div class="stat" data-reveal>
+          <span class="stat__value" data-counter="40">0</span>
+          <span class="stat__label">Projects shipped</span>
+        </div>
+        <div class="stat" data-reveal>
+          <span class="stat__value" data-counter="12">0</span>
+          <span class="stat__label">Industries served</span>
+        </div>
+        <div class="stat" data-reveal>
+          <span class="stat__value" data-counter="6">0</span>
+          <span class="stat__label">Years of craft</span>
+        </div>
+        <div class="stat" data-reveal>
+          <span class="stat__value" data-counter="98">0</span>
+          <span class="stat__suffix">%</span>
+          <span class="stat__label">Retention rate</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process" aria-label="Process">
+      <div class="process__head">
+        <p class="section-label" data-reveal>04 — Process</p>
+        <h2 class="process__title" data-reveal>How I work</h2>
+      </div>
+      <div class="process__list">
+        <div class="step" data-reveal>
+          <span class="step__num">01</span>
+          <h3 class="step__name">Audit</h3>
+          <p class="step__desc">I read the product, the users, and the silence between them.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="step__num">02</span>
+          <h3 class="step__name">Architect</h3>
+          <p class="step__desc">I design the language system that will hold everything together.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="step__num">03</span>
+          <h3 class="step__name">Write</h3>
+          <p class="step__desc">I craft every word with intent, then cut until only intent remains.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="step__num">04</span>
+          <h3 class="step__name">Refine</h3>
+          <p class="step__desc">I test, measure, and sharpen until the system runs itself.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="contact" id="contact" aria-label="Contact">
+      <p class="section-label" data-reveal>05 — Contact</p>
+      <h2 class="contact__title" data-reveal>
+        Let's build something
+        <em class="contact__em">quietly powerful.</em>
+      </h2>
       <a
         class="cta cta--hidden"
         href="https://www.linkedin.com/in/youssef-x1-8227b643a"
         target="_blank"
         rel="noopener noreferrer"
         data-cta
+        data-cursor-hover
       >
         <span class="cta__label">Open the door</span>
         <span class="cta__arrow" aria-hidden="true">→</span>
@@ -115,10 +291,15 @@
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
   <footer class="footer">
-    <p class="footer__line">© <span id="year">2026</span> OCSTEN — Youssef</p>
-    <p class="footer__line footer__line--dim">Systems over emotions.</p>
+    <div class="footer__top">
+      <a class="footer__brand" href="#top" data-cursor-hover>OCSTEN<span class="nav__dot">.</span></a>
+      <p class="footer__tagline">Systems over emotions.</p>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__line">© <span id="year">2026</span> OCSTEN — Youssef</p>
+      <p class="footer__line footer__line--dim">Algiers — Worldwide</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>
