@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#000000" />
+<meta name="theme-color" content="#0A0A0B" />
 <meta name="color-scheme" content="dark" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="robots" content="index, follow" />
@@ -30,11 +30,25 @@
 <body id="apex" class="is-booting">
 
 <div class="loader" data-loader aria-hidden="true">
-  <div class="loader__bar"><span data-loader-bar></span></div>
-  <div class="loader__meta">
-    <span class="loader__label">OCSTEN</span>
-    <span class="loader__count" data-loader-count>000</span>
+  <div class="loader__frame">
+    <span class="loader__corner loader__corner--tl"></span>
+    <span class="loader__corner loader__corner--tr"></span>
+    <span class="loader__corner loader__corner--bl"></span>
+    <span class="loader__corner loader__corner--br"></span>
+    <div class="loader__line"><span data-loader-bar></span></div>
   </div>
+  <div class="loader__content">
+    <span class="loader__eyebrow">OCSTEN — Portfolio</span>
+    <span class="loader__wordmark">YOUSSEF</span>
+    <div class="loader__footer">
+      <span class="loader__hint">Calibrating language systems</span>
+      <span class="loader__count" data-loader-count>000</span>
+    </div>
+  </div>
+</div>
+
+<div class="progress" aria-hidden="true">
+  <span class="progress__fill" data-progress></span>
 </div>
 
 <div class="cursor" data-cursor aria-hidden="true">
@@ -45,7 +59,6 @@
 
 <div class="grain" aria-hidden="true"></div>
 <div class="vignette" aria-hidden="true"></div>
-
 <div class="rules" aria-hidden="true">
   <span></span><span></span><span></span><span></span>
 </div>
@@ -63,27 +76,125 @@
   </div>
 
   <div class="masthead__controls">
-    <button class="lang" data-lang-switch aria-label="Toggle language">
-      <span class="lang__track"><span class="lang__thumb"></span></span>
-      <span class="lang__labels">
-        <span class="lang__en">EN</span>
-        <span class="lang__ar">ع</span>
+    <button class="control control--sound" data-sound-toggle aria-label="Toggle sound" aria-pressed="false">
+      <span class="control__icon" data-sound-icon></span>
+      <span class="control__label" data-i18n="masthead.sound">SOUND</span>
+    </button>
+
+    <button class="control control--command" data-command-open aria-label="Open command palette">
+      <span class="control__key">⌘K</span>
+    </button>
+
+    <button class="control control--lang" data-lang-switch aria-label="Toggle language">
+      <span class="control__track"><span class="control__thumb"></span></span>
+      <span class="control__codes">
+        <span class="control__en">EN</span>
+        <span class="control__ar">ع</span>
       </span>
     </button>
 
-    <button class="trigger" data-menu-open aria-label="Open navigation" aria-expanded="false">
-      <span class="trigger__lines"><span></span><span></span></span>
-      <span class="trigger__text" data-i18n="masthead.menu">INDEX</span>
+    <button class="control control--menu" data-menu-open aria-label="Open index" aria-expanded="false">
+      <span class="control__lines"><span></span><span></span></span>
+      <span class="control__label" data-i18n="masthead.menu">INDEX</span>
     </button>
   </div>
 </header>
+
+<aside class="rail" aria-hidden="true">
+  <span class="rail__year">MMXXVI</span>
+  <span class="rail__line"></span>
+  <span class="rail__city">ALGIERS · 36.75° N</span>
+</aside>
+
+<section class="command" data-command aria-hidden="true">
+  <div class="command__veil" data-command-close></div>
+  <div class="command__panel">
+    <div class="command__search">
+      <span class="command__search-icon"></span>
+      <input
+        class="command__input"
+        type="text"
+        placeholder="Search navigation, sections, actions"
+        data-command-input
+        aria-label="Search command"
+      />
+      <span class="command__hint">ESC</span>
+    </div>
+
+    <div class="command__results" data-command-results>
+      <div class="command__group">
+        <span class="command__group-title">Navigate</span>
+        <button class="command__item" data-command-target="#manifesto">
+          <span class="command__item-idx">01</span>
+          <span class="command__item-label" data-i18n="nav.manifesto">Manifesto</span>
+          <span class="command__item-hint">Why language is structure</span>
+        </button>
+        <button class="command__item" data-command-target="#capabilities">
+          <span class="command__item-idx">02</span>
+          <span class="command__item-label" data-i18n="nav.capabilities">Capabilities</span>
+          <span class="command__item-hint">What gets engineered</span>
+        </button>
+        <button class="command__item" data-command-target="#work">
+          <span class="command__item-idx">03</span>
+          <span class="command__item-label" data-i18n="nav.work">Selected Work</span>
+          <span class="command__item-hint">Six engagements</span>
+        </button>
+        <button class="command__item" data-command-target="#process">
+          <span class="command__item-idx">04</span>
+          <span class="command__item-label" data-i18n="nav.process">Process</span>
+          <span class="command__item-hint">Four movements</span>
+        </button>
+        <button class="command__item" data-command-target="#voices">
+          <span class="command__item-idx">05</span>
+          <span class="command__item-label" data-i18n="nav.voices">Voices</span>
+          <span class="command__item-hint">Words from partners</span>
+        </button>
+        <button class="command__item" data-command-target="#contact">
+          <span class="command__item-idx">06</span>
+          <span class="command__item-label" data-i18n="nav.contact">Contact</span>
+          <span class="command__item-hint">Open the door</span>
+        </button>
+      </div>
+
+      <div class="command__group">
+        <span class="command__group-title">Actions</span>
+        <button class="command__item" data-command-action="lang">
+          <span class="command__item-idx">⌘L</span>
+          <span class="command__item-label">Toggle language</span>
+          <span class="command__item-hint">EN / AR</span>
+        </button>
+        <button class="command__item" data-command-action="sound">
+          <span class="command__item-idx">⌘S</span>
+          <span class="command__item-label">Toggle sound</span>
+          <span class="command__item-hint">UI feedback</span>
+        </button>
+        <button class="command__item" data-command-action="top">
+          <span class="command__item-idx">⌘↑</span>
+          <span class="command__item-label">Back to top</span>
+          <span class="command__item-hint">Apex</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="command__foot">
+      <span class="command__foot-key">↑↓</span>
+      <span class="command__foot-label">Navigate</span>
+      <span class="command__foot-sep"></span>
+      <span class="command__foot-key">↵</span>
+      <span class="command__foot-label">Select</span>
+      <span class="command__foot-sep"></span>
+      <span class="command__foot-key">ESC</span>
+      <span class="command__foot-label">Close</span>
+    </div>
+  </div>
+</section>
 
 <aside class="drawer" data-drawer aria-hidden="true">
   <div class="drawer__veil" data-menu-close></div>
 
   <div class="drawer__panel">
     <div class="drawer__head">
-      <span class="drawer__head-label" data-i18n="drawer.title">INDEX</span>
+      <span class="drawer__label" data-i18n="drawer.title">INDEX</span>
       <button class="drawer__close" data-menu-close aria-label="Close">
         <span></span><span></span>
       </button>
@@ -140,13 +251,13 @@
     </nav>
 
     <div class="drawer__foot">
-      <div class="drawer__foot-cell">
-        <span class="drawer__foot-k" data-i18n="drawer.location">LOCATED</span>
-        <span class="drawer__foot-v">Algiers — Worldwide</span>
+      <div class="drawer__cell">
+        <span class="drawer__cell-k" data-i18n="drawer.location">LOCATED</span>
+        <span class="drawer__cell-v">Algiers — Worldwide</span>
       </div>
-      <div class="drawer__foot-cell">
-        <span class="drawer__foot-k" data-i18n="drawer.creed">CREED</span>
-        <span class="drawer__foot-v drawer__foot-v--accent" data-i18n="drawer.creed.v">Systems over emotions.</span>
+      <div class="drawer__cell">
+        <span class="drawer__cell-k" data-i18n="drawer.creed">CREED</span>
+        <span class="drawer__cell-v drawer__cell-v--accent" data-i18n="drawer.creed.v">Systems over emotions.</span>
       </div>
     </div>
   </div>
@@ -260,7 +371,7 @@
       </header>
 
       <div class="manifesto__lead">
-        <h2 class="manifesto__title" data-reveal>
+        <h2 class="manifesto__title" data-reveal data-split>
           <span data-i18n="manifesto.title.a">Words</span>
           <span class="dim" data-i18n="manifesto.title.b">are</span>
           <em data-i18n="manifesto.title.c">architecture.</em>
@@ -342,7 +453,7 @@
       </header>
 
       <div class="capabilities__lead">
-        <h2 class="capabilities__title" data-reveal>
+        <h2 class="capabilities__title" data-reveal data-split>
           <span data-i18n="capabilities.title.a">What gets</span>
           <em data-i18n="capabilities.title.b">engineered.</em>
         </h2>
@@ -422,7 +533,7 @@
       </header>
 
       <div class="work__lead">
-        <h2 class="work__title" data-reveal>
+        <h2 class="work__title" data-reveal data-split>
           <span data-i18n="work.title.a">Selected</span>
           <em data-i18n="work.title.b">engagements.</em>
         </h2>
@@ -565,7 +676,7 @@
       </header>
 
       <div class="process__lead">
-        <h2 class="process__title" data-reveal>
+        <h2 class="process__title" data-reveal data-split>
           <span data-i18n="process.title.a">How the work</span>
           <em data-i18n="process.title.b">gets built.</em>
         </h2>
@@ -676,7 +787,7 @@
       </header>
 
       <div class="contact__lead">
-        <h2 class="contact__title" data-reveal>
+        <h2 class="contact__title" data-reveal data-split>
           <span data-i18n="contact.title.a">Let us build</span>
           <em data-i18n="contact.title.b">something quiet.</em>
         </h2>
