@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="OCSTEN — Youssef. UX Copywriter & Digital Architect. Systems over emotions." />
+  <title>OCSTEN — Youssef · UX Copywriter & Digital Architect</title>
+
+  <!-- Fonts: Unbounded (futuristic display) + Space Grotesk (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body id="top">
+
+  <!-- Film-grain / noise overlay -->
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a class="nav__brand" href="#top" aria-label="OCSTEN home">
+      OCSTEN<span class="nav__dot">.</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#work" class="nav__link">Work</a>
+      <a href="#contact" class="nav__link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="Introduction">
+      <canvas class="hero__canvas" id="particles" aria-hidden="true"></canvas>
+
+      <div class="hero__inner">
+        <p class="hero__eyebrow" data-reveal>OCSTEN — YOUSSEF</p>
+
+        <h1 class="hero__title" data-reveal aria-label="YOUSSEF">
+          <span class="hero__char" data-char="Y">Y</span><span class="hero__char" data-char="O">O</span><span class="hero__char" data-char="U">U</span><span class="hero__char" data-char="S">S</span><span class="hero__char" data-char="S">S</span><span class="hero__char" data-char="E">E</span><span class="hero__char" data-char="F">F</span>
+        </h1>
+
+        <p class="hero__subtitle" data-reveal>
+          UX Copywriter &amp; Digital Architect.
+          <span class="hero__accent">Systems over emotions.</span>
+        </p>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-line"></span>
+        <span class="hero__scroll-text">SCROLL</span>
+      </div>
+    </section>
+
+    <!-- ============ SHOWCASE ============ -->
+    <section class="work" id="work" aria-label="Selected work">
+      <div class="work__head">
+        <h2 class="work__title" data-reveal>Selected Work</h2>
+        <p class="work__index" data-reveal>01 — 04</p>
+      </div>
+
+      <div class="work__grid">
+        <article class="project" data-reveal data-tilt>
+          <a class="project__link" href="#work" aria-label="Narrative Systems project">
+            <span class="project__num">01</span>
+            <h3 class="project__name">Narrative Systems</h3>
+            <p class="project__meta">Brand Voice Architecture · 2025</p>
+            <span class="project__arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="project" data-reveal data-tilt>
+          <a class="project__link" href="#work" aria-label="Interface Poetry project">
+            <span class="project__num">02</span>
+            <h3 class="project__name">Interface Poetry</h3>
+            <p class="project__meta">UX Microcopy · 2024</p>
+            <span class="project__arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="project" data-reveal data-tilt>
+          <a class="project__link" href="#work" aria-label="Signal Noise project">
+            <span class="project__num">03</span>
+            <h3 class="project__name">Signal / Noise</h3>
+            <p class="project__meta">Content Strategy · 2024</p>
+            <span class="project__arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="project" data-reveal data-tilt>
+          <a class="project__link" href="#work" aria-label="The Quiet Grid project">
+            <span class="project__num">04</span>
+            <h3 class="project__name">The Quiet Grid</h3>
+            <p class="project__meta">Design System · 2023</p>
+            <span class="project__arrow" aria-hidden="true">↗</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ CTA (hidden) ============ -->
+    <section class="contact" id="contact" aria-label="Contact">
+      <a
+        class="cta cta--hidden"
+        href="https://www.linkedin.com/in/youssef-x1-8227b643a"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cta
+      >
+        <span class="cta__label">Open the door</span>
+        <span class="cta__arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p class="footer__line">© <span id="year">2026</span> OCSTEN — Youssef</p>
+    <p class="footer__line footer__line--dim">Systems over emotions.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
