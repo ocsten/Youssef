@@ -17,28 +17,30 @@
   const RM = win.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const FINE = win.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const TOUCH = win.matchMedia("(pointer: coarse)").matches;
-  const KEY = "ocsten.lang.v3";
+  const STORE_LANG = "ocsten.lang.v4";
+  const STORE_SOUND = "ocsten.sound.v4";
 
-  const dict = {
+  const DICT = {
     en: {
-      "masthead.available": "AVAILABLE — 2026",
+      "masthead.available": "OPEN — 2026",
       "masthead.menu": "INDEX",
+      "masthead.sound": "SOUND",
       "drawer.title": "INDEX",
       "drawer.location": "LOCATED",
       "drawer.creed": "CREED",
       "drawer.creed.v": "Systems over emotions.",
-      "nav.manifesto": "Manifesto",
+      "nav.manifesto": "Principles",
       "nav.manifesto.cap": "Why language is structure",
-      "nav.capabilities": "Capabilities",
+      "nav.capabilities": "Practice",
       "nav.capabilities.cap": "What gets engineered",
-      "nav.work": "Selected Work",
+      "nav.work": "Case Files",
       "nav.work.cap": "Six engagements, six proofs",
-      "nav.process": "Process",
-      "nav.process.cap": "Audit to autonomy",
-      "nav.voices": "Voices",
-      "nav.voices.cap": "Words from partners",
-      "nav.contact": "Contact",
-      "nav.contact.cap": "Open the door",
+      "nav.process": "Method",
+      "nav.process.cap": "From audit to autonomy",
+      "nav.voices": "Partners",
+      "nav.voices.cap": "Words from the field",
+      "nav.contact": "Inquiries",
+      "nav.contact.cap": "Two doors",
       "hero.file": "FILE",
       "hero.issue": "ISSUE",
       "hero.role.1": "UX COPYWRITER",
@@ -48,10 +50,10 @@
       "hero.bio.3": "My work is invisible when it succeeds.",
       "hero.creed": "Systems over emotions.",
       "hero.cta.work": "VIEW THE WORK",
-      "hero.cta.manifesto": "READ THE MANIFESTO",
+      "hero.cta.manifesto": "READ THE PRINCIPLES",
       "hero.scroll": "SCROLL",
-      "manifesto.chapter": "MANIFESTO",
-      "manifesto.side": "DOCTRINE — SIX PRINCIPLES",
+      "manifesto.chapter": "PRINCIPLES",
+      "manifesto.side": "DOCTRINE — SIX LAWS",
       "manifesto.title.a": "Words",
       "manifesto.title.b": "are",
       "manifesto.title.c": "architecture.",
@@ -69,8 +71,8 @@
       "doctrine.5.b": "A clever line is remembered once. A clear line is used a thousand times.",
       "doctrine.6.n": "LONGEVITY OVER TREND",
       "doctrine.6.b": "Trends expire. Systems compound. I build for the version that outlasts me.",
-      "capabilities.chapter": "CAPABILITIES",
-      "capabilities.side": "SIX DISCIPLINES — ONE SYSTEM",
+      "capabilities.chapter": "PRACTICE",
+      "capabilities.side": "SIX DISCIPLINES — ONE ENGINE",
       "capabilities.title.a": "What gets",
       "capabilities.title.b": "engineered.",
       "capabilities.intro": "Each discipline is a component. Together they form one language engine any team can operate without me in the room.",
@@ -92,8 +94,8 @@
       "service.6.n": "Language Audits",
       "service.6.b": "A forensic read of your product language, delivered as an actionable map.",
       "service.6.t": "AUDIT · SCORECARD · ROADMAP",
-      "work.chapter": "SELECTED WORK",
-      "work.entries": "ENTRIES",
+      "work.chapter": "CASE FILES",
+      "work.entries": "FILES",
       "work.title.a": "Selected",
       "work.title.b": "engagements.",
       "work.filter.all": "ALL",
@@ -124,7 +126,7 @@
       "figure.2.k": "INDUSTRIES SERVED",
       "figure.3.k": "YEARS OF CRAFT",
       "figure.4.k": "PARTNER RETENTION",
-      "process.chapter": "PROCESS",
+      "process.chapter": "METHOD",
       "process.side": "FOUR MOVEMENTS",
       "process.title.a": "How the work",
       "process.title.b": "gets built.",
@@ -136,8 +138,8 @@
       "stage.3.d": "I craft every line with intent, then cut until only intent remains.",
       "stage.4.n": "Refine",
       "stage.4.d": "I test, measure, and sharpen until the system runs without me. Autonomy is the deliverable.",
-      "voices.chapter": "VOICES",
-      "voices.side": "WORDS FROM PARTNERS",
+      "voices.chapter": "PARTNERS",
+      "voices.side": "WORDS FROM THE FIELD",
       "voice.1.q": "He removed half our words and doubled our clarity. The product finally sounds like a product.",
       "voice.1.n": "Product Lead",
       "voice.1.r": "FINTECH PLATFORM · BERLIN",
@@ -147,7 +149,7 @@
       "voice.3.q": "Rare to find someone who thinks in systems and still writes like a human being.",
       "voice.3.n": "Founder",
       "voice.3.r": "HEALTH SAAS · PARIS",
-      "contact.chapter": "CONTACT",
+      "contact.chapter": "INQUIRIES",
       "contact.side": "TWO DOORS",
       "contact.title.a": "Let us build",
       "contact.title.b": "something quiet.",
@@ -166,22 +168,23 @@
     ar: {
       "masthead.available": "متاح — 2026",
       "masthead.menu": "الفهرس",
+      "masthead.sound": "الصوت",
       "drawer.title": "الفهرس",
       "drawer.location": "الموقع",
       "drawer.creed": "العقيدة",
       "drawer.creed.v": "الأنظمة قبل المشاعر.",
-      "nav.manifesto": "البيان",
+      "nav.manifesto": "المبادئ",
       "nav.manifesto.cap": "لماذا اللغة بنية",
-      "nav.capabilities": "القدرات",
+      "nav.capabilities": "الممارسة",
       "nav.capabilities.cap": "ما يتم هندسته",
-      "nav.work": "أعمال مختارة",
+      "nav.work": "ملفات الأعمال",
       "nav.work.cap": "ستة ارتباطات، ستة براهين",
       "nav.process": "المنهجية",
       "nav.process.cap": "من التدقيق إلى الاستقلالية",
-      "nav.voices": "أصوات",
-      "nav.voices.cap": "كلمات من الشركاء",
-      "nav.contact": "تواصل",
-      "nav.contact.cap": "افتح الباب",
+      "nav.voices": "الشركاء",
+      "nav.voices.cap": "كلمات من الميدان",
+      "nav.contact": "الاستفسارات",
+      "nav.contact.cap": "بابان",
       "hero.file": "ملف",
       "hero.issue": "إصدار",
       "hero.role.1": "كاتب تجربة المستخدم",
@@ -191,10 +194,10 @@
       "hero.bio.3": "عملي غير مرئي حين ينجح.",
       "hero.creed": "الأنظمة قبل المشاعر.",
       "hero.cta.work": "شاهد الأعمال",
-      "hero.cta.manifesto": "اقرأ البيان",
+      "hero.cta.manifesto": "اقرأ المبادئ",
       "hero.scroll": "مرر",
-      "manifesto.chapter": "البيان",
-      "manifesto.side": "عقيدة — ستة مبادئ",
+      "manifesto.chapter": "المبادئ",
+      "manifesto.side": "عقيدة — ستة قوانين",
       "manifesto.title.a": "الكلمات",
       "manifesto.title.b": "هي",
       "manifesto.title.c": "معمارية.",
@@ -212,8 +215,8 @@
       "doctrine.5.b": "السطر الذكي يُتذكر مرة. السطر الواضح يُستخدم ألف مرة.",
       "doctrine.6.n": "الاستمرارية قبل الصيحة",
       "doctrine.6.b": "الصيحات تنتهي. الأنظمة تتراكم. أبني للنسخة التي تبقى بعدي.",
-      "capabilities.chapter": "القدرات",
-      "capabilities.side": "ستة تخصصات — نظام واحد",
+      "capabilities.chapter": "الممارسة",
+      "capabilities.side": "ستة تخصصات — محرك واحد",
       "capabilities.title.a": "ما يتم",
       "capabilities.title.b": "هندسته.",
       "capabilities.intro": "كل تخصص مكوّن. معًا يشكّلون محرك لغة واحدًا يمكن لأي فريق تشغيله بدوني في الغرفة.",
@@ -235,8 +238,8 @@
       "service.6.n": "تدقيق اللغة",
       "service.6.b": "قراءة جنائية للغة منتجك، تُسلّم كخريطة قابلة للتنفيذ.",
       "service.6.t": "تدقيق · بطاقة · خارطة",
-      "work.chapter": "أعمال مختارة",
-      "work.entries": "مدخلات",
+      "work.chapter": "ملفات الأعمال",
+      "work.entries": "ملفات",
       "work.title.a": "ارتباطات",
       "work.title.b": "مختارة.",
       "work.filter.all": "الكل",
@@ -279,8 +282,8 @@
       "stage.3.d": "أصيغ كل سطر بنية، ثم أقطع حتى تبقى النية فقط.",
       "stage.4.n": "الصقل",
       "stage.4.d": "أختبر وأقيس وأشحذ حتى يعمل النظام بدوني. الاستقلالية هي المُخرَج.",
-      "voices.chapter": "أصوات",
-      "voices.side": "كلمات من الشركاء",
+      "voices.chapter": "الشركاء",
+      "voices.side": "كلمات من الميدان",
       "voice.1.q": "أزال نصف كلماتنا وضاعف وضوحنا. المنتج أخيرًا يبدو كمنتج.",
       "voice.1.n": "قائد المنتج",
       "voice.1.r": "منصة تقنية مالية · برلين",
@@ -290,7 +293,7 @@
       "voice.3.q": "نادرًا ما تجد شخصًا يفكر بأنظمة وما زال يكتب كإنسان.",
       "voice.3.n": "مؤسس",
       "voice.3.r": "برمجيات صحية · باريس",
-      "contact.chapter": "تواصل",
+      "contact.chapter": "الاستفسارات",
       "contact.side": "بابان",
       "contact.title.a": "لنبنِ شيئًا",
       "contact.title.b": "هادئًا.",
@@ -308,24 +311,119 @@
     }
   };
 
-  const lang = (() => {
+  const Audio = (() => {
+    let ctx = null;
+    let master = null;
+    let enabled = false;
+
+    const read = () => {
+      try {
+        const s = win.localStorage.getItem(STORE_SOUND);
+        return s === "on";
+      } catch (_) { return false; }
+    };
+
+    const write = (v) => {
+      try { win.localStorage.setItem(STORE_SOUND, v ? "on" : "off"); } catch (_) {}
+    };
+
+    const ensure = () => {
+      if (ctx) return true;
+      try {
+        const C = win.AudioContext || win.webkitAudioContext;
+        if (!C) return false;
+        ctx = new C();
+        master = ctx.createGain();
+        master.gain.value = 0.14;
+        master.connect(ctx.destination);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    };
+
+    const tone = (freq, dur, type, gain) => {
+      if (!enabled || !ensure()) return;
+      if (ctx.state === "suspended") ctx.resume();
+      const t = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.type = type || "sine";
+      osc.frequency.setValueAtTime(freq, t);
+      osc.frequency.exponentialRampToValueAtTime(Math.max(freq * 0.6, 40), t + dur);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(gain || 0.32, t + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      osc.connect(g);
+      g.connect(master);
+      osc.start(t);
+      osc.stop(t + dur + 0.02);
+    };
+
+    const hover = () => tone(880, 0.055, "sine", 0.10);
+    const click = () => tone(660, 0.09, "triangle", 0.22);
+    const open = () => {
+      tone(520, 0.14, "sine", 0.24);
+      win.setTimeout(() => tone(780, 0.12, "sine", 0.18), 55);
+    };
+    const close = () => {
+      tone(780, 0.12, "sine", 0.22);
+      win.setTimeout(() => tone(520, 0.14, "sine", 0.18), 55);
+    };
+    const toggle = () => {
+      tone(660, 0.08, "triangle", 0.24);
+      win.setTimeout(() => tone(990, 0.10, "triangle", 0.20), 70);
+    };
+
+    const setEnabled = (v) => {
+      enabled = !!v;
+      write(enabled);
+      if (enabled && !ensure()) enabled = false;
+      return enabled;
+    };
+
+    const init = () => {
+      enabled = read();
+      const btn = $("[data-sound-toggle]");
+      if (btn) {
+        btn.setAttribute("aria-pressed", enabled ? "true" : "false");
+        btn.addEventListener("click", () => {
+          const next = !enabled;
+          setEnabled(next);
+          btn.setAttribute("aria-pressed", next ? "true" : "false");
+          if (next) toggle();
+        });
+      }
+      const unlock = () => {
+        if (enabled) ensure();
+        win.removeEventListener("pointerdown", unlock);
+        win.removeEventListener("keydown", unlock);
+      };
+      win.addEventListener("pointerdown", unlock, { once: true });
+      win.addEventListener("keydown", unlock, { once: true });
+    };
+
+    return { init, setEnabled, hover, click, open, close, toggle, get enabled() { return enabled; } };
+  })();
+
+  const Lang = (() => {
     let current = "en";
 
     const read = () => {
       try {
-        const stored = win.localStorage.getItem(KEY);
-        if (stored === "en" || stored === "ar") return stored;
+        const s = win.localStorage.getItem(STORE_LANG);
+        if (s === "en" || s === "ar") return s;
       } catch (_) {}
-      const nav = (navigator.language || "en").toLowerCase();
-      return nav.startsWith("ar") ? "ar" : "en";
+      const n = (navigator.language || "en").toLowerCase();
+      return n.startsWith("ar") ? "ar" : "en";
     };
 
     const write = (l) => {
-      try { win.localStorage.setItem(KEY, l); } catch (_) {}
+      try { win.localStorage.setItem(STORE_LANG, l); } catch (_) {}
     };
 
     const paint = (l) => {
-      const d = dict[l] || dict.en;
+      const d = DICT[l] || DICT.en;
       $$("[data-i18n]").forEach((el) => {
         const k = el.getAttribute("data-i18n");
         const v = d[k];
@@ -341,16 +439,17 @@
         : "OCSTEN — Youssef · UX Copywriter & Digital Architect";
     };
 
-    const apply = (l) => {
+    const apply = (l, silent) => {
       current = l === "ar" ? "ar" : "en";
       paint(current);
       write(current);
+      if (!silent && Audio.enabled) Audio.toggle();
     };
 
     const toggle = () => apply(current === "en" ? "ar" : "en");
 
     const init = () => {
-      apply(read());
+      apply(read(), true);
       const btn = $("[data-lang-switch]");
       if (btn) btn.addEventListener("click", toggle);
     };
@@ -358,7 +457,7 @@
     return { init, toggle, apply, get current() { return current; } };
   })();
 
-  const loader = (() => {
+  const Loader = (() => {
     const run = () => {
       const node = $("[data-loader]");
       if (!node) {
@@ -371,7 +470,7 @@
       let progress = 0;
 
       const tick = () => {
-        const delta = (100 - progress) * 0.055 + 0.9;
+        const delta = (100 - progress) * 0.052 + 0.85;
         progress = Math.min(progress + delta, 100);
 
         if (count) count.textContent = String(Math.floor(progress)).padStart(3, "0");
@@ -384,18 +483,18 @@
             node.classList.add("is-done");
             body.classList.remove("is-booting");
             body.classList.add("is-ready");
-            win.setTimeout(() => node.remove(), 1100);
+            win.setTimeout(() => node.remove(), 1200);
           }, 380);
         }
       };
 
-      win.setTimeout(tick, 260);
+      win.setTimeout(tick, 280);
     };
 
     return { run };
   })();
 
-  const cursor = (() => {
+  const Cursor = (() => {
     let rafId = null;
     let running = false;
 
@@ -429,8 +528,8 @@
       doc.addEventListener("mouseleave", leave);
 
       const loop = () => {
-        rx = lerp(rx, mx, 0.2);
-        ry = lerp(ry, my, 0.2);
+        rx = lerp(rx, mx, 0.22);
+        ry = lerp(ry, my, 0.22);
         node.style.transform = `translate3d(${rx.toFixed(2)}px, ${ry.toFixed(2)}px, 0)`;
         rafId = raf(loop);
       };
@@ -449,6 +548,7 @@
             node.classList.add("is-hover");
             const t = el.getAttribute("data-cursor-text");
             if (label) label.textContent = t || "";
+            if (Audio.enabled) Audio.hover();
           });
 
           el.addEventListener("pointerleave", () => {
@@ -470,7 +570,7 @@
     return { start, destroy };
   })();
 
-  const masthead = (() => {
+  const Masthead = (() => {
     const run = () => {
       const node = $("[data-masthead]");
       if (!node) return;
@@ -493,7 +593,32 @@
     return { run };
   })();
 
-  const drawer = (() => {
+  const Progress = (() => {
+    const run = () => {
+      const fill = $("[data-progress]");
+      if (!fill) return;
+      let ticking = false;
+
+      const update = () => {
+        const max = root.scrollHeight - win.innerHeight;
+        const pct = max > 0 ? (win.scrollY / max) * 100 : 0;
+        fill.style.width = pct.toFixed(2) + "%";
+        ticking = false;
+      };
+
+      win.addEventListener("scroll", () => {
+        if (ticking) return;
+        ticking = true;
+        raf(update);
+      }, { passive: true });
+
+      update();
+    };
+
+    return { run };
+  })();
+
+  const Drawer = (() => {
     let bound = false;
 
     const bind = () => {
@@ -514,6 +639,7 @@
         root.classList.add("is-locked");
         body.classList.add("is-locked");
         body.style.top = `-${y}px`;
+        if (Audio.enabled) Audio.open();
       };
 
       const close = () => {
@@ -524,6 +650,7 @@
         body.classList.remove("is-locked");
         body.style.top = "";
         win.scrollTo({ top: y, behavior: "instant" });
+        if (Audio.enabled) Audio.close();
       };
 
       trigger.addEventListener("click", () => {
@@ -541,7 +668,147 @@
     return { bind };
   })();
 
-  const smooth = (() => {
+  const Command = (() => {
+    let bound = false;
+    let focusIdx = 0;
+
+    const bind = () => {
+      if (bound) return;
+      bound = true;
+
+      const node = $("[data-command]");
+      const opener = $("[data-command-open]");
+      const input = $("[data-command-input]");
+      if (!node) return;
+
+      const items = $$("[data-command-target], [data-command-action]");
+
+      const open = () => {
+        node.classList.add("is-open");
+        node.setAttribute("aria-hidden", "false");
+        root.classList.add("is-locked");
+        body.classList.add("is-locked");
+        focusIdx = 0;
+        setFocus(0);
+        if (input) {
+          input.value = "";
+          win.setTimeout(() => input.focus(), 60);
+        }
+        if (Audio.enabled) Audio.open();
+      };
+
+      const close = () => {
+        node.classList.remove("is-open");
+        node.setAttribute("aria-hidden", "true");
+        root.classList.remove("is-locked");
+        body.classList.remove("is-locked");
+        if (input) input.blur();
+        if (Audio.enabled) Audio.close();
+      };
+
+      const setFocus = (i) => {
+        items.forEach((el, idx) => el.classList.toggle("is-focus", idx === i));
+        const el = items[i];
+        if (el) el.scrollIntoView({ block: "nearest" });
+      };
+
+      const visibleItems = () => items.filter((el) => el.offsetParent !== null);
+
+      const filter = (q) => {
+        const query = q.trim().toLowerCase();
+        items.forEach((el) => {
+          const text = el.textContent.toLowerCase();
+          const match = !query || text.includes(query);
+          el.style.display = match ? "" : "none";
+        });
+        focusIdx = 0;
+        const vis = visibleItems();
+        if (vis.length) setFocus(0);
+      };
+
+      if (opener) opener.addEventListener("click", open);
+      $$("[data-command-close]").forEach((n) => n.addEventListener("click", close));
+
+      if (input) {
+        input.addEventListener("input", (e) => filter(e.target.value));
+      }
+
+      items.forEach((el) => {
+        el.addEventListener("pointerenter", () => {
+          const vis = visibleItems();
+          const i = vis.indexOf(el);
+          if (i >= 0) {
+            focusIdx = i;
+            setFocus(i);
+          }
+        });
+
+        el.addEventListener("click", () => {
+          const target = el.getAttribute("data-command-target");
+          const action = el.getAttribute("data-command-action");
+
+          if (target) {
+            const dest = doc.querySelector(target);
+            if (dest) {
+              close();
+              if (Audio.enabled) Audio.click();
+              win.setTimeout(() => {
+                const top = dest.getBoundingClientRect().top + win.scrollY - 70;
+                win.scrollTo({ top, behavior: RM ? "auto" : "smooth" });
+              }, 180);
+            }
+          } else if (action === "lang") {
+            Lang.toggle();
+          } else if (action === "sound") {
+            const btn = $("[data-sound-toggle]");
+            if (btn) btn.click();
+          } else if (action === "top") {
+            close();
+            if (Audio.enabled) Audio.click();
+            win.setTimeout(() => {
+              win.scrollTo({ top: 0, behavior: RM ? "auto" : "smooth" });
+            }, 180);
+          }
+        });
+      });
+
+      doc.addEventListener("keydown", (e) => {
+        const meta = e.metaKey || e.ctrlKey;
+        if (meta && e.key.toLowerCase() === "k") {
+          e.preventDefault();
+          if (node.classList.contains("is-open")) close();
+          else open();
+          return;
+        }
+
+        if (!node.classList.contains("is-open")) return;
+
+        if (e.key === "Escape") {
+          close();
+        } else if (e.key === "ArrowDown") {
+          e.preventDefault();
+          const vis = visibleItems();
+          if (!vis.length) return;
+          focusIdx = (focusIdx + 1) % vis.length;
+          setFocus(focusIdx);
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          const vis = visibleItems();
+          if (!vis.length) return;
+          focusIdx = (focusIdx - 1 + vis.length) % vis.length;
+          setFocus(focusIdx);
+        } else if (e.key === "Enter") {
+          const vis = visibleItems();
+          const el = vis[focusIdx];
+          if (el) el.click();
+        }
+      });
+    };
+
+    return { bind };
+  })();
+
+  const Smooth = (() => {
     const run = () => {
       if (RM) return;
       $$('a[href^="#"]').forEach((a) => {
@@ -551,6 +818,7 @@
           const target = doc.getElementById(href.slice(1));
           if (!target) return;
           e.preventDefault();
+          if (Audio.enabled) Audio.click();
           const top = target.getBoundingClientRect().top + win.scrollY - 70;
           win.scrollTo({ top, behavior: "smooth" });
         });
@@ -559,7 +827,7 @@
     return { run };
   })();
 
-  const reveal = (() => {
+  const Reveal = (() => {
     const run = () => {
       const nodes = $$("[data-reveal]");
       if (!nodes.length) return;
@@ -582,7 +850,30 @@
     return { run };
   })();
 
-  const counters = (() => {
+  const Split = (() => {
+    const run = () => {
+      const nodes = $$("[data-split]");
+      if (!nodes.length) return;
+
+      if (!("IntersectionObserver" in win)) {
+        nodes.forEach((n) => n.classList.add("is-live"));
+        return;
+      }
+
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-live");
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: 0.2 });
+
+      nodes.forEach((n) => io.observe(n));
+    };
+    return { run };
+  })();
+
+  const Counters = (() => {
     const run = () => {
       const nodes = $$("[data-count]");
       if (!nodes.length) return;
@@ -621,7 +912,7 @@
     return { run };
   })();
 
-  const tilt = (() => {
+  const Tilt = (() => {
     let rafId = null;
     let running = false;
     const state = new WeakMap();
@@ -678,7 +969,7 @@
           }
           s.rx = lerp(s.rx, s.trx, 0.14);
           s.ry = lerp(s.ry, s.try, 0.14);
-          node.style.transform = `perspective(1200px) rotateX(${s.rx.toFixed(2)}deg) rotateY(${s.ry.toFixed(2)}deg) translateZ(12px)`;
+          node.style.transform = `perspective(1200px) rotateX(${s.rx.toFixed(2)}deg) rotateY(${s.ry.toFixed(2)}deg) translateZ(10px)`;
         });
         rafId = raf(loop);
       };
@@ -697,7 +988,7 @@
     return { run, destroy };
   })();
 
-  const magnet = (() => {
+  const Magnet = (() => {
     const run = () => {
       if (RM || TOUCH) return;
       const nodes = $$("[data-magnetic]");
@@ -705,8 +996,8 @@
 
       nodes.forEach((node) => {
         let mx = 0, my = 0, tx = 0, ty = 0;
-        const strength = 0.32;
-        const radius = 140;
+        const strength = 0.34;
+        const radius = 150;
 
         const move = (e) => {
           const r = node.getBoundingClientRect();
@@ -745,7 +1036,7 @@
     return { run };
   })();
 
-  const field = (() => {
+  const Field = (() => {
     let rafId = null;
     let destroyFn = null;
 
@@ -774,7 +1065,7 @@
         octx.textAlign = "center";
         octx.textBaseline = "middle";
         const size = Math.min(140, oW / 6.2);
-        octx.font = `800 ${size}px "Archivo", system-ui, sans-serif`;
+        octx.font = `700 ${size}px "Archivo", system-ui, sans-serif`;
         octx.fillText("YOUSSEF", oW / 2, oH / 2);
 
         const data = octx.getImageData(0, 0, oW, oH).data;
@@ -807,7 +1098,7 @@
             vy: (Math.random() - 0.5) * 0.32,
             r: Math.random() * 1.5 + 0.3,
             a: Math.random() * 0.5 + 0.15,
-            hue: Math.random() > 0.86 ? "gold" : "cyber",
+            hue: Math.random() > 0.82 ? "gold" : "cyber",
             tx: 0,
             ty: 0
           });
@@ -852,7 +1143,7 @@
         px = lerp(px, tpx, 0.05);
         py = lerp(py, tpy, 0.05);
 
-        if (mode === "float" && targets.length && now - startTime > 3600) {
+        if (mode === "float" && targets.length && now - startTime > 3400) {
           morph = Math.min(morph + 0.008, 1);
           if (morph >= 1) mode = "text";
         }
@@ -868,7 +1159,7 @@
             if (p.x > W + 4) p.x = -4;
             if (p.y < -4) p.y = H + 4;
             if (p.y > H + 4) p.y = -4;
-            const rgb = p.hue === "gold" ? "212, 175, 55" : "0, 229, 255";
+            const rgb = p.hue === "gold" ? "201, 169, 110" : "0, 229, 255";
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(${rgb}, ${p.a})`;
@@ -888,7 +1179,7 @@
                 ctx.beginPath();
                 ctx.moveTo(a.x, a.y);
                 ctx.lineTo(b.x, b.y);
-                ctx.strokeStyle = `rgba(0, 229, 255, ${alpha})`;
+                ctx.strokeStyle = `rgba(201, 169, 110, ${alpha})`;
                 ctx.stroke();
               }
             }
@@ -903,7 +1194,7 @@
             p.x = lerp(p.x, gx, 0.07);
             p.y = lerp(p.y, gy, 0.07);
 
-            const rgb = p.hue === "gold" ? "212, 175, 55" : "0, 229, 255";
+            const rgb = p.hue === "gold" ? "201, 169, 110" : "0, 229, 255";
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(${rgb}, ${p.a * 0.92})`;
@@ -931,7 +1222,7 @@
     return { run, destroy };
   })();
 
-  const ticker = (() => {
+  const Ticker = (() => {
     const run = () => {
       const track = $("[data-ticker]");
       if (!track || RM) return;
@@ -950,7 +1241,7 @@
     return { run };
   })();
 
-  const filters = (() => {
+  const Filters = (() => {
     const run = () => {
       const chips = $$("[data-filter]");
       const projects = $$(".project");
@@ -970,6 +1261,7 @@
           chips.forEach((c) => c.classList.remove("is-on"));
           chip.classList.add("is-on");
           const tag = chip.getAttribute("data-filter");
+          if (Audio.enabled) Audio.click();
 
           projects.forEach((p) => {
             const match = tag === "*" || p.getAttribute("data-tag") === tag;
@@ -987,7 +1279,7 @@
     return { run };
   })();
 
-  const clock = (() => {
+  const Clock = (() => {
     const run = () => {
       const nodes = $$("[data-clock]");
       if (!nodes.length) return;
@@ -1005,7 +1297,7 @@
     return { run };
   })();
 
-  const ascend = (() => {
+  const Ascend = (() => {
     const run = () => {
       const btn = $("[data-ascend]");
       if (!btn) return;
@@ -1016,6 +1308,7 @@
 
       win.addEventListener("scroll", update, { passive: true });
       btn.addEventListener("click", () => {
+        if (Audio.enabled) Audio.click();
         win.scrollTo({ top: 0, behavior: RM ? "auto" : "smooth" });
       });
 
@@ -1024,7 +1317,7 @@
     return { run };
   })();
 
-  const glyphs = (() => {
+  const Glyphs = (() => {
     const run = () => {
       if (RM || TOUCH) return;
       const chars = $$(".hero__name .ch");
@@ -1063,7 +1356,7 @@
     return { run };
   })();
 
-  const year = (() => {
+  const Year = (() => {
     const run = () => {
       const el = $("[data-year]");
       if (el) el.textContent = new Date().getFullYear();
@@ -1071,7 +1364,7 @@
     return { run };
   })();
 
-  const visibility = (() => {
+  const Visibility = (() => {
     const run = () => {
       doc.addEventListener("visibilitychange", () => {
         body.classList.toggle("is-hidden", doc.hidden);
@@ -1080,13 +1373,23 @@
     return { run };
   })();
 
-  const keyboard = (() => {
+  const Keys = (() => {
     const run = () => {
       doc.addEventListener("keydown", (e) => {
         const t = e.target;
         if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA")) return;
-        if (e.key.toLowerCase() === "l" && !e.metaKey && !e.ctrlKey && !e.altKey) {
-          lang.toggle();
+        if (e.metaKey || e.ctrlKey) {
+          if (e.key.toLowerCase() === "l") {
+            e.preventDefault();
+            Lang.toggle();
+          } else if (e.key.toLowerCase() === "s") {
+            e.preventDefault();
+            const btn = $("[data-sound-toggle]");
+            if (btn) btn.click();
+          } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            win.scrollTo({ top: 0, behavior: RM ? "auto" : "smooth" });
+          }
         }
       });
     };
@@ -1094,25 +1397,29 @@
   })();
 
   const boot = () => {
-    lang.init();
-    loader.run();
-    cursor.start();
-    masthead.run();
-    drawer.bind();
-    smooth.run();
-    reveal.run();
-    counters.run();
-    tilt.run();
-    magnet.run();
-    field.run();
-    ticker.run();
-    filters.run();
-    clock.run();
-    ascend.run();
-    glyphs.run();
-    year.run();
-    visibility.run();
-    keyboard.run();
+    Audio.init();
+    Lang.init();
+    Loader.run();
+    Cursor.start();
+    Masthead.run();
+    Progress.run();
+    Drawer.bind();
+    Command.bind();
+    Smooth.run();
+    Reveal.run();
+    Split.run();
+    Counters.run();
+    Tilt.run();
+    Magnet.run();
+    Field.run();
+    Ticker.run();
+    Filters.run();
+    Clock.run();
+    Ascend.run();
+    Glyphs.run();
+    Year.run();
+    Visibility.run();
+    Keys.run();
   };
 
   if (doc.readyState === "loading") {
