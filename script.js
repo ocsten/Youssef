@@ -17,7 +17,7 @@
   const RM = win.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const FINE = win.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const TOUCH = win.matchMedia("(pointer: coarse)").matches;
-  const KEY = "ocsten.lang";
+  const KEY = "ocsten.lang.v3";
 
   const dict = {
     en: {
@@ -313,11 +313,11 @@
 
     const read = () => {
       try {
-        const s = win.localStorage.getItem(KEY);
-        if (s === "en" || s === "ar") return s;
+        const stored = win.localStorage.getItem(KEY);
+        if (stored === "en" || stored === "ar") return stored;
       } catch (_) {}
-      const n = (navigator.language || "en").toLowerCase();
-      return n.startsWith("ar") ? "ar" : "en";
+      const nav = (navigator.language || "en").toLowerCase();
+      return nav.startsWith("ar") ? "ar" : "en";
     };
 
     const write = (l) => {
@@ -355,13 +355,16 @@
       if (btn) btn.addEventListener("click", toggle);
     };
 
-    return { init, toggle, apply };
+    return { init, toggle, apply, get current() { return current; } };
   })();
 
   const loader = (() => {
     const run = () => {
       const node = $("[data-loader]");
-      if (!node) { body.classList.remove("boot"); return; }
+      if (!node) {
+        body.classList.remove("is-booting");
+        return;
+      }
 
       const bar = $("[data-loader-bar]", node);
       const count = $("[data-loader-count]", node);
@@ -379,7 +382,7 @@
         } else {
           win.setTimeout(() => {
             node.classList.add("is-done");
-            body.classList.remove("boot");
+            body.classList.remove("is-booting");
             body.classList.add("is-ready");
             win.setTimeout(() => node.remove(), 1100);
           }, 380);
@@ -404,7 +407,8 @@
       const label = $("[data-cursor-label]", node);
       let mx = win.innerWidth / 2;
       let my = win.innerHeight / 2;
-      let rx = mx, ry = my;
+      let rx = mx;
+      let ry = my;
       let visible = false;
 
       const move = (e) => {
@@ -438,8 +442,8 @@
 
       const bind = () => {
         $$("[data-cursor], a, button").forEach((el) => {
-          if (el.__c) return;
-          el.__c = true;
+          if (el.__cursorBound) return;
+          el.__cursorBound = true;
 
           el.addEventListener("pointerenter", () => {
             node.classList.add("is-hover");
@@ -458,7 +462,12 @@
       return { bind };
     };
 
-    return { start };
+    const destroy = () => {
+      if (rafId) caf(rafId);
+      running = false;
+    };
+
+    return { start, destroy };
   })();
 
   const masthead = (() => {
@@ -480,6 +489,7 @@
 
       update();
     };
+
     return { run };
   })();
 
@@ -615,20 +625,24 @@
     let rafId = null;
     let running = false;
     const state = new WeakMap();
+    const MAX_DEG = 10;
 
     const bind = (node) => {
-      const strength = parseFloat(node.getAttribute("data-tilt-strength")) || 8;
+      const strength = parseFloat(node.getAttribute("data-tilt-strength")) || 1;
       state.set(node, { rx: 0, ry: 0, trx: 0, try: 0, strength, active: false });
 
       const move = (e) => {
         if (e.pointerType === "touch" && TOUCH) return;
         const r = node.getBoundingClientRect();
-        const nx = (e.clientX - r.left) / r.width - 0.5;
-        const ny = (e.clientY - r.top) / r.height - 0.5;
+        if (!r.width || !r.height) return;
+        const xc = r.left + r.width / 2;
+        const yc = r.top + r.height / 2;
+        const dx = e.clientX - xc;
+        const dy = e.clientY - yc;
         const s = state.get(node);
         if (!s) return;
-        s.try = nx * s.strength;
-        s.trx = -ny * s.strength;
+        s.try = clamp((dx / (r.width / 2)) * MAX_DEG * s.strength, -MAX_DEG, MAX_DEG);
+        s.trx = clamp((-dy / (r.height / 2)) * MAX_DEG * s.strength, -MAX_DEG, MAX_DEG);
         s.active = true;
         node.style.setProperty("--mx", (e.clientX - r.left).toFixed(1) + "px");
         node.style.setProperty("--my", (e.clientY - r.top).toFixed(1) + "px");
@@ -657,13 +671,14 @@
         nodes.forEach((node) => {
           const s = state.get(node);
           if (!s) return;
-          if (!s.active && Math.abs(s.rx) < 0.02 && Math.abs(s.ry) < 0.02) {
+          const idle = !s.active && Math.abs(s.rx) < 0.02 && Math.abs(s.ry) < 0.02;
+          if (idle) {
             if (node.style.transform) node.style.transform = "";
             return;
           }
           s.rx = lerp(s.rx, s.trx, 0.14);
           s.ry = lerp(s.ry, s.try, 0.14);
-          node.style.transform = `perspective(1200px) rotateX(${s.rx.toFixed(2)}deg) rotateY(${s.ry.toFixed(2)}deg)`;
+          node.style.transform = `perspective(1200px) rotateX(${s.rx.toFixed(2)}deg) rotateY(${s.ry.toFixed(2)}deg) translateZ(12px)`;
         });
         rafId = raf(loop);
       };
@@ -674,7 +689,12 @@
       }
     };
 
-    return { run };
+    const destroy = () => {
+      if (rafId) caf(rafId);
+      running = false;
+    };
+
+    return { run, destroy };
   })();
 
   const magnet = (() => {
@@ -1004,11 +1024,11 @@
     return { run };
   })();
 
-  const chars = (() => {
+  const glyphs = (() => {
     const run = () => {
       if (RM || TOUCH) return;
-      const glyphs = $$(".hero__name .ch");
-      if (!glyphs.length) return;
+      const chars = $$(".hero__name .ch");
+      if (!chars.length) return;
 
       let tx = 0, ty = 0, px = 0, py = 0;
 
@@ -1017,11 +1037,11 @@
         ty = (e.clientY / win.innerHeight - 0.5) * 2;
       }, { passive: true });
 
-      const state = glyphs.map((el, i) => ({
+      const state = chars.map((el, i) => ({
         el,
         x: 0,
         y: 0,
-        center: (i - (glyphs.length - 1) / 2) / glyphs.length
+        center: (i - (chars.length - 1) / 2) / chars.length
       }));
 
       const loop = () => {
@@ -1089,7 +1109,7 @@
     filters.run();
     clock.run();
     ascend.run();
-    chars.run();
+    glyphs.run();
     year.run();
     visibility.run();
     keyboard.run();
