@@ -1,752 +1,745 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="color-scheme" content="dark" />
-  <meta name="format-detection" content="telephone=no" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#000000" />
+<meta name="color-scheme" content="dark" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="robots" content="index, follow" />
 
-  <title>OCSTEN — Youssef · Language Architect</title>
-  <meta name="description" content="OCSTEN — Youssef. UX Copywriter & Digital Architect. Systems over emotions. Language architecture for digital products that cannot fail." />
-  <meta name="author" content="Youssef — OCSTEN" />
-  <meta name="robots" content="index, follow" />
+<title>OCSTEN — Youssef · UX Copywriter &amp; Digital Architect</title>
+<meta name="description" content="OCSTEN — Youssef. UX Copywriter and Digital Architect. Language systems for digital products. Algiers, worldwide." />
+<meta name="author" content="Youssef — OCSTEN" />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="OCSTEN — Youssef" />
-  <meta property="og:description" content="Language architecture for products that cannot fail." />
-  <meta property="og:site_name" content="OCSTEN" />
-  <meta name="twitter:card" content="summary_large_image" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="OCSTEN — Youssef" />
+<meta property="og:description" content="UX Copywriter and Digital Architect. Systems over emotions." />
+<meta property="og:site_name" content="OCSTEN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="OCSTEN — Youssef" />
+<meta name="twitter:description" content="UX Copywriter and Digital Architect. Systems over emotions." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@200;300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@200;300;400;500&family=IBM+Plex+Sans+Arabic:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@200;300;400;500&family=IBM+Plex+Sans+Arabic:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css" />
 </head>
 
-<body id="apex" class="boot">
+<body id="apex">
 
-  <div class="boot-screen" data-boot>
-    <div class="boot-screen__grid"></div>
-    <div class="boot-screen__stack">
-      <div class="boot-screen__tag">
-        <span>OCSTEN</span>
-        <span>EST·2019</span>
-      </div>
-      <div class="boot-screen__word" data-boot-word>LANGUAGE</div>
-      <div class="boot-screen__bar">
-        <span data-boot-bar></span>
-      </div>
-      <div class="boot-screen__meter">
-        <span data-boot-percent>000</span>
-        <span>INITIALIZING</span>
-      </div>
-    </div>
+<div class="loader" data-loader aria-hidden="true">
+  <div class="loader__row">
+    <span class="loader__label">OCSTEN</span>
+    <span class="loader__count" data-loader-count>000</span>
+  </div>
+  <div class="loader__track"><span data-loader-bar></span></div>
+  <div class="loader__row loader__row--bottom">
+    <span>PORTFOLIO — MMXXVI</span>
+    <span>ALGIERS</span>
+  </div>
+</div>
+
+<div class="cursor" data-cursor aria-hidden="true">
+  <span class="cursor__dot"></span>
+  <span class="cursor__ring"></span>
+  <span class="cursor__label" data-cursor-label></span>
+</div>
+
+<div class="texture-grain" aria-hidden="true"></div>
+<div class="texture-vignette" aria-hidden="true"></div>
+
+<div class="grid-overlay" aria-hidden="true">
+  <span></span><span></span><span></span><span></span>
+</div>
+
+<header class="masthead" data-masthead>
+  <a class="masthead__brand" href="#apex" data-cursor>
+    <span class="masthead__brand-mark">OC</span>
+    <span class="masthead__brand-name">OCSTEN</span>
+    <span class="masthead__brand-dot">.</span>
+  </a>
+
+  <div class="masthead__status" aria-hidden="true">
+    <span class="masthead__dot"></span>
+    <span data-i18n="masthead.available">AVAILABLE — 2026</span>
   </div>
 
-  <div class="pointer" data-pointer>
-    <span class="pointer__dot"></span>
-    <span class="pointer__ring"></span>
-    <span class="pointer__verb" data-pointer-verb></span>
+  <div class="masthead__controls">
+    <button class="lang" data-lang-switch aria-label="Toggle language">
+      <span class="lang__track"><span class="lang__thumb"></span></span>
+      <span class="lang__labels">
+        <span class="lang__en">EN</span>
+        <span class="lang__ar">ع</span>
+      </span>
+    </button>
+
+    <button class="trigger" data-menu-open aria-label="Open navigation" aria-expanded="false">
+      <span class="trigger__lines"><span></span><span></span></span>
+      <span class="trigger__text" data-i18n="masthead.menu">INDEX</span>
+    </button>
   </div>
+</header>
 
-  <div class="ambient-grain"></div>
-  <div class="ambient-vignette"></div>
-  <div class="ambient-rules">
-    <span></span><span></span><span></span><span></span><span></span><span></span>
-  </div>
+<aside class="drawer" data-drawer aria-hidden="true">
+  <div class="drawer__veil" data-menu-close></div>
 
-  <aside class="rail">
-    <a class="rail__mark" href="#apex" data-cursor>
-      <span class="rail__mark-glyph">O</span>
-      <span class="rail__mark-rule"></span>
-      <span class="rail__mark-text">OCSTEN</span>
-    </a>
-
-    <div class="rail__stack">
-      <span class="rail__stack-num" data-rail-num>00</span>
-      <span class="rail__stack-dot" data-rail-dots></span>
+  <div class="drawer__panel">
+    <div class="drawer__head">
+      <span class="drawer__head-label" data-i18n="drawer.title">INDEX</span>
+      <button class="drawer__close" data-menu-close aria-label="Close">
+        <span></span><span></span>
+      </button>
     </div>
 
-    <div class="rail__foot">
-      <span>36.7538° N</span>
-      <span>3.0588° E</span>
-      <span>v.26</span>
-    </div>
-  </aside>
-
-  <header class="topbar" data-topbar>
-    <div class="topbar__status">
-      <span class="topbar__pulse"></span>
-      <span data-i18n="topbar.status">OPEN FOR WORK</span>
-      <span class="topbar__sep">/</span>
-      <span data-i18n="topbar.year">2026</span>
-    </div>
-
-    <div class="topbar__actions">
-      <button class="globe" data-lang-btn aria-label="Language">
-        <span class="globe__track"><span class="globe__thumb"></span></span>
-        <span class="globe__label">
-          <span class="globe__en">EN</span>
-          <span class="globe__ar">AR</span>
+    <nav class="drawer__nav" aria-label="Primary">
+      <a class="drawer__link" href="#manifesto" data-menu-link data-cursor>
+        <span class="drawer__link-idx">01</span>
+        <span class="drawer__link-body">
+          <span class="drawer__link-title" data-i18n="nav.manifesto">Manifesto</span>
+          <span class="drawer__link-cap" data-i18n="nav.manifesto.cap">Why language is structure</span>
         </span>
-      </button>
-      <button class="burger" data-burger aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+      </a>
 
-  <div class="overlay" data-overlay aria-hidden="true">
-    <div class="overlay__veil" data-overlay-veil></div>
+      <a class="drawer__link" href="#capabilities" data-menu-link data-cursor>
+        <span class="drawer__link-idx">02</span>
+        <span class="drawer__link-body">
+          <span class="drawer__link-title" data-i18n="nav.capabilities">Capabilities</span>
+          <span class="drawer__link-cap" data-i18n="nav.capabilities.cap">What gets engineered</span>
+        </span>
+      </a>
 
-    <div class="overlay__stage">
-      <div class="overlay__top">
-        <span class="overlay__label" data-i18n="overlay.label">NAVIGATION</span>
-        <button class="overlay__close" data-overlay-close aria-label="Close">
-          <span></span><span></span>
-        </button>
+      <a class="drawer__link" href="#work" data-menu-link data-cursor>
+        <span class="drawer__link-idx">03</span>
+        <span class="drawer__link-body">
+          <span class="drawer__link-title" data-i18n="nav.work">Selected Work</span>
+          <span class="drawer__link-cap" data-i18n="nav.work.cap">Six engagements, six proofs</span>
+        </span>
+      </a>
+
+      <a class="drawer__link" href="#process" data-menu-link data-cursor>
+        <span class="drawer__link-idx">04</span>
+        <span class="drawer__link-body">
+          <span class="drawer__link-title" data-i18n="nav.process">Process</span>
+          <span class="drawer__link-cap" data-i18n="nav.process.cap">Audit to autonomy</span>
+        </span>
+      </a>
+
+      <a class="drawer__link" href="#voices" data-menu-link data-cursor>
+        <span class="drawer__link-idx">05</span>
+        <span class="drawer__link-body">
+          <span class="drawer__link-title" data-i18n="nav.voices">Voices</span>
+          <span class="drawer__link-cap" data-i18n="nav.voices.cap">Words from partners</span>
+        </span>
+      </a>
+
+      <a class="drawer__link" href="#contact" data-menu-link data-cursor>
+        <span class="drawer__link-idx">06</span>
+        <span class="drawer__link-body">
+          <span class="drawer__link-title" data-i18n="nav.contact">Contact</span>
+          <span class="drawer__link-cap" data-i18n="nav.contact.cap">Open the door</span>
+        </span>
+      </a>
+    </nav>
+
+    <div class="drawer__foot">
+      <div class="drawer__foot-cell">
+        <span class="drawer__foot-k" data-i18n="drawer.location">LOCATED</span>
+        <span class="drawer__foot-v">Algiers — Worldwide</span>
       </div>
-
-      <nav class="overlay__nav" aria-label="Primary">
-        <a class="overlay__link" href="#doctrine" data-overlay-link data-cursor>
-          <span class="overlay__link-idx">01</span>
-          <span class="overlay__link-body">
-            <span class="overlay__link-title" data-i18n="nav.doctrine">Doctrine</span>
-            <span class="overlay__link-caption" data-i18n="nav.doctrine.cap">Why language is structure</span>
-          </span>
-          <span class="overlay__link-arrow">↗</span>
-        </a>
-        <a class="overlay__link" href="#arsenal" data-overlay-link data-cursor>
-          <span class="overlay__link-idx">02</span>
-          <span class="overlay__link-body">
-            <span class="overlay__link-title" data-i18n="nav.arsenal">Arsenal</span>
-            <span class="overlay__link-caption" data-i18n="nav.arsenal.cap">Six disciplines, one system</span>
-          </span>
-          <span class="overlay__link-arrow">↗</span>
-        </a>
-        <a class="overlay__link" href="#vault" data-overlay-link data-cursor>
-          <span class="overlay__link-idx">03</span>
-          <span class="overlay__link-body">
-            <span class="overlay__link-title" data-i18n="nav.vault">Vault</span>
-            <span class="overlay__link-caption" data-i18n="nav.vault.cap">Selected engagements</span>
-          </span>
-          <span class="overlay__link-arrow">↗</span>
-        </a>
-        <a class="overlay__link" href="#method" data-overlay-link data-cursor>
-          <span class="overlay__link-idx">04</span>
-          <span class="overlay__link-body">
-            <span class="overlay__link-title" data-i18n="nav.method">Method</span>
-            <span class="overlay__link-caption" data-i18n="nav.method.cap">Audit to autonomy</span>
-          </span>
-          <span class="overlay__link-arrow">↗</span>
-        </a>
-        <a class="overlay__link" href="#dispatch" data-overlay-link data-cursor>
-          <span class="overlay__link-idx">05</span>
-          <span class="overlay__link-body">
-            <span class="overlay__link-title" data-i18n="nav.dispatch">Dispatch</span>
-            <span class="overlay__link-caption" data-i18n="nav.dispatch.cap">Open the door</span>
-          </span>
-          <span class="overlay__link-arrow">↗</span>
-        </a>
-      </nav>
-
-      <div class="overlay__bottom">
-        <div class="overlay__meta">
-          <span class="overlay__meta-k" data-i18n="overlay.located">LOCATED</span>
-          <span class="overlay__meta-v">Algiers — Worldwide</span>
-        </div>
-        <div class="overlay__meta">
-          <span class="overlay__meta-k" data-i18n="overlay.engaged">ENGAGED</span>
-          <span class="overlay__meta-v">Q1 · 2026</span>
-        </div>
-        <div class="overlay__meta">
-          <span class="overlay__meta-k" data-i18n="overlay.creed">CREED</span>
-          <span class="overlay__meta-v overlay__meta-v--accent" data-i18n="overlay.creed.v">Systems over emotions.</span>
-        </div>
+      <div class="drawer__foot-cell">
+        <span class="drawer__foot-k" data-i18n="drawer.creed">CREED</span>
+        <span class="drawer__foot-v drawer__foot-v--accent" data-i18n="drawer.creed.v">Systems over emotions.</span>
       </div>
     </div>
   </div>
+</aside>
 
-  <main>
+<main>
 
-    <section class="intro" id="intro" aria-label="Introduction">
-      <canvas class="intro__stage" id="stage" aria-hidden="true"></canvas>
+  <section class="hero" id="hero" aria-label="Introduction">
+    <canvas class="hero__canvas" id="field" aria-hidden="true"></canvas>
+    <div class="hero__ambient" aria-hidden="true"></div>
 
-      <div class="intro__halo" aria-hidden="true"></div>
-      <div class="intro__signal" aria-hidden="true"></div>
+    <div class="hero__stage" data-parallax>
 
-      <div class="intro__grid" data-parallax>
+      <div class="hero__meta" data-reveal>
+        <span class="hero__meta-cell">
+          <span class="hero__meta-k" data-i18n="hero.file">FILE</span>
+          <span class="hero__meta-v">№ 001 / PORTFOLIO</span>
+        </span>
+        <span class="hero__meta-cell hero__meta-cell--right">
+          <span class="hero__meta-k" data-i18n="hero.issue">ISSUE</span>
+          <span class="hero__meta-v">MMXXVI · <span data-clock>--:--</span> GMT+1</span>
+        </span>
+      </div>
 
-        <div class="intro__meta intro__meta--left" data-reveal data-delay="0">
-          <span class="intro__meta-k">FILE</span>
-          <span class="intro__meta-v">№ 001 / PORTFOLIO</span>
-        </div>
+      <h1 class="hero__name" aria-label="YOUSSEF">
+        <span class="hero__name-line" data-reveal>
+          <span class="ch">Y</span><span class="ch">O</span><span class="ch">U</span><span class="ch">S</span><span class="ch">S</span><span class="ch">E</span><span class="ch">F</span>
+        </span>
+      </h1>
 
-        <div class="intro__meta intro__meta--right" data-reveal data-delay="120">
-          <span class="intro__meta-k">ISSUE</span>
-          <span class="intro__meta-v">MMXXVI · <span data-clock>--:--</span> GMT+1</span>
-        </div>
+      <div class="hero__role" data-reveal>
+        <span class="hero__role-line"></span>
+        <span class="hero__role-text">
+          <span data-i18n="hero.role.1">UX COPYWRITER</span>
+          <span class="hero__role-amp">&amp;</span>
+          <span data-i18n="hero.role.2">DIGITAL ARCHITECT</span>
+        </span>
+        <span class="hero__role-line"></span>
+      </div>
 
-        <h1 class="intro__name" data-reveal data-delay="180" aria-label="YOUSSEF">
-          <span class="intro__name-line" data-line="1">
-            <span class="glyph" data-glyph>Y</span><span class="glyph" data-glyph>O</span><span class="glyph" data-glyph>U</span><span class="glyph" data-glyph>S</span><span class="glyph" data-glyph>S</span><span class="glyph" data-glyph>E</span><span class="glyph" data-glyph>F</span>
-          </span>
-          <span class="intro__name-ghost" aria-hidden="true">LANGUAGE&nbsp;ARCHITECT</span>
-        </h1>
-
-        <div class="intro__role" data-reveal data-delay="260">
-          <span class="intro__role-line"></span>
-          <span class="intro__role-text">
-            <span data-i18n="intro.role.1">UX COPYWRITER</span>
-            <span class="intro__role-amp">&</span>
-            <span data-i18n="intro.role.2">DIGITAL ARCHITECT</span>
-          </span>
-          <span class="intro__role-line"></span>
-        </div>
-
-        <div class="intro__creed" data-reveal data-delay="320">
-          <span class="intro__creed-mark">✦</span>
-          <em data-i18n="intro.creed">Systems over emotions.</em>
-        </div>
-
-        <div class="intro__bio" data-reveal data-delay="380">
-          <span class="intro__bio-idx">/ 01</span>
-          <p data-i18n="intro.bio">
-            I design the language that holds digital products together.
-            Precise. Deliberate. Engineered to move people without them
-            ever noticing the engineering.
+      <div class="hero__grid">
+        <div class="hero__cell" data-reveal>
+          <span class="hero__cell-k">/ 001</span>
+          <p class="hero__cell-v" data-i18n="hero.bio.1">
+            I design the language systems that hold digital products together.
           </p>
         </div>
-
-        <div class="intro__actions" data-reveal data-delay="440">
-          <a class="cta-btn" href="#vault" data-cursor data-magnetic>
-            <span class="cta-btn__bg"></span>
-            <span class="cta-btn__text" data-i18n="intro.cta.work">ENTER THE VAULT</span>
-            <span class="cta-btn__arrow">→</span>
-          </a>
-          <a class="ghost-btn" href="#doctrine" data-cursor>
-            <span data-i18n="intro.cta.doctrine">READ DOCTRINE</span>
-          </a>
+        <div class="hero__cell" data-reveal>
+          <span class="hero__cell-k">/ 002</span>
+          <p class="hero__cell-v" data-i18n="hero.bio.2">
+            Every interface is a room. Every sentence is a load-bearing wall.
+          </p>
         </div>
-
-        <div class="intro__scroll" aria-hidden="true">
-          <span data-i18n="intro.scroll">SCROLL</span>
-          <span class="intro__scroll-track"><span></span></span>
+        <div class="hero__cell" data-reveal>
+          <span class="hero__cell-k">/ 003</span>
+          <p class="hero__cell-v" data-i18n="hero.bio.3">
+            My work is invisible when it succeeds.
+          </p>
         </div>
-
       </div>
-    </section>
 
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__row" data-ticker>
-        <span class="ticker__item">UX COPYWRITING</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">VOICE ARCHITECTURE</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">CONTENT SYSTEMS</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">INTERFACE POETRY</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">INFORMATION DESIGN</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">NARRATIVE SYSTEMS</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">UX COPYWRITING</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">VOICE ARCHITECTURE</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">CONTENT SYSTEMS</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">INTERFACE POETRY</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">INFORMATION DESIGN</span><span class="ticker__dot">✺</span>
-        <span class="ticker__item">NARRATIVE SYSTEMS</span><span class="ticker__dot">✺</span>
+      <div class="hero__creed" data-reveal>
+        <span class="hero__creed-mark" aria-hidden="true"></span>
+        <em data-i18n="hero.creed">Systems over emotions.</em>
       </div>
+
+      <div class="hero__cta" data-reveal>
+        <a class="action" href="#work" data-cursor data-magnetic>
+          <span class="action__bg"></span>
+          <span class="action__text" data-i18n="hero.cta.work">VIEW THE WORK</span>
+          <span class="action__arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="action action--quiet" href="#manifesto" data-cursor>
+          <span class="action__text" data-i18n="hero.cta.manifesto">READ THE MANIFESTO</span>
+        </a>
+      </div>
+
     </div>
 
-    <section class="doctrine" id="doctrine" aria-label="Doctrine">
-      <div class="frame">
+    <div class="hero__scroll" aria-hidden="true">
+      <span data-i18n="hero.scroll">SCROLL</span>
+      <span class="hero__scroll-line"><span></span></span>
+    </div>
+  </section>
 
-        <div class="chapter" data-reveal>
-          <span class="chapter__num">01</span>
-          <span class="chapter__line"></span>
-          <span class="chapter__title" data-i18n="doctrine.chapter">DOCTRINE</span>
-        </div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track" data-ticker>
+      <span>UX COPYWRITING</span><i></i>
+      <span>VOICE ARCHITECTURE</span><i></i>
+      <span>CONTENT SYSTEMS</span><i></i>
+      <span>INTERFACE POETRY</span><i></i>
+      <span>INFORMATION DESIGN</span><i></i>
+      <span>NARRATIVE SYSTEMS</span><i></i>
+      <span>UX COPYWRITING</span><i></i>
+      <span>VOICE ARCHITECTURE</span><i></i>
+      <span>CONTENT SYSTEMS</span><i></i>
+      <span>INTERFACE POETRY</span><i></i>
+      <span>INFORMATION DESIGN</span><i></i>
+      <span>NARRATIVE SYSTEMS</span><i></i>
+    </div>
+  </div>
 
-        <blockquote class="doctrine__creed" data-reveal data-delay="100">
-          <span class="doctrine__creed-open">“</span>
-          <span class="doctrine__creed-text" data-scramble>
-            Words are <em>architecture</em>.
-          </span>
-          <span class="doctrine__creed-close">”</span>
-        </blockquote>
+  <section class="manifesto" id="manifesto" aria-label="Manifesto">
+    <div class="frame">
 
-        <div class="doctrine__manifest" data-reveal data-delay="180">
-          <div class="doctrine__manifest-col">
-            <span class="doctrine__manifest-idx">/ 001</span>
-            <p data-i18n="doctrine.p1">
-              Every interface is a room. Every sentence a load-bearing wall.
-              I design the language that holds digital products together.
-            </p>
-          </div>
-          <div class="doctrine__manifest-col">
-            <span class="doctrine__manifest-idx">/ 002</span>
-            <p data-i18n="doctrine.p2">
-              The work is not decoration. It is structure — the quiet system
-              beneath the surface that makes a product feel inevitable.
-            </p>
-          </div>
-        </div>
+      <header class="chapter">
+        <span class="chapter__num" data-reveal>01</span>
+        <span class="chapter__rule" data-reveal></span>
+        <span class="chapter__title" data-reveal data-i18n="manifesto.chapter">MANIFESTO</span>
+        <span class="chapter__side" data-reveal data-i18n="manifesto.side">DOCTRINE — SIX PRINCIPLES</span>
+      </header>
 
-        <div class="canons">
-          <article class="canon" data-reveal data-delay="60" data-tilt>
-            <span class="canon__glyph">I</span>
-            <h3 class="canon__title" data-i18n="canon.1.t">PRECISION &gt; DECORATION</h3>
-            <p class="canon__text" data-i18n="canon.1.x">Every word earns its place or it is removed. No ornament survives without function.</p>
-          </article>
-          <article class="canon" data-reveal data-delay="120" data-tilt>
-            <span class="canon__glyph">II</span>
-            <h3 class="canon__title" data-i18n="canon.2.t">SYSTEMS &gt; EMOTIONS</h3>
-            <p class="canon__text" data-i18n="canon.2.x">Structure scales; feelings fade. A voice system outlives any single campaign.</p>
-          </article>
-          <article class="canon" data-reveal data-delay="180" data-tilt>
-            <span class="canon__glyph">III</span>
-            <h3 class="canon__title" data-i18n="canon.3.t">SILENCE &gt; NOISE</h3>
-            <p class="canon__text" data-i18n="canon.3.x">The best copy is the line you never had to read. Restraint is the highest craft.</p>
-          </article>
-          <article class="canon" data-reveal data-delay="240" data-tilt>
-            <span class="canon__glyph">IV</span>
-            <h3 class="canon__title" data-i18n="canon.4.t">STRUCTURE &gt; STYLE</h3>
-            <p class="canon__text" data-i18n="canon.4.x">Tone is adjustable. Architecture is not. Build the frame first, then paint it.</p>
-          </article>
-          <article class="canon" data-reveal data-delay="300" data-tilt>
-            <span class="canon__glyph">V</span>
-            <h3 class="canon__title" data-i18n="canon.5.t">CLARITY &gt; CLEVERNESS</h3>
-            <p class="canon__text" data-i18n="canon.5.x">A clever line is remembered once. A clear line is used a thousand times.</p>
-          </article>
-          <article class="canon" data-reveal data-delay="360" data-tilt>
-            <span class="canon__glyph">VI</span>
-            <h3 class="canon__title" data-i18n="canon.6.t">LONGEVITY &gt; TREND</h3>
-            <p class="canon__text" data-i18n="canon.6.x">Trends expire. Systems compound. I build for the version of the product that outlasts me.</p>
-          </article>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="arsenal" id="arsenal" aria-label="Arsenal">
-      <div class="frame">
-
-        <div class="chapter" data-reveal>
-          <span class="chapter__num">02</span>
-          <span class="chapter__line"></span>
-          <span class="chapter__title" data-i18n="arsenal.chapter">ARSENAL</span>
-        </div>
-
-        <header class="arsenal__head" data-reveal data-delay="120">
-          <h2 class="arsenal__title">
-            <span data-i18n="arsenal.h.1">Six disciplines.</span>
-            <em data-i18n="arsenal.h.2">One system.</em>
-          </h2>
-          <p class="arsenal__lede" data-i18n="arsenal.lede">
-            Each discipline is a component. Together they form a self-sustaining
-            language engine any team can operate without me in the room.
-          </p>
-        </header>
-
-        <div class="arsenal__deck" data-tilt>
-
-          <article class="weapon" data-reveal data-delay="60">
-            <span class="weapon__num">01</span>
-            <span class="weapon__glyph">⌘</span>
-            <h3 class="weapon__name" data-i18n="weapon.1.n">UX Copywriting</h3>
-            <p class="weapon__desc" data-i18n="weapon.1.d">Microcopy, flows, empty states and error handling that guide without friction.</p>
-            <div class="weapon__foot">
-              <span data-i18n="weapon.1.f">Microcopy · Flows · Errors</span>
-              <span class="weapon__arrow">↗</span>
-            </div>
-          </article>
-
-          <article class="weapon" data-reveal data-delay="120">
-            <span class="weapon__num">02</span>
-            <span class="weapon__glyph">◈</span>
-            <h3 class="weapon__name" data-i18n="weapon.2.n">Brand Voice</h3>
-            <p class="weapon__desc" data-i18n="weapon.2.d">A distinct, scalable voice system that survives every touchpoint and every writer.</p>
-            <div class="weapon__foot">
-              <span data-i18n="weapon.2.f">Tone · Lexicon · Guidelines</span>
-              <span class="weapon__arrow">↗</span>
-            </div>
-          </article>
-
-          <article class="weapon" data-reveal data-delay="180">
-            <span class="weapon__num">03</span>
-            <span class="weapon__glyph">◇</span>
-            <h3 class="weapon__name" data-i18n="weapon.3.n">Content Systems</h3>
-            <p class="weapon__desc" data-i18n="weapon.3.d">Structured content models that scale across products, platforms and languages.</p>
-            <div class="weapon__foot">
-              <span data-i18n="weapon.3.f">Models · Taxonomy · Governance</span>
-              <span class="weapon__arrow">↗</span>
-            </div>
-          </article>
-
-          <article class="weapon" data-reveal data-delay="240">
-            <span class="weapon__num">04</span>
-            <span class="weapon__glyph">▣</span>
-            <h3 class="weapon__name" data-i18n="weapon.4.n">Digital Architecture</h3>
-            <p class="weapon__desc" data-i18n="weapon.4.d">Information design and narrative structure for products too complex to explain twice.</p>
-            <div class="weapon__foot">
-              <span data-i18n="weapon.4.f">IA · Narrative · Onboarding</span>
-              <span class="weapon__arrow">↗</span>
-            </div>
-          </article>
-
-          <article class="weapon" data-reveal data-delay="300">
-            <span class="weapon__num">05</span>
-            <span class="weapon__glyph">◆</span>
-            <h3 class="weapon__name" data-i18n="weapon.5.n">Product Storytelling</h3>
-            <p class="weapon__desc" data-i18n="weapon.5.d">Narrative arcs that turn features into consequences, and consequences into decisions.</p>
-            <div class="weapon__foot">
-              <span data-i18n="weapon.5.f">Narrative · Positioning · Launch</span>
-              <span class="weapon__arrow">↗</span>
-            </div>
-          </article>
-
-          <article class="weapon" data-reveal data-delay="360">
-            <span class="weapon__num">06</span>
-            <span class="weapon__glyph">⌬</span>
-            <h3 class="weapon__name" data-i18n="weapon.6.n">Language Audits</h3>
-            <p class="weapon__desc" data-i18n="weapon.6.d">A forensic read of your existing product language, delivered as an actionable system map.</p>
-            <div class="weapon__foot">
-              <span data-i18n="weapon.6.f">Audit · Scorecard · Roadmap</span>
-              <span class="weapon__arrow">↗</span>
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section class="vault" id="vault" aria-label="Vault">
-      <div class="frame">
-
-        <div class="chapter" data-reveal>
-          <span class="chapter__num">03</span>
-          <span class="chapter__line"></span>
-          <span class="chapter__title" data-i18n="vault.chapter">VAULT</span>
-          <span class="chapter__count"><span data-vault-count>06</span> ENTRIES</span>
-        </div>
-
-        <header class="vault__head" data-reveal data-delay="120">
-          <h2 class="vault__title">
-            <span data-i18n="vault.h.1">Selected</span>
-            <em data-i18n="vault.h.2">engagements.</em>
-          </h2>
-          <div class="vault__filters">
-            <button class="chip is-on" data-chip="*" data-i18n="vault.f.all">ALL</button>
-            <button class="chip" data-chip="voice" data-i18n="vault.f.voice">VOICE</button>
-            <button class="chip" data-chip="ux" data-i18n="vault.f.ux">UX</button>
-            <button class="chip" data-chip="systems" data-i18n="vault.f.systems">SYSTEMS</button>
-            <button class="chip" data-chip="editorial" data-i18n="vault.f.editorial">EDITORIAL</button>
-          </div>
-        </header>
-
-        <div class="vault__grid" data-vault>
-
-          <article class="entry entry--feature" data-tag="voice" data-reveal data-delay="60">
-            <a class="entry__link" href="#vault" data-cursor data-cursor-text="VIEW">
-              <div class="entry__frame">
-                <span class="entry__id">/ 01</span>
-                <span class="entry__tag" data-i18n="entry.1.tag">VOICE</span>
-              </div>
-              <div class="entry__body">
-                <h3 class="entry__title" data-i18n="entry.1.n">Narrative Systems</h3>
-                <p class="entry__caption" data-i18n="entry.1.c">Brand Voice Architecture · Fintech · 2025</p>
-                <p class="entry__desc" data-i18n="entry.1.d">A complete voice system for a cross-border payments platform operating in eleven markets.</p>
-              </div>
-              <span class="entry__hover-line"></span>
-            </a>
-          </article>
-
-          <article class="entry" data-tag="ux" data-reveal data-delay="120">
-            <a class="entry__link" href="#vault" data-cursor data-cursor-text="VIEW">
-              <div class="entry__frame">
-                <span class="entry__id">/ 02</span>
-                <span class="entry__tag" data-i18n="entry.2.tag">UX</span>
-              </div>
-              <div class="entry__body">
-                <h3 class="entry__title" data-i18n="entry.2.n">Interface Poetry</h3>
-                <p class="entry__caption" data-i18n="entry.2.c">UX Microcopy · Health · 2024</p>
-                <p class="entry__desc" data-i18n="entry.2.d">Rewriting 400+ strings to remove fear from a clinical onboarding flow.</p>
-              </div>
-              <span class="entry__hover-line"></span>
-            </a>
-          </article>
-
-          <article class="entry" data-tag="systems" data-reveal data-delay="180">
-            <a class="entry__link" href="#vault" data-cursor data-cursor-text="VIEW">
-              <div class="entry__frame">
-                <span class="entry__id">/ 03</span>
-                <span class="entry__tag" data-i18n="entry.3.tag">SYSTEMS</span>
-              </div>
-              <div class="entry__body">
-                <h3 class="entry__title" data-i18n="entry.3.n">Signal / Noise</h3>
-                <p class="entry__caption" data-i18n="entry.3.c">Content Strategy · SaaS · 2024</p>
-                <p class="entry__desc" data-i18n="entry.3.d">A taxonomy and content model that cut support tickets by a third.</p>
-              </div>
-              <span class="entry__hover-line"></span>
-            </a>
-          </article>
-
-          <article class="entry entry--wide" data-tag="systems" data-reveal data-delay="240">
-            <a class="entry__link" href="#vault" data-cursor data-cursor-text="VIEW">
-              <div class="entry__frame">
-                <span class="entry__id">/ 04</span>
-                <span class="entry__tag" data-i18n="entry.4.tag">SYSTEMS</span>
-              </div>
-              <div class="entry__body">
-                <h3 class="entry__title" data-i18n="entry.4.n">The Quiet Grid</h3>
-                <p class="entry__caption" data-i18n="entry.4.c">Design System · Infrastructure · 2023</p>
-                <p class="entry__desc" data-i18n="entry.4.d">Language foundations for a design system now used by four product teams.</p>
-              </div>
-              <span class="entry__hover-line"></span>
-            </a>
-          </article>
-
-          <article class="entry" data-tag="editorial" data-reveal data-delay="300">
-            <a class="entry__link" href="#vault" data-cursor data-cursor-text="VIEW">
-              <div class="entry__frame">
-                <span class="entry__id">/ 05</span>
-                <span class="entry__tag" data-i18n="entry.5.tag">EDITORIAL</span>
-              </div>
-              <div class="entry__body">
-                <h3 class="entry__title" data-i18n="entry.5.n">Monochrome</h3>
-                <p class="entry__caption" data-i18n="entry.5.c">Editorial Voice · Media · 2023</p>
-                <p class="entry__desc" data-i18n="entry.5.d">A restrained editorial voice for a publication that refuses to shout.</p>
-              </div>
-              <span class="entry__hover-line"></span>
-            </a>
-          </article>
-
-          <article class="entry" data-tag="ux" data-reveal data-delay="360">
-            <a class="entry__link" href="#vault" data-cursor data-cursor-text="VIEW">
-              <div class="entry__frame">
-                <span class="entry__id">/ 06</span>
-                <span class="entry__tag" data-i18n="entry.6.tag">UX</span>
-              </div>
-              <div class="entry__body">
-                <h3 class="entry__title" data-i18n="entry.6.n">Zero State</h3>
-                <p class="entry__caption" data-i18n="entry.6.c">Onboarding System · Marketplace · 2022</p>
-                <p class="entry__desc" data-i18n="entry.6.d">Turning a cold start into a guided first minute.</p>
-              </div>
-              <span class="entry__hover-line"></span>
-            </a>
-          </article>
-
-        </div>
-
-        <div class="vault__sign" data-reveal>
-          <span class="vault__sign-rule"></span>
-          <span class="vault__sign-text" data-i18n="vault.sign">Full case studies available under NDA.</span>
-          <span class="vault__sign-rule"></span>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="figures" aria-label="Figures">
-      <div class="frame">
-        <div class="figures__grid">
-          <div class="figure" data-reveal data-delay="60" data-tilt>
-            <span class="figure__k" data-i18n="fig.1.k">PROJECTS</span>
-            <span class="figure__v"><span data-count="40">00</span></span>
-            <span class="figure__rule"></span>
-          </div>
-          <div class="figure" data-reveal data-delay="120" data-tilt>
-            <span class="figure__k" data-i18n="fig.2.k">INDUSTRIES</span>
-            <span class="figure__v"><span data-count="12">00</span></span>
-            <span class="figure__rule"></span>
-          </div>
-          <div class="figure" data-reveal data-delay="180" data-tilt>
-            <span class="figure__k" data-i18n="fig.3.k">YEARS</span>
-            <span class="figure__v"><span data-count="7">00</span></span>
-            <span class="figure__rule"></span>
-          </div>
-          <div class="figure" data-reveal data-delay="240" data-tilt>
-            <span class="figure__k" data-i18n="fig.4.k">RETENTION</span>
-            <span class="figure__v"><span data-count="98">00</span><i>%</i></span>
-            <span class="figure__rule"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="method" id="method" aria-label="Method">
-      <div class="frame">
-
-        <div class="chapter" data-reveal>
-          <span class="chapter__num">04</span>
-          <span class="chapter__line"></span>
-          <span class="chapter__title" data-i18n="method.chapter">METHOD</span>
-        </div>
-
-        <header class="method__head" data-reveal data-delay="120">
-          <h2 class="method__title">
-            <span data-i18n="method.h.1">Four movements.</span>
-            <em data-i18n="method.h.2">One outcome.</em>
-          </h2>
-        </header>
-
-        <ol class="method__steps">
-          <li class="stage" data-reveal data-delay="60">
-            <span class="stage__num">01</span>
-            <div class="stage__body">
-              <h3 class="stage__name" data-i18n="stage.1.n">Audit</h3>
-              <p class="stage__desc" data-i18n="stage.1.d">I read the product, the users, and the silence between them. Nothing is assumed; everything is observed.</p>
-            </div>
-            <span class="stage__beacon"></span>
-          </li>
-          <li class="stage" data-reveal data-delay="120">
-            <span class="stage__num">02</span>
-            <div class="stage__body">
-              <h3 class="stage__name" data-i18n="stage.2.n">Architect</h3>
-              <p class="stage__desc" data-i18n="stage.2.d">I design the language system that will hold everything together — hierarchy, voice, rules, exceptions.</p>
-            </div>
-            <span class="stage__beacon"></span>
-          </li>
-          <li class="stage" data-reveal data-delay="180">
-            <span class="stage__num">03</span>
-            <div class="stage__body">
-              <h3 class="stage__name" data-i18n="stage.3.n">Write</h3>
-              <p class="stage__desc" data-i18n="stage.3.d">I craft every line with intent, then cut until only intent remains. The editing is the work.</p>
-            </div>
-            <span class="stage__beacon"></span>
-          </li>
-          <li class="stage" data-reveal data-delay="240">
-            <span class="stage__num">04</span>
-            <div class="stage__body">
-              <h3 class="stage__name" data-i18n="stage.4.n">Refine</h3>
-              <p class="stage__desc" data-i18n="stage.4.d">I test, measure and sharpen until the system runs without me. Autonomy is the deliverable.</p>
-            </div>
-            <span class="stage__beacon"></span>
-          </li>
-        </ol>
-
-      </div>
-    </section>
-
-    <section class="testimony" aria-label="Testimony">
-      <div class="frame">
-
-        <div class="chapter" data-reveal>
-          <span class="chapter__num">05</span>
-          <span class="chapter__line"></span>
-          <span class="chapter__title" data-i18n="testimony.chapter">TESTIMONY</span>
-        </div>
-
-        <div class="testimony__row">
-          <figure class="witness" data-reveal data-delay="60" data-tilt>
-            <div class="witness__glyph">❝</div>
-            <blockquote class="witness__quote" data-i18n="witness.1.q">
-              He removed half our words and doubled our clarity. The product finally sounds like a product.
-            </blockquote>
-            <figcaption class="witness__foot">
-              <span class="witness__name" data-i18n="witness.1.n">Product Lead</span>
-              <span class="witness__role" data-i18n="witness.1.r">Fintech Platform · Berlin</span>
-            </figcaption>
-          </figure>
-
-          <figure class="witness" data-reveal data-delay="120" data-tilt>
-            <div class="witness__glyph">❝</div>
-            <blockquote class="witness__quote" data-i18n="witness.2.q">
-              The voice system survived three rebrands and two acquisitions. That is the point.
-            </blockquote>
-            <figcaption class="witness__foot">
-              <span class="witness__name" data-i18n="witness.2.n">Head of Brand</span>
-              <span class="witness__role" data-i18n="witness.2.r">Infrastructure Group · Dubai</span>
-            </figcaption>
-          </figure>
-
-          <figure class="witness" data-reveal data-delay="180" data-tilt>
-            <div class="witness__glyph">❝</div>
-            <blockquote class="witness__quote" data-i18n="witness.3.q">
-              Rare to find someone who thinks in systems and still writes like a human being.
-            </blockquote>
-            <figcaption class="witness__foot">
-              <span class="witness__name" data-i18n="witness.3.n">Founder</span>
-              <span class="witness__role" data-i18n="witness.3.r">Health SaaS · Paris</span>
-            </figcaption>
-          </figure>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="dispatch" id="dispatch" aria-label="Dispatch">
-      <div class="dispatch__halo" aria-hidden="true"></div>
-
-      <div class="frame dispatch__inner">
-
-        <div class="chapter chapter--center" data-reveal>
-          <span class="chapter__num">06</span>
-          <span class="chapter__line"></span>
-          <span class="chapter__title" data-i18n="dispatch.chapter">DISPATCH</span>
-        </div>
-
-        <h2 class="dispatch__title" data-reveal data-delay="120">
-          <span data-i18n="dispatch.h.1">Let&rsquo;s build something</span><br />
-          <em data-i18n="dispatch.h.2">quietly powerful.</em>
+      <div class="manifesto__lead">
+        <h2 class="manifesto__title" data-reveal>
+          <span data-i18n="manifesto.title.a">Words</span>
+          <span class="dim" data-i18n="manifesto.title.b">are</span>
+          <em data-i18n="manifesto.title.c">architecture.</em>
         </h2>
 
-        <p class="dispatch__lede" data-reveal data-delay="180" data-i18n="dispatch.lede">
-          A small number of engagements per year. If your product deserves language
-          that works as hard as its engineering, the door is below.
+        <div class="manifesto__copy">
+          <p data-reveal data-i18n="manifesto.p1">
+            I build language systems. Not taglines. Not campaigns.
+            Systems that hold a product together under real conditions.
+          </p>
+          <p data-reveal data-i18n="manifesto.p2">
+            Precise. Deliberate. Engineered to move people without them
+            noticing the engineering underneath.
+          </p>
+        </div>
+      </div>
+
+      <div class="doctrines">
+        <article class="doctrine" data-reveal data-tilt>
+          <span class="doctrine__idx">I</span>
+          <h3 class="doctrine__name" data-i18n="doctrine.1.n">PRECISION OVER DECORATION</h3>
+          <p class="doctrine__body" data-i18n="doctrine.1.b">
+            Every word earns its place or it is removed. No ornament survives without function.
+          </p>
+        </article>
+
+        <article class="doctrine" data-reveal data-tilt>
+          <span class="doctrine__idx">II</span>
+          <h3 class="doctrine__name" data-i18n="doctrine.2.n">SYSTEMS OVER EMOTIONS</h3>
+          <p class="doctrine__body" data-i18n="doctrine.2.b">
+            Structure scales. Feelings fade. A voice system outlives any single campaign.
+          </p>
+        </article>
+
+        <article class="doctrine" data-reveal data-tilt>
+          <span class="doctrine__idx">III</span>
+          <h3 class="doctrine__name" data-i18n="doctrine.3.n">SILENCE OVER NOISE</h3>
+          <p class="doctrine__body" data-i18n="doctrine.3.b">
+            The best copy is the line you never had to read. Restraint is the highest craft.
+          </p>
+        </article>
+
+        <article class="doctrine" data-reveal data-tilt>
+          <span class="doctrine__idx">IV</span>
+          <h3 class="doctrine__name" data-i18n="doctrine.4.n">STRUCTURE OVER STYLE</h3>
+          <p class="doctrine__body" data-i18n="doctrine.4.b">
+            Tone is adjustable. Architecture is not. Build the frame first, then paint it.
+          </p>
+        </article>
+
+        <article class="doctrine" data-reveal data-tilt>
+          <span class="doctrine__idx">V</span>
+          <h3 class="doctrine__name" data-i18n="doctrine.5.n">CLARITY OVER CLEVERNESS</h3>
+          <p class="doctrine__body" data-i18n="doctrine.5.b">
+            A clever line is remembered once. A clear line is used a thousand times.
+          </p>
+        </article>
+
+        <article class="doctrine" data-reveal data-tilt>
+          <span class="doctrine__idx">VI</span>
+          <h3 class="doctrine__name" data-i18n="doctrine.6.n">LONGEVITY OVER TREND</h3>
+          <p class="doctrine__body" data-i18n="doctrine.6.b">
+            Trends expire. Systems compound. I build for the version that outlasts me.
+          </p>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="capabilities" id="capabilities" aria-label="Capabilities">
+    <div class="frame">
+
+      <header class="chapter">
+        <span class="chapter__num" data-reveal>02</span>
+        <span class="chapter__rule" data-reveal></span>
+        <span class="chapter__title" data-reveal data-i18n="capabilities.chapter">CAPABILITIES</span>
+        <span class="chapter__side" data-reveal data-i18n="capabilities.side">SIX DISCIPLINES — ONE SYSTEM</span>
+      </header>
+
+      <div class="capabilities__lead">
+        <h2 class="capabilities__title" data-reveal>
+          <span data-i18n="capabilities.title.a">What gets</span>
+          <em data-i18n="capabilities.title.b">engineered.</em>
+        </h2>
+        <p class="capabilities__intro" data-reveal data-i18n="capabilities.intro">
+          Each discipline is a component. Together they form one language engine
+          any team can operate without me in the room.
         </p>
+      </div>
 
-        <div class="dispatch__actions" data-reveal data-delay="240">
-          <a class="dispatch__cta"
-             href="https://www.linkedin.com/in/youssef-x1-8227b643a"
-             target="_blank" rel="noopener noreferrer"
-             data-dispatch-cta data-cursor data-cursor-text="LINKEDIN" data-magnetic>
-            <span class="dispatch__cta-halo"></span>
-            <span class="dispatch__cta-label" data-i18n="dispatch.cta">OPEN THE DOOR</span>
-            <span class="dispatch__cta-arrow">↗</span>
-            <span class="dispatch__cta-shine"></span>
+      <ol class="services">
+        <li class="service" data-reveal data-cursor data-cursor-text="01">
+          <span class="service__idx">01</span>
+          <h3 class="service__name" data-i18n="service.1.n">UX Copywriting</h3>
+          <p class="service__body" data-i18n="service.1.b">
+            Microcopy, flows, empty states and error handling that guide without friction.
+          </p>
+          <span class="service__tags" data-i18n="service.1.t">MICROCOPY · FLOWS · ERRORS</span>
+        </li>
+
+        <li class="service" data-reveal data-cursor data-cursor-text="02">
+          <span class="service__idx">02</span>
+          <h3 class="service__name" data-i18n="service.2.n">Brand Voice</h3>
+          <p class="service__body" data-i18n="service.2.b">
+            A distinct voice system that survives every touchpoint and every writer.
+          </p>
+          <span class="service__tags" data-i18n="service.2.t">TONE · LEXICON · GUIDELINES</span>
+        </li>
+
+        <li class="service" data-reveal data-cursor data-cursor-text="03">
+          <span class="service__idx">03</span>
+          <h3 class="service__name" data-i18n="service.3.n">Content Systems</h3>
+          <p class="service__body" data-i18n="service.3.b">
+            Structured content models that scale across products, platforms and languages.
+          </p>
+          <span class="service__tags" data-i18n="service.3.t">MODELS · TAXONOMY · GOVERNANCE</span>
+        </li>
+
+        <li class="service" data-reveal data-cursor data-cursor-text="04">
+          <span class="service__idx">04</span>
+          <h3 class="service__name" data-i18n="service.4.n">Digital Architecture</h3>
+          <p class="service__body" data-i18n="service.4.b">
+            Information design for products too complex to explain twice.
+          </p>
+          <span class="service__tags" data-i18n="service.4.t">IA · NARRATIVE · ONBOARDING</span>
+        </li>
+
+        <li class="service" data-reveal data-cursor data-cursor-text="05">
+          <span class="service__idx">05</span>
+          <h3 class="service__name" data-i18n="service.5.n">Product Storytelling</h3>
+          <p class="service__body" data-i18n="service.5.b">
+            Narrative arcs that turn features into consequences and decisions.
+          </p>
+          <span class="service__tags" data-i18n="service.5.t">NARRATIVE · POSITIONING · LAUNCH</span>
+        </li>
+
+        <li class="service" data-reveal data-cursor data-cursor-text="06">
+          <span class="service__idx">06</span>
+          <h3 class="service__name" data-i18n="service.6.n">Language Audits</h3>
+          <p class="service__body" data-i18n="service.6.b">
+            A forensic read of your product language, delivered as an actionable map.
+          </p>
+          <span class="service__tags" data-i18n="service.6.t">AUDIT · SCORECARD · ROADMAP</span>
+        </li>
+      </ol>
+
+    </div>
+  </section>
+
+  <section class="work" id="work" aria-label="Selected work">
+    <div class="frame">
+
+      <header class="chapter">
+        <span class="chapter__num" data-reveal>03</span>
+        <span class="chapter__rule" data-reveal></span>
+        <span class="chapter__title" data-reveal data-i18n="work.chapter">SELECTED WORK</span>
+        <span class="chapter__side" data-reveal><span data-work-count>06</span> <span data-i18n="work.entries">ENTRIES</span></span>
+      </header>
+
+      <div class="work__lead">
+        <h2 class="work__title" data-reveal>
+          <span data-i18n="work.title.a">Selected</span>
+          <em data-i18n="work.title.b">engagements.</em>
+        </h2>
+
+        <div class="work__filters" data-reveal>
+          <button class="filter is-on" data-filter="*" data-i18n="work.filter.all">ALL</button>
+          <button class="filter" data-filter="voice" data-i18n="work.filter.voice">VOICE</button>
+          <button class="filter" data-filter="ux" data-i18n="work.filter.ux">UX</button>
+          <button class="filter" data-filter="systems" data-i18n="work.filter.systems">SYSTEMS</button>
+          <button class="filter" data-filter="editorial" data-i18n="work.filter.editorial">EDITORIAL</button>
+        </div>
+      </div>
+
+      <ol class="projects">
+        <li class="project" data-tag="voice" data-reveal>
+          <a class="project__link" href="#work" data-cursor data-cursor-text="VIEW">
+            <span class="project__idx">01</span>
+            <div class="project__main">
+              <h3 class="project__name" data-i18n="project.1.n">Narrative Systems</h3>
+              <p class="project__desc" data-i18n="project.1.d">
+                A complete voice system for a cross-border payments platform operating in eleven markets.
+              </p>
+            </div>
+            <span class="project__meta" data-i18n="project.1.m">FINTECH · 2025</span>
+            <span class="project__arrow" aria-hidden="true">→</span>
           </a>
-        </div>
+        </li>
 
-        <div class="dispatch__ledger" data-reveal data-delay="300">
-          <div class="dispatch__cell">
-            <span class="dispatch__cell-k" data-i18n="dispatch.k.1">RESPONSE</span>
-            <span class="dispatch__cell-v" data-i18n="dispatch.v.1">Within 48 hours</span>
-          </div>
-          <div class="dispatch__cell">
-            <span class="dispatch__cell-k" data-i18n="dispatch.k.2">BASE</span>
-            <span class="dispatch__cell-v" data-i18n="dispatch.v.2">Algiers — Worldwide</span>
-          </div>
-          <div class="dispatch__cell">
-            <span class="dispatch__cell-k" data-i18n="dispatch.k.3">CAPACITY</span>
-            <span class="dispatch__cell-v" data-i18n="dispatch.v.3">Limited · 2026</span>
-          </div>
-        </div>
+        <li class="project" data-tag="ux" data-reveal>
+          <a class="project__link" href="#work" data-cursor data-cursor-text="VIEW">
+            <span class="project__idx">02</span>
+            <div class="project__main">
+              <h3 class="project__name" data-i18n="project.2.n">Interface Poetry</h3>
+              <p class="project__desc" data-i18n="project.2.d">
+                Rewriting four hundred strings to remove fear from a clinical onboarding flow.
+              </p>
+            </div>
+            <span class="project__meta" data-i18n="project.2.m">HEALTH · 2024</span>
+            <span class="project__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
 
+        <li class="project" data-tag="systems" data-reveal>
+          <a class="project__link" href="#work" data-cursor data-cursor-text="VIEW">
+            <span class="project__idx">03</span>
+            <div class="project__main">
+              <h3 class="project__name" data-i18n="project.3.n">Signal / Noise</h3>
+              <p class="project__desc" data-i18n="project.3.d">
+                A taxonomy and content model that cut support tickets by a third.
+              </p>
+            </div>
+            <span class="project__meta" data-i18n="project.3.m">SAAS · 2024</span>
+            <span class="project__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+
+        <li class="project" data-tag="systems" data-reveal>
+          <a class="project__link" href="#work" data-cursor data-cursor-text="VIEW">
+            <span class="project__idx">04</span>
+            <div class="project__main">
+              <h3 class="project__name" data-i18n="project.4.n">The Quiet Grid</h3>
+              <p class="project__desc" data-i18n="project.4.d">
+                Language foundations for a design system now used by four product teams.
+              </p>
+            </div>
+            <span class="project__meta" data-i18n="project.4.m">INFRASTRUCTURE · 2023</span>
+            <span class="project__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+
+        <li class="project" data-tag="editorial" data-reveal>
+          <a class="project__link" href="#work" data-cursor data-cursor-text="VIEW">
+            <span class="project__idx">05</span>
+            <div class="project__main">
+              <h3 class="project__name" data-i18n="project.5.n">Monochrome</h3>
+              <p class="project__desc" data-i18n="project.5.d">
+                A restrained editorial voice for a publication that refuses to shout.
+              </p>
+            </div>
+            <span class="project__meta" data-i18n="project.5.m">MEDIA · 2023</span>
+            <span class="project__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+
+        <li class="project" data-tag="ux" data-reveal>
+          <a class="project__link" href="#work" data-cursor data-cursor-text="VIEW">
+            <span class="project__idx">06</span>
+            <div class="project__main">
+              <h3 class="project__name" data-i18n="project.6.n">Zero State</h3>
+              <p class="project__desc" data-i18n="project.6.d">
+                Turning a cold start into a guided first minute.
+              </p>
+            </div>
+            <span class="project__meta" data-i18n="project.6.m">MARKETPLACE · 2022</span>
+            <span class="project__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ol>
+
+      <div class="work__foot" data-reveal>
+        <span class="work__foot-rule"></span>
+        <span class="work__foot-text" data-i18n="work.foot">Full case studies available under NDA.</span>
+        <span class="work__foot-rule"></span>
       </div>
-    </section>
 
-  </main>
+    </div>
+  </section>
 
-  <footer class="colophon">
-    <div class="frame colophon__inner">
-      <div class="colophon__row">
-        <a class="colophon__mark" href="#apex" data-cursor>OCSTEN<span>.</span></a>
-        <p class="colophon__creed" data-i18n="colophon.creed">Systems over emotions.</p>
-      </div>
-      <div class="colophon__row colophon__row--thin">
-        <p class="colophon__line">© <span id="foot-year">2026</span> OCSTEN — Youssef. <span data-i18n="colophon.rights">All rights reserved.</span></p>
-        <p class="colophon__line colophon__line--dim">Algiers · 36.7538° N — 3.0588° E</p>
-        <p class="colophon__line colophon__line--dim" data-i18n="colophon.credit">Engineered in the dark.</p>
+  <section class="figures" aria-label="Figures">
+    <div class="frame">
+      <div class="figures__grid">
+        <div class="figure" data-reveal data-tilt>
+          <span class="figure__k" data-i18n="figure.1.k">PROJECTS DELIVERED</span>
+          <span class="figure__v"><span data-count="40">00</span></span>
+        </div>
+        <div class="figure" data-reveal data-tilt>
+          <span class="figure__k" data-i18n="figure.2.k">INDUSTRIES SERVED</span>
+          <span class="figure__v"><span data-count="12">00</span></span>
+        </div>
+        <div class="figure" data-reveal data-tilt>
+          <span class="figure__k" data-i18n="figure.3.k">YEARS OF CRAFT</span>
+          <span class="figure__v"><span data-count="7">00</span></span>
+        </div>
+        <div class="figure" data-reveal data-tilt>
+          <span class="figure__k" data-i18n="figure.4.k">PARTNER RETENTION</span>
+          <span class="figure__v"><span data-count="98">00</span><i>%</i></span>
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <button class="ascend" data-ascend aria-label="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-      <path d="M12 20V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
+  <section class="process" id="process" aria-label="Process">
+    <div class="frame">
 
-  <script src="script.js"></script>
+      <header class="chapter">
+        <span class="chapter__num" data-reveal>05</span>
+        <span class="chapter__rule" data-reveal></span>
+        <span class="chapter__title" data-reveal data-i18n="process.chapter">PROCESS</span>
+        <span class="chapter__side" data-reveal data-i18n="process.side">FOUR MOVEMENTS</span>
+      </header>
+
+      <div class="process__lead">
+        <h2 class="process__title" data-reveal>
+          <span data-i18n="process.title.a">How the work</span>
+          <em data-i18n="process.title.b">gets built.</em>
+        </h2>
+      </div>
+
+      <ol class="stages">
+        <li class="stage" data-reveal>
+          <span class="stage__idx">01</span>
+          <div class="stage__body">
+            <h3 class="stage__name" data-i18n="stage.1.n">Audit</h3>
+            <p class="stage__desc" data-i18n="stage.1.d">
+              I read the product, the users, and the silence between them. Nothing is assumed.
+            </p>
+          </div>
+          <span class="stage__beacon" aria-hidden="true"></span>
+        </li>
+
+        <li class="stage" data-reveal>
+          <span class="stage__idx">02</span>
+          <div class="stage__body">
+            <h3 class="stage__name" data-i18n="stage.2.n">Architect</h3>
+            <p class="stage__desc" data-i18n="stage.2.d">
+              I design the system that will hold everything together. Hierarchy. Voice. Rules.
+            </p>
+          </div>
+          <span class="stage__beacon" aria-hidden="true"></span>
+        </li>
+
+        <li class="stage" data-reveal>
+          <span class="stage__idx">03</span>
+          <div class="stage__body">
+            <h3 class="stage__name" data-i18n="stage.3.n">Write</h3>
+            <p class="stage__desc" data-i18n="stage.3.d">
+              I craft every line with intent, then cut until only intent remains.
+            </p>
+          </div>
+          <span class="stage__beacon" aria-hidden="true"></span>
+        </li>
+
+        <li class="stage" data-reveal>
+          <span class="stage__idx">04</span>
+          <div class="stage__body">
+            <h3 class="stage__name" data-i18n="stage.4.n">Refine</h3>
+            <p class="stage__desc" data-i18n="stage.4.d">
+              I test, measure, and sharpen until the system runs without me. Autonomy is the deliverable.
+            </p>
+          </div>
+          <span class="stage__beacon" aria-hidden="true"></span>
+        </li>
+      </ol>
+
+    </div>
+  </section>
+
+  <section class="voices" id="voices" aria-label="Testimonials">
+    <div class="frame">
+
+      <header class="chapter">
+        <span class="chapter__num" data-reveal>06</span>
+        <span class="chapter__rule" data-reveal></span>
+        <span class="chapter__title" data-reveal data-i18n="voices.chapter">VOICES</span>
+        <span class="chapter__side" data-reveal data-i18n="voices.side">WORDS FROM PARTNERS</span>
+      </header>
+
+      <div class="voices__grid">
+        <figure class="voice" data-reveal data-tilt>
+          <blockquote class="voice__quote" data-i18n="voice.1.q">
+            He removed half our words and doubled our clarity. The product finally sounds like a product.
+          </blockquote>
+          <figcaption class="voice__foot">
+            <span class="voice__name" data-i18n="voice.1.n">Product Lead</span>
+            <span class="voice__role" data-i18n="voice.1.r">FINTECH PLATFORM · BERLIN</span>
+          </figcaption>
+        </figure>
+
+        <figure class="voice" data-reveal data-tilt>
+          <blockquote class="voice__quote" data-i18n="voice.2.q">
+            The voice system survived three rebrands and two acquisitions. That is the point.
+          </blockquote>
+          <figcaption class="voice__foot">
+            <span class="voice__name" data-i18n="voice.2.n">Head of Brand</span>
+            <span class="voice__role" data-i18n="voice.2.r">INFRASTRUCTURE GROUP · DUBAI</span>
+          </figcaption>
+        </figure>
+
+        <figure class="voice" data-reveal data-tilt>
+          <blockquote class="voice__quote" data-i18n="voice.3.q">
+            Rare to find someone who thinks in systems and still writes like a human being.
+          </blockquote>
+          <figcaption class="voice__foot">
+            <span class="voice__name" data-i18n="voice.3.n">Founder</span>
+            <span class="voice__role" data-i18n="voice.3.r">HEALTH SAAS · PARIS</span>
+          </figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-label="Contact">
+    <div class="frame">
+
+      <header class="chapter">
+        <span class="chapter__num" data-reveal>07</span>
+        <span class="chapter__rule" data-reveal></span>
+        <span class="chapter__title" data-reveal data-i18n="contact.chapter">CONTACT</span>
+        <span class="chapter__side" data-reveal data-i18n="contact.side">TWO DOORS</span>
+      </header>
+
+      <div class="contact__lead">
+        <h2 class="contact__title" data-reveal>
+          <span data-i18n="contact.title.a">Let us build</span>
+          <em data-i18n="contact.title.b">something quiet.</em>
+        </h2>
+
+        <p class="contact__lede" data-reveal data-i18n="contact.lede">
+          A small number of engagements per year. If your product deserves
+          language that works as hard as its engineering, the door is open.
+        </p>
+      </div>
+
+      <div class="contact__actions" data-reveal>
+        <a class="bridge" href="https://www.linkedin.com/in/youssef-x1-8227b643a" target="_blank" rel="noopener noreferrer" data-cursor data-cursor-text="LINKEDIN" data-magnetic>
+          <span class="bridge__halo"></span>
+          <span class="bridge__label" data-i18n="contact.cta">OPEN THE DOOR</span>
+          <span class="bridge__arrow" aria-hidden="true">→</span>
+          <span class="bridge__shine"></span>
+        </a>
+      </div>
+
+      <div class="contact__ledger" data-reveal>
+        <div class="ledger__cell">
+          <span class="ledger__k" data-i18n="ledger.1.k">RESPONSE</span>
+          <span class="ledger__v" data-i18n="ledger.1.v">Within 48 hours</span>
+        </div>
+        <div class="ledger__cell">
+          <span class="ledger__k" data-i18n="ledger.2.k">BASED IN</span>
+          <span class="ledger__v" data-i18n="ledger.2.v">Algiers — Worldwide</span>
+        </div>
+        <div class="ledger__cell">
+          <span class="ledger__k" data-i18n="ledger.3.k">CAPACITY</span>
+          <span class="ledger__v" data-i18n="ledger.3.v">Limited · 2026</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="frame footer__inner">
+    <div class="footer__top">
+      <a class="footer__brand" href="#apex" data-cursor>OCSTEN<span>.</span></a>
+      <p class="footer__creed" data-i18n="footer.creed">Systems over emotions.</p>
+    </div>
+
+    <div class="footer__bottom">
+      <span class="footer__line">© <span data-year>2026</span> OCSTEN — Youssef. <span data-i18n="footer.rights">All rights reserved.</span></span>
+      <span class="footer__line footer__line--dim">36.7538° N — 3.0588° E</span>
+      <span class="footer__line footer__line--dim" data-i18n="footer.credit">Engineered in the dark.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="ascend" data-ascend aria-label="Back to top">
+  <span class="ascend__line"></span>
+  <span class="ascend__label">TOP</span>
+</button>
+
+<script src="script.js"></script>
 </body>
 </html>
