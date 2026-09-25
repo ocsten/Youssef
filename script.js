@@ -1,9 +1,3 @@
-/* ============================================================
-   OCSTEN — Youssef
-   script.js · Ultra-Luxury Interface Runtime
-   File 3 of 3 · Engineered for Vercel Static Deployment
-   ============================================================ */
-
 (() => {
   "use strict";
 
@@ -17,502 +11,402 @@
 
   const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
   const lerp = (a, b, t) => a + (b - a) * t;
-  const rand = (a, b) => a + Math.random() * (b - a);
   const raf = WIN.requestAnimationFrame.bind(WIN);
   const caf = WIN.cancelAnimationFrame.bind(WIN);
 
-  const REDUCED = WIN.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const RM = WIN.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const FINE = WIN.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const COARSE = WIN.matchMedia("(pointer: coarse)").matches;
-  const TOUCH = "ontouchstart" in WIN || navigator.maxTouchPoints > 0;
+  const STORE = "ocsten.lang.v2";
 
-  const STORAGE_KEY = "ocsten.lang";
-  const ROOT_ATTR = "data-lang";
-
-  const LEXICON = {
+  const LEX = {
     en: {
-      "preloader.label": "Calibrating language architecture",
-      "nav.available": "Available — 2026",
-      "nav.menu": "Menu",
-      "menu.index": "Index",
-      "menu.manifesto": "Manifesto",
-      "menu.manifesto.sub": "Why language is structure",
-      "menu.capabilities": "Capabilities",
-      "menu.capabilities.sub": "What is engineered",
-      "menu.work": "Selected Work",
-      "menu.work.sub": "Six systems, six proofs",
-      "menu.process": "Process",
-      "menu.process.sub": "Audit to autonomy",
-      "menu.voices": "Voices",
-      "menu.voices.sub": "What partners say",
-      "menu.contact": "Contact",
-      "menu.contact.sub": "Open the door",
-      "menu.location": "Location",
-      "menu.location.value": "Algiers — Worldwide",
-      "menu.practice": "Practice",
-      "menu.practice.value": "UX Copy · Voice · Architecture",
-      "menu.doctrine": "Doctrine",
-      "menu.doctrine.value": "Systems over emotions.",
-      "hud.status": "SYS.STATUS",
-      "hud.time": "LOC.TIME",
-      "hud.scroll": "SCROLL.PCT",
-      "hud.lang": "LANG",
-      "hero.eyebrow": "OCSTEN — YOUSSEF",
-      "hero.role": "UX Copywriter & Digital Architect.",
-      "hero.tagline": "Systems over emotions.",
-      "hero.cta.work": "View the work",
-      "hero.cta.doctrine": "Read the doctrine",
-      "hero.badge.text": "SYSTEMS OVER EMOTIONS · DIGITAL ARCHITECT · LANGUAGE ENGINEER ·",
-      "hero.est": "Est.",
-      "hero.craft": "Craft",
-      "hero.craft.value": "Copy · Systems",
-      "hero.scroll": "SCROLL",
-      "marquee.1": "UX Copywriting",
-      "marquee.2": "Digital Architecture",
-      "marquee.3": "Brand Voice",
-      "marquee.4": "Interface Poetry",
-      "marquee.5": "Content Systems",
-      "marquee.6": "Information Design",
-      "manifesto.label": "Manifesto",
-      "manifesto.note": "Doctrine · Six principles",
-      "manifesto.title.1": "I build",
-      "manifesto.title.clarity": "clarity",
-      "manifesto.title.2": "out of",
-      "manifesto.title.noise": "noise",
-      "manifesto.title.3": ".",
-      "manifesto.body.1": "Words are architecture. Every interface is a room; every sentence a load-bearing wall. I design the language that holds digital products together — precise, deliberate, engineered to move people without them ever noticing the engineering.",
-      "manifesto.body.2": "The work is not decoration. It is structure. It is the quiet system beneath the surface that makes a product feel inevitable.",
-      "tenet.1.title": "Precision over decoration",
-      "tenet.1.text": "Every word earns its place or it is removed. No ornament survives without function.",
-      "tenet.2.title": "Systems over emotions",
-      "tenet.2.text": "Structure scales; feelings fade. A voice system outlives any single campaign.",
-      "tenet.3.title": "Silence over noise",
-      "tenet.3.text": "The best copy is the line you never had to read. Restraint is the highest craft.",
-      "tenet.4.title": "Structure over style",
-      "tenet.4.text": "Tone is adjustable. Architecture is not. Build the frame first, then paint it.",
-      "tenet.5.title": "Clarity over cleverness",
-      "tenet.5.text": "A clever line is remembered once. A clear line is used a thousand times.",
-      "tenet.6.title": "Longevity over trend",
-      "tenet.6.text": "Trends expire. Systems compound. I build for the version of the product that outlasts me.",
-      "services.label": "Capabilities",
-      "services.note": "Six disciplines · One system",
-      "services.title.1": "What gets",
-      "services.title.em": "engineered",
-      "services.lede": "Each discipline is a component. Together they form a single, self-sustaining language system that any team can operate without me in the room.",
-      "service.1.name": "UX Copywriting",
-      "service.1.desc": "Microcopy, flows, empty states and error handling that guide without friction.",
-      "service.1.tag.1": "Microcopy",
-      "service.1.tag.2": "Flows",
-      "service.1.tag.3": "Error states",
-      "service.2.name": "Brand Voice",
-      "service.2.desc": "A distinct, scalable voice system that survives every touchpoint and every writer.",
-      "service.2.tag.1": "Tone system",
-      "service.2.tag.2": "Lexicon",
-      "service.2.tag.3": "Guidelines",
-      "service.3.name": "Content Systems",
-      "service.3.desc": "Structured content models that scale across products, platforms and languages.",
-      "service.3.tag.1": "Content models",
-      "service.3.tag.2": "Taxonomy",
-      "service.3.tag.3": "Governance",
-      "service.4.name": "Digital Architecture",
-      "service.4.desc": "Information design and narrative structure for products too complex to explain twice.",
-      "service.4.tag.1": "IA",
-      "service.4.tag.2": "Narrative",
-      "service.4.tag.3": "Onboarding",
-      "service.5.name": "Product Storytelling",
-      "service.5.desc": "Narrative arcs that turn features into consequences, and consequences into decisions.",
-      "service.5.tag.1": "Narrative",
-      "service.5.tag.2": "Positioning",
-      "service.5.tag.3": "Launch",
-      "service.6.name": "Language Audits",
-      "service.6.desc": "A forensic read of your existing product language, delivered as an actionable system map.",
-      "service.6.tag.1": "Audit",
-      "service.6.tag.2": "Scorecard",
-      "service.6.tag.3": "Roadmap",
-      "work.label": "Selected Work",
-      "work.filter.all": "All",
-      "work.filter.voice": "Voice",
-      "work.filter.ux": "UX",
-      "work.filter.systems": "Systems",
-      "work.filter.editorial": "Editorial",
-      "project.1.name": "Narrative Systems",
-      "project.1.meta": "Brand Voice Architecture · Fintech · 2025",
-      "project.1.desc": "A complete voice system for a cross-border payments platform operating in eleven markets.",
-      "project.2.name": "Interface Poetry",
-      "project.2.meta": "UX Microcopy · Health · 2024",
-      "project.2.desc": "Rewriting 400+ strings to remove fear from a clinical onboarding flow.",
-      "project.3.name": "Signal / Noise",
-      "project.3.meta": "Content Strategy · SaaS · 2024",
-      "project.3.desc": "A taxonomy and content model that cut support tickets by a third.",
-      "project.4.name": "The Quiet Grid",
-      "project.4.meta": "Design System · Infrastructure · 2023",
-      "project.4.desc": "Language foundations for a design system now used by four product teams.",
-      "project.5.name": "Monochrome",
-      "project.5.meta": "Editorial Voice · Media · 2023",
-      "project.5.desc": "A restrained editorial voice for a publication that refuses to shout.",
-      "project.6.name": "Zero State",
-      "project.6.meta": "Onboarding System · Marketplace · 2022",
-      "project.6.desc": "Turning a cold start into a guided first minute.",
-      "work.foot": "More case studies available on request.",
-      "stat.1": "Projects shipped",
-      "stat.2": "Industries served",
-      "stat.3": "Years of craft",
-      "stat.4": "Partner retention",
-      "process.label": "Process",
-      "process.note": "Four movements",
-      "process.title.1": "How the work",
-      "process.title.em": "gets built",
-      "step.1.name": "Audit",
-      "step.1.desc": "I read the product, the users, and the silence between them. Nothing is assumed; everything is observed.",
-      "step.2.name": "Architect",
-      "step.2.desc": "I design the language system that will hold everything together — hierarchy, voice, rules, exceptions.",
-      "step.3.name": "Write",
-      "step.3.desc": "I craft every line with intent, then cut until only intent remains. The editing is the work.",
-      "step.4.name": "Refine",
-      "step.4.desc": "I test, measure and sharpen until the system runs without me. Autonomy is the deliverable.",
-      "voices.label": "Voices",
-      "voices.note": "Selected words from partners",
-      "voice.1.quote": "“He removed half our words and doubled our clarity. The product finally sounds like a product.”",
-      "voice.1.name": "Product Lead",
-      "voice.1.role": "Fintech Platform · Berlin",
-      "voice.2.quote": "“The voice system survived three rebrands and two acquisitions. That is the point.”",
-      "voice.2.name": "Head of Brand",
-      "voice.2.role": "Infrastructure Group · Dubai",
-      "voice.3.quote": "“Rare to find someone who thinks in systems and still writes like a human being.”",
-      "voice.3.name": "Founder",
-      "voice.3.role": "Health SaaS · Paris",
-      "contact.label": "Contact",
-      "contact.title.1": "Let's build something",
-      "contact.title.em": "quietly powerful.",
-      "contact.lede": "I take on a small number of engagements per year. If your product deserves language that works as hard as its engineering, the door is below.",
-      "contact.cta": "Open the door",
-      "contact.meta.response": "Response",
-      "contact.meta.response.value": "Within 48 hours",
-      "contact.meta.based": "Based in",
-      "contact.meta.based.value": "Algiers — Worldwide",
-      "contact.meta.engagements": "Engagements",
-      "contact.meta.engagements.value": "Limited · 2026",
-      "footer.tagline": "Systems over emotions.",
-      "footer.nav.manifesto": "Manifesto",
-      "footer.nav.services": "Capabilities",
-      "footer.nav.work": "Work",
-      "footer.nav.process": "Process",
-      "footer.nav.contact": "Contact",
-      "footer.rights": "All rights reserved.",
-      "footer.location": "Algiers — Worldwide",
-      "footer.credit": "Designed & engineered in the dark."
+      "topbar.status": "OPEN FOR WORK",
+      "topbar.year": "2026",
+      "overlay.label": "NAVIGATION",
+      "overlay.located": "LOCATED",
+      "overlay.engaged": "ENGAGED",
+      "overlay.creed": "CREED",
+      "overlay.creed.v": "Systems over emotions.",
+      "nav.doctrine": "Doctrine",
+      "nav.doctrine.cap": "Why language is structure",
+      "nav.arsenal": "Arsenal",
+      "nav.arsenal.cap": "Six disciplines, one system",
+      "nav.vault": "Vault",
+      "nav.vault.cap": "Selected engagements",
+      "nav.method": "Method",
+      "nav.method.cap": "Audit to autonomy",
+      "nav.dispatch": "Dispatch",
+      "nav.dispatch.cap": "Open the door",
+      "intro.role.1": "UX COPYWRITER",
+      "intro.role.2": "DIGITAL ARCHITECT",
+      "intro.creed": "Systems over emotions.",
+      "intro.bio": "I design the language that holds digital products together. Precise. Deliberate. Engineered to move people without them ever noticing the engineering.",
+      "intro.cta.work": "ENTER THE VAULT",
+      "intro.cta.doctrine": "READ DOCTRINE",
+      "intro.scroll": "SCROLL",
+      "doctrine.chapter": "DOCTRINE",
+      "doctrine.p1": "Every interface is a room. Every sentence a load-bearing wall. I design the language that holds digital products together.",
+      "doctrine.p2": "The work is not decoration. It is structure — the quiet system beneath the surface that makes a product feel inevitable.",
+      "canon.1.t": "PRECISION > DECORATION",
+      "canon.1.x": "Every word earns its place or it is removed. No ornament survives without function.",
+      "canon.2.t": "SYSTEMS > EMOTIONS",
+      "canon.2.x": "Structure scales; feelings fade. A voice system outlives any single campaign.",
+      "canon.3.t": "SILENCE > NOISE",
+      "canon.3.x": "The best copy is the line you never had to read. Restraint is the highest craft.",
+      "canon.4.t": "STRUCTURE > STYLE",
+      "canon.4.x": "Tone is adjustable. Architecture is not. Build the frame first, then paint it.",
+      "canon.5.t": "CLARITY > CLEVERNESS",
+      "canon.5.x": "A clever line is remembered once. A clear line is used a thousand times.",
+      "canon.6.t": "LONGEVITY > TREND",
+      "canon.6.x": "Trends expire. Systems compound. I build for the version of the product that outlasts me.",
+      "arsenal.chapter": "ARSENAL",
+      "arsenal.h.1": "Six disciplines.",
+      "arsenal.h.2": "One system.",
+      "arsenal.lede": "Each discipline is a component. Together they form a self-sustaining language engine any team can operate without me in the room.",
+      "weapon.1.n": "UX Copywriting",
+      "weapon.1.d": "Microcopy, flows, empty states and error handling that guide without friction.",
+      "weapon.1.f": "Microcopy · Flows · Errors",
+      "weapon.2.n": "Brand Voice",
+      "weapon.2.d": "A distinct, scalable voice system that survives every touchpoint and every writer.",
+      "weapon.2.f": "Tone · Lexicon · Guidelines",
+      "weapon.3.n": "Content Systems",
+      "weapon.3.d": "Structured content models that scale across products, platforms and languages.",
+      "weapon.3.f": "Models · Taxonomy · Governance",
+      "weapon.4.n": "Digital Architecture",
+      "weapon.4.d": "Information design and narrative structure for products too complex to explain twice.",
+      "weapon.4.f": "IA · Narrative · Onboarding",
+      "weapon.5.n": "Product Storytelling",
+      "weapon.5.d": "Narrative arcs that turn features into consequences, and consequences into decisions.",
+      "weapon.5.f": "Narrative · Positioning · Launch",
+      "weapon.6.n": "Language Audits",
+      "weapon.6.d": "A forensic read of your existing product language, delivered as an actionable system map.",
+      "weapon.6.f": "Audit · Scorecard · Roadmap",
+      "vault.chapter": "VAULT",
+      "vault.h.1": "Selected",
+      "vault.h.2": "engagements.",
+      "vault.f.all": "ALL",
+      "vault.f.voice": "VOICE",
+      "vault.f.ux": "UX",
+      "vault.f.systems": "SYSTEMS",
+      "vault.f.editorial": "EDITORIAL",
+      "entry.1.tag": "VOICE",
+      "entry.1.n": "Narrative Systems",
+      "entry.1.c": "Brand Voice Architecture · Fintech · 2025",
+      "entry.1.d": "A complete voice system for a cross-border payments platform operating in eleven markets.",
+      "entry.2.tag": "UX",
+      "entry.2.n": "Interface Poetry",
+      "entry.2.c": "UX Microcopy · Health · 2024",
+      "entry.2.d": "Rewriting 400+ strings to remove fear from a clinical onboarding flow.",
+      "entry.3.tag": "SYSTEMS",
+      "entry.3.n": "Signal / Noise",
+      "entry.3.c": "Content Strategy · SaaS · 2024",
+      "entry.3.d": "A taxonomy and content model that cut support tickets by a third.",
+      "entry.4.tag": "SYSTEMS",
+      "entry.4.n": "The Quiet Grid",
+      "entry.4.c": "Design System · Infrastructure · 2023",
+      "entry.4.d": "Language foundations for a design system now used by four product teams.",
+      "entry.5.tag": "EDITORIAL",
+      "entry.5.n": "Monochrome",
+      "entry.5.c": "Editorial Voice · Media · 2023",
+      "entry.5.d": "A restrained editorial voice for a publication that refuses to shout.",
+      "entry.6.tag": "UX",
+      "entry.6.n": "Zero State",
+      "entry.6.c": "Onboarding System · Marketplace · 2022",
+      "entry.6.d": "Turning a cold start into a guided first minute.",
+      "vault.sign": "Full case studies available under NDA.",
+      "fig.1.k": "PROJECTS",
+      "fig.2.k": "INDUSTRIES",
+      "fig.3.k": "YEARS",
+      "fig.4.k": "RETENTION",
+      "method.chapter": "METHOD",
+      "method.h.1": "Four movements.",
+      "method.h.2": "One outcome.",
+      "stage.1.n": "Audit",
+      "stage.1.d": "I read the product, the users, and the silence between them. Nothing is assumed; everything is observed.",
+      "stage.2.n": "Architect",
+      "stage.2.d": "I design the language system that will hold everything together — hierarchy, voice, rules, exceptions.",
+      "stage.3.n": "Write",
+      "stage.3.d": "I craft every line with intent, then cut until only intent remains. The editing is the work.",
+      "stage.4.n": "Refine",
+      "stage.4.d": "I test, measure and sharpen until the system runs without me. Autonomy is the deliverable.",
+      "testimony.chapter": "TESTIMONY",
+      "witness.1.q": "He removed half our words and doubled our clarity. The product finally sounds like a product.",
+      "witness.1.n": "Product Lead",
+      "witness.1.r": "Fintech Platform · Berlin",
+      "witness.2.q": "The voice system survived three rebrands and two acquisitions. That is the point.",
+      "witness.2.n": "Head of Brand",
+      "witness.2.r": "Infrastructure Group · Dubai",
+      "witness.3.q": "Rare to find someone who thinks in systems and still writes like a human being.",
+      "witness.3.n": "Founder",
+      "witness.3.r": "Health SaaS · Paris",
+      "dispatch.chapter": "DISPATCH",
+      "dispatch.h.1": "Let's build something",
+      "dispatch.h.2": "quietly powerful.",
+      "dispatch.lede": "A small number of engagements per year. If your product deserves language that works as hard as its engineering, the door is below.",
+      "dispatch.cta": "OPEN THE DOOR",
+      "dispatch.k.1": "RESPONSE",
+      "dispatch.v.1": "Within 48 hours",
+      "dispatch.k.2": "BASE",
+      "dispatch.v.2": "Algiers — Worldwide",
+      "dispatch.k.3": "CAPACITY",
+      "dispatch.v.3": "Limited · 2026",
+      "colophon.creed": "Systems over emotions.",
+      "colophon.rights": "All rights reserved.",
+      "colophon.credit": "Engineered in the dark."
     },
     ar: {
-      "preloader.label": "تهيئة معمارية اللغة",
-      "nav.available": "متاح — 2026",
-      "nav.menu": "القائمة",
-      "menu.index": "الفهرس",
-      "menu.manifesto": "البيان",
-      "menu.manifesto.sub": "لماذا اللغة بنية",
-      "menu.capabilities": "القدرات",
-      "menu.capabilities.sub": "ما يتم هندسته",
-      "menu.work": "أعمال مختارة",
-      "menu.work.sub": "ستة أنظمة، ستة براهين",
-      "menu.process": "المنهجية",
-      "menu.process.sub": "من التدقيق إلى الاستقلالية",
-      "menu.voices": "أصوات",
-      "menu.voices.sub": "ما يقوله الشركاء",
-      "menu.contact": "تواصل",
-      "menu.contact.sub": "افتح الباب",
-      "menu.location": "الموقع",
-      "menu.location.value": "الجزائر — عالميًا",
-      "menu.practice": "الممارسة",
-      "menu.practice.value": "كتابة تجربة المستخدم · الصوت · المعمارية",
-      "menu.doctrine": "العقيدة",
-      "menu.doctrine.value": "الأنظمة قبل المشاعر.",
-      "hud.status": "حالة النظام",
-      "hud.time": "التوقيت المحلي",
-      "hud.scroll": "نسبة التمرير",
-      "hud.lang": "اللغة",
-      "hero.eyebrow": "أوكتسن — يوسف",
-      "hero.role": "كاتب تجربة المستخدم والمهندس الرقمي.",
-      "hero.tagline": "الأنظمة قبل المشاعر.",
-      "hero.cta.work": "شاهد الأعمال",
-      "hero.cta.doctrine": "اقرأ البيان",
-      "hero.badge.text": "الأنظمة قبل المشاعر · المهندس الرقمي · مهندس اللغة ·",
-      "hero.est": "التأسيس",
-      "hero.craft": "الحرفة",
-      "hero.craft.value": "كتابة · أنظمة",
-      "hero.scroll": "مرر",
-      "marquee.1": "كتابة تجربة المستخدم",
-      "marquee.2": "المعمارية الرقمية",
-      "marquee.3": "صوت العلامة",
-      "marquee.4": "شعر الواجهات",
-      "marquee.5": "أنظمة المحتوى",
-      "marquee.6": "تصميم المعلومات",
-      "manifesto.label": "البيان",
-      "manifesto.note": "عقيدة · ستة مبادئ",
-      "manifesto.title.1": "أبني",
-      "manifesto.title.clarity": "الوضوح",
-      "manifesto.title.2": "من",
-      "manifesto.title.noise": "الضجيج",
-      "manifesto.title.3": ".",
-      "manifesto.body.1": "الكلمات معمارية. كل واجهة غرفة؛ وكل جملة جدار حامل. أصمم اللغة التي تُمسك المنتجات الرقمية معًا — دقيقة، مدروسة، مهندسة لتحريك الناس دون أن يلاحظوا الهندسة أبدًا.",
-      "manifesto.body.2": "العمل ليس زخرفة. إنه بنية. إنه النظام الهادئ تحت السطح الذي يجعل المنتج يبدو حتميًا.",
-      "tenet.1.title": "الدقة قبل الزخرفة",
-      "tenet.1.text": "كل كلمة تستحق مكانها أو تُحذف. لا زخرفة تنجو بدون وظيفة.",
-      "tenet.2.title": "الأنظمة قبل المشاعر",
-      "tenet.2.text": "البنية تتوسع؛ المشاعر تتلاشى. نظام صوتي يعيش أطول من أي حملة.",
-      "tenet.3.title": "الصمت قبل الضجيج",
-      "tenet.3.text": "أفضل نص هو السطر الذي لم تكن مضطرًا لقراءته. الانضباط هو أعلى الحرف.",
-      "tenet.4.title": "البنية قبل الأسلوب",
-      "tenet.4.text": "النبرة قابلة للتعديل. المعمارية لا. ابنِ الإطار أولًا، ثم ارسمه.",
-      "tenet.5.title": "الوضوح قبل الذكاء",
-      "tenet.5.text": "السطر الذكي يُتذكر مرة. السطر الواضح يُستخدم ألف مرة.",
-      "tenet.6.title": "الاستمرارية قبل الصيحة",
-      "tenet.6.text": "الصيحات تنتهي. الأنظمة تتراكم. أبني للنسخة التي تبقى بعدي.",
-      "services.label": "القدرات",
-      "services.note": "ستة تخصصات · نظام واحد",
-      "services.title.1": "ما يتم",
-      "services.title.em": "هندسته",
-      "services.lede": "كل تخصص مكوّن. معًا يشكّلون نظامًا لغويًا واحدًا مستدامًا ذاتيًا يمكن لأي فريق تشغيله بدوني في الغرفة.",
-      "service.1.name": "كتابة تجربة المستخدم",
-      "service.1.desc": "نصوص دقيقة، تدفقات، حالات فارغة ومعالجة أخطاء توجه دون احتكاك.",
-      "service.1.tag.1": "نصوص دقيقة",
-      "service.1.tag.2": "تدفقات",
-      "service.1.tag.3": "حالات الخطأ",
-      "service.2.name": "صوت العلامة",
-      "service.2.desc": "نظام صوتي مميز وقابل للتوسع ينجو من كل نقطة تواصل وكل كاتب.",
-      "service.2.tag.1": "نظام النبرة",
-      "service.2.tag.2": "المعجم",
-      "service.2.tag.3": "الإرشادات",
-      "service.3.name": "أنظمة المحتوى",
-      "service.3.desc": "نماذج محتوى منظمة تتوسع عبر المنتجات والمنصات واللغات.",
-      "service.3.tag.1": "نماذج المحتوى",
-      "service.3.tag.2": "التصنيف",
-      "service.3.tag.3": "الحوكمة",
-      "service.4.name": "المعمارية الرقمية",
-      "service.4.desc": "تصميم المعلومات والبنية السردية للمنتجات المعقدة جدًا لتُشرح مرتين.",
-      "service.4.tag.1": "معمارية المعلومات",
-      "service.4.tag.2": "السرد",
-      "service.4.tag.3": "الإعداد",
-      "service.5.name": "سرد المنتج",
-      "service.5.desc": "أقواس سردية تحول الميزات إلى نتائج، والنتائج إلى قرارات.",
-      "service.5.tag.1": "السرد",
-      "service.5.tag.2": "التموضع",
-      "service.5.tag.3": "الإطلاق",
-      "service.6.name": "تدقيق اللغة",
-      "service.6.desc": "قراءة جنائية للغة منتجك الحالية، تُسلّم كخريطة نظام قابلة للتنفيذ.",
-      "service.6.tag.1": "تدقيق",
-      "service.6.tag.2": "بطاقة الأداء",
-      "service.6.tag.3": "خارطة الطريق",
-      "work.label": "أعمال مختارة",
-      "work.filter.all": "الكل",
-      "work.filter.voice": "الصوت",
-      "work.filter.ux": "التجربة",
-      "work.filter.systems": "الأنظمة",
-      "work.filter.editorial": "التحرير",
-      "project.1.name": "أنظمة السرد",
-      "project.1.meta": "معمارية صوت العلامة · تقنية مالية · 2025",
-      "project.1.desc": "نظام صوتي كامل لمنصة مدفوعات عابرة للحدود تعمل في أحد عشر سوقًا.",
-      "project.2.name": "شعر الواجهات",
-      "project.2.meta": "نصوص تجربة المستخدم · صحة · 2024",
-      "project.2.desc": "إعادة كتابة أكثر من 400 نص لإزالة الخوف من تدفق إعداد سريري.",
-      "project.3.name": "إشارة / ضجيج",
-      "project.3.meta": "استراتيجية المحتوى · برمجيات · 2024",
-      "project.3.desc": "تصنيف ونموذج محتوى خفّض تذاكر الدعم بالثلث.",
-      "project.4.name": "الشبكة الهادئة",
-      "project.4.meta": "نظام تصميم · بنية تحتية · 2023",
-      "project.4.desc": "أسس لغوية لنظام تصميم تستخدمه الآن أربعة فرق منتجات.",
-      "project.5.name": "أحادي اللون",
-      "project.5.meta": "صوت تحريري · إعلام · 2023",
-      "project.5.desc": "صوت تحريري منضبط لمنشور يرفض الصراخ.",
-      "project.6.name": "الحالة الصفرية",
-      "project.6.meta": "نظام إعداد · سوق · 2022",
-      "project.6.desc": "تحويل البداية الباردة إلى أول دقيقة موجهة.",
-      "work.foot": "المزيد من دراسات الحالة متاحة عند الطلب.",
-      "stat.1": "مشاريع منجزة",
-      "stat.2": "قطاعات مخدومة",
-      "stat.3": "سنوات حرفة",
-      "stat.4": "احتفاظ الشركاء",
-      "process.label": "المنهجية",
-      "process.note": "أربع حركات",
-      "process.title.1": "كيف يتم",
-      "process.title.em": "بناء العمل",
-      "step.1.name": "التدقيق",
-      "step.1.desc": "أقرأ المنتج والمستخدمين والصمت بينهم. لا شيء مفترض؛ كل شيء ملاحظ.",
-      "step.2.name": "التعميد",
-      "step.2.desc": "أصمم النظام اللغوي الذي سيمسك كل شيء معًا — التسلسل، الصوت، القواعد، الاستثناءات.",
-      "step.3.name": "الكتابة",
-      "step.3.desc": "أصيغ كل سطر بنية، ثم أقطع حتى تبقى النية فقط. التحرير هو العمل.",
-      "step.4.name": "الصقل",
-      "step.4.desc": "أختبر وأقيس وأشحذ حتى يعمل النظام بدوني. الاستقلالية هي المُخرَج.",
-      "voices.label": "أصوات",
-      "voices.note": "كلمات مختارة من الشركاء",
-      "voice.1.quote": "«أزال نصف كلماتنا وضاعف وضوحنا. المنتج أخيرًا يبدو كمنتج.»",
-      "voice.1.name": "قائد المنتج",
-      "voice.1.role": "منصة تقنية مالية · برلين",
-      "voice.2.quote": "«نجا النظام الصوتي من ثلاث عمليات إعادة تسمية واستحواذين. هذه هي النقطة.»",
-      "voice.2.name": "رئيس العلامة",
-      "voice.2.role": "مجموعة بنية تحتية · دبي",
-      "voice.3.quote": "«نادرًا ما تجد شخصًا يفكر بأنظمة وما زال يكتب كإنسان.»",
-      "voice.3.name": "مؤسس",
-      "voice.3.role": "برمجيات صحية · باريس",
-      "contact.label": "تواصل",
-      "contact.title.1": "لنبنِ شيئًا",
-      "contact.title.em": "قويًا بهدوء.",
-      "contact.lede": "أتولى عددًا محدودًا من الارتباطات سنويًا. إذا كان منتجك يستحق لغة تعمل بجد مثل هندسته، فالباب في الأسفل.",
-      "contact.cta": "افتح الباب",
-      "contact.meta.response": "الرد",
-      "contact.meta.response.value": "خلال 48 ساعة",
-      "contact.meta.based": "مقر",
-      "contact.meta.based.value": "الجزائر — عالميًا",
-      "contact.meta.engagements": "الارتباطات",
-      "contact.meta.engagements.value": "محدود · 2026",
-      "footer.tagline": "الأنظمة قبل المشاعر.",
-      "footer.nav.manifesto": "البيان",
-      "footer.nav.services": "القدرات",
-      "footer.nav.work": "الأعمال",
-      "footer.nav.process": "المنهجية",
-      "footer.nav.contact": "تواصل",
-      "footer.rights": "جميع الحقوق محفوظة.",
-      "footer.location": "الجزائر — عالميًا",
-      "footer.credit": "مصمم ومهندس في الظلام."
+      "topbar.status": "متاح للعمل",
+      "topbar.year": "2026",
+      "overlay.label": "التنقل",
+      "overlay.located": "الموقع",
+      "overlay.engaged": "مشغول",
+      "overlay.creed": "العقيدة",
+      "overlay.creed.v": "الأنظمة قبل المشاعر.",
+      "nav.doctrine": "البيان",
+      "nav.doctrine.cap": "لماذا اللغة بنية",
+      "nav.arsenal": "الترسانة",
+      "nav.arsenal.cap": "ستة تخصصات، نظام واحد",
+      "nav.vault": "الخزانة",
+      "nav.vault.cap": "أعمال مختارة",
+      "nav.method": "المنهجية",
+      "nav.method.cap": "من التدقيق إلى الاستقلالية",
+      "nav.dispatch": "البريد",
+      "nav.dispatch.cap": "افتح الباب",
+      "intro.role.1": "كاتب تجربة المستخدم",
+      "intro.role.2": "المهندس الرقمي",
+      "intro.creed": "الأنظمة قبل المشاعر.",
+      "intro.bio": "أصمم اللغة التي تُمسك المنتجات الرقمية معًا. دقيقة، مدروسة، مهندسة لتحريك الناس دون أن يلاحظوا الهندسة أبدًا.",
+      "intro.cta.work": "ادخل الخزانة",
+      "intro.cta.doctrine": "اقرأ البيان",
+      "intro.scroll": "مرر",
+      "doctrine.chapter": "البيان",
+      "doctrine.p1": "كل واجهة غرفة. وكل جملة جدار حامل. أصمم اللغة التي تُمسك المنتجات الرقمية معًا.",
+      "doctrine.p2": "العمل ليس زخرفة. إنه بنية — النظام الهادئ تحت السطح الذي يجعل المنتج يبدو حتميًا.",
+      "canon.1.t": "الدقة > الزخرفة",
+      "canon.1.x": "كل كلمة تستحق مكانها أو تُحذف. لا زخرفة تنجو بدون وظيفة.",
+      "canon.2.t": "الأنظمة > المشاعر",
+      "canon.2.x": "البنية تتوسع؛ المشاعر تتلاشى. نظام صوتي يعيش أطول من أي حملة.",
+      "canon.3.t": "الصمت > الضجيج",
+      "canon.3.x": "أفضل نص هو السطر الذي لم تكن مضطرًا لقراءته. الانضباط هو أعلى الحرف.",
+      "canon.4.t": "البنية > الأسلوب",
+      "canon.4.x": "النبرة قابلة للتعديل. المعمارية لا. ابنِ الإطار أولًا، ثم ارسمه.",
+      "canon.5.t": "الوضوح > الذكاء",
+      "canon.5.x": "السطر الذكي يُتذكر مرة. السطر الواضح يُستخدم ألف مرة.",
+      "canon.6.t": "الاستمرارية > الصيحة",
+      "canon.6.x": "الصيحات تنتهي. الأنظمة تتراكم. أبني للنسخة التي تبقى بعدي.",
+      "arsenal.chapter": "الترسانة",
+      "arsenal.h.1": "ستة تخصصات.",
+      "arsenal.h.2": "نظام واحد.",
+      "arsenal.lede": "كل تخصص مكوّن. معًا يشكّلون محرك لغة مستدامًا ذاتيًا يمكن لأي فريق تشغيله بدوني في الغرفة.",
+      "weapon.1.n": "كتابة تجربة المستخدم",
+      "weapon.1.d": "نصوص دقيقة، تدفقات، حالات فارغة ومعالجة أخطاء توجه دون احتكاك.",
+      "weapon.1.f": "نصوص · تدفقات · أخطاء",
+      "weapon.2.n": "صوت العلامة",
+      "weapon.2.d": "نظام صوتي مميز وقابل للتوسع ينجو من كل نقطة تواصل وكل كاتب.",
+      "weapon.2.f": "النبرة · المعجم · الإرشادات",
+      "weapon.3.n": "أنظمة المحتوى",
+      "weapon.3.d": "نماذج محتوى منظمة تتوسع عبر المنتجات والمنصات واللغات.",
+      "weapon.3.f": "النماذج · التصنيف · الحوكمة",
+      "weapon.4.n": "المعمارية الرقمية",
+      "weapon.4.d": "تصميم المعلومات والبنية السردية للمنتجات المعقدة جدًا لتُشرح مرتين.",
+      "weapon.4.f": "المعمارية · السرد · الإعداد",
+      "weapon.5.n": "سرد المنتج",
+      "weapon.5.d": "أقواس سردية تحول الميزات إلى نتائج، والنتائج إلى قرارات.",
+      "weapon.5.f": "السرد · التموضع · الإطلاق",
+      "weapon.6.n": "تدقيق اللغة",
+      "weapon.6.d": "قراءة جنائية للغة منتجك الحالية، تُسلّم كخريطة نظام قابلة للتنفيذ.",
+      "weapon.6.f": "تدقيق · بطاقة · خارطة",
+      "vault.chapter": "الخزانة",
+      "vault.h.1": "أعمال",
+      "vault.h.2": "مختارة.",
+      "vault.f.all": "الكل",
+      "vault.f.voice": "الصوت",
+      "vault.f.ux": "التجربة",
+      "vault.f.systems": "الأنظمة",
+      "vault.f.editorial": "التحرير",
+      "entry.1.tag": "الصوت",
+      "entry.1.n": "أنظمة السرد",
+      "entry.1.c": "معمارية صوت العلامة · تقنية مالية · 2025",
+      "entry.1.d": "نظام صوتي كامل لمنصة مدفوعات عابرة للحدود تعمل في أحد عشر سوقًا.",
+      "entry.2.tag": "التجربة",
+      "entry.2.n": "شعر الواجهات",
+      "entry.2.c": "نصوص تجربة المستخدم · صحة · 2024",
+      "entry.2.d": "إعادة كتابة أكثر من 400 نص لإزالة الخوف من تدفق إعداد سريري.",
+      "entry.3.tag": "الأنظمة",
+      "entry.3.n": "إشارة / ضجيج",
+      "entry.3.c": "استراتيجية المحتوى · برمجيات · 2024",
+      "entry.3.d": "تصنيف ونموذج محتوى خفّض تذاكر الدعم بالثلث.",
+      "entry.4.tag": "الأنظمة",
+      "entry.4.n": "الشبكة الهادئة",
+      "entry.4.c": "نظام تصميم · بنية تحتية · 2023",
+      "entry.4.d": "أسس لغوية لنظام تصميم تستخدمه الآن أربعة فرق منتجات.",
+      "entry.5.tag": "التحرير",
+      "entry.5.n": "أحادي اللون",
+      "entry.5.c": "صوت تحريري · إعلام · 2023",
+      "entry.5.d": "صوت تحريري منضبط لمنشور يرفض الصراخ.",
+      "entry.6.tag": "التجربة",
+      "entry.6.n": "الحالة الصفرية",
+      "entry.6.c": "نظام إعداد · سوق · 2022",
+      "entry.6.d": "تحويل البداية الباردة إلى أول دقيقة موجهة.",
+      "vault.sign": "دراسات الحالة الكاملة متاحة بموجب اتفاقية سرية.",
+      "fig.1.k": "مشاريع",
+      "fig.2.k": "قطاعات",
+      "fig.3.k": "سنوات",
+      "fig.4.k": "احتفاظ",
+      "method.chapter": "المنهجية",
+      "method.h.1": "أربع حركات.",
+      "method.h.2": "نتيجة واحدة.",
+      "stage.1.n": "التدقيق",
+      "stage.1.d": "أقرأ المنتج والمستخدمين والصمت بينهم. لا شيء مفترض؛ كل شيء ملاحظ.",
+      "stage.2.n": "التعميد",
+      "stage.2.d": "أصمم النظام اللغوي الذي سيمسك كل شيء معًا — التسلسل، الصوت، القواعد، الاستثناءات.",
+      "stage.3.n": "الكتابة",
+      "stage.3.d": "أصيغ كل سطر بنية، ثم أقطع حتى تبقى النية فقط. التحرير هو العمل.",
+      "stage.4.n": "الصقل",
+      "stage.4.d": "أختبر وأقيس وأشحذ حتى يعمل النظام بدوني. الاستقلالية هي المُخرَج.",
+      "testimony.chapter": "شهادات",
+      "witness.1.q": "أزال نصف كلماتنا وضاعف وضوحنا. المنتج أخيرًا يبدو كمنتج.",
+      "witness.1.n": "قائد المنتج",
+      "witness.1.r": "منصة تقنية مالية · برلين",
+      "witness.2.q": "نجا النظام الصوتي من ثلاث عمليات إعادة تسمية واستحواذين. هذه هي النقطة.",
+      "witness.2.n": "رئيس العلامة",
+      "witness.2.r": "مجموعة بنية تحتية · دبي",
+      "witness.3.q": "نادرًا ما تجد شخصًا يفكر بأنظمة وما زال يكتب كإنسان.",
+      "witness.3.n": "مؤسس",
+      "witness.3.r": "برمجيات صحية · باريس",
+      "dispatch.chapter": "البريد",
+      "dispatch.h.1": "لنبنِ شيئًا",
+      "dispatch.h.2": "قويًا بهدوء.",
+      "dispatch.lede": "أتولى عددًا محدودًا من الارتباطات سنويًا. إذا كان منتجك يستحق لغة تعمل بجد مثل هندسته، فالباب في الأسفل.",
+      "dispatch.cta": "افتح الباب",
+      "dispatch.k.1": "الرد",
+      "dispatch.v.1": "خلال 48 ساعة",
+      "dispatch.k.2": "المقر",
+      "dispatch.v.2": "الجزائر — عالميًا",
+      "dispatch.k.3": "السعة",
+      "dispatch.v.3": "محدود · 2026",
+      "colophon.creed": "الأنظمة قبل المشاعر.",
+      "colophon.rights": "جميع الحقوق محفوظة.",
+      "colophon.credit": "مصمم ومهندس في الظلام."
     }
   };
 
-  /* ============================================================
-     LANGUAGE ENGINE
-     ============================================================ */
-  const Language = (() => {
+  const LANG = (() => {
     let current = "en";
-    let onSwitch = null;
 
-    const readStored = () => {
+    const read = () => {
       try {
-        const stored = WIN.localStorage.getItem(STORAGE_KEY);
-        if (stored === "en" || stored === "ar") return stored;
+        const s = WIN.localStorage.getItem(STORE);
+        if (s === "en" || s === "ar") return s;
       } catch (_) {}
-      const nav = (navigator.language || "en").toLowerCase();
-      return nav.startsWith("ar") ? "ar" : "en";
+      const n = (navigator.language || "en").toLowerCase();
+      return n.startsWith("ar") ? "ar" : "en";
     };
 
-    const write = (lang) => {
-      try { WIN.localStorage.setItem(STORAGE_KEY, lang); } catch (_) {}
+    const write = (l) => {
+      try { WIN.localStorage.setItem(STORE, l); } catch (_) {}
     };
 
-    const paint = (lang) => {
-      const dict = LEXICON[lang];
-      if (!dict) return;
-
-      $$("[data-i18n]").forEach((node) => {
-        const key = node.getAttribute("data-i18n");
-        const value = dict[key];
-        if (value === undefined) return;
-        if (node.tagName === "TEXTPATH") node.textContent = value;
-        else node.textContent = value;
+    const paint = (l) => {
+      const dict = LEX[l] || LEX.en;
+      $$("[data-i18n]").forEach((el) => {
+        const k = el.getAttribute("data-i18n");
+        const v = dict[k];
+        if (v === undefined) return;
+        if (el.tagName === "TEXTPATH") el.textContent = v;
+        else el.textContent = v;
       });
-
-      const hudLang = $("[data-hud-lang]");
-      if (hudLang) hudLang.textContent = lang === "ar" ? "AR / EN" : "EN / AR";
-
-      HTML.setAttribute("lang", lang);
-      HTML.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
-      HTML.setAttribute(ROOT_ATTR, lang);
-      BODY.setAttribute(ROOT_ATTR, lang);
-
-      DOC.title = lang === "ar"
+      HTML.setAttribute("lang", l);
+      HTML.setAttribute("dir", l === "ar" ? "rtl" : "ltr");
+      HTML.setAttribute("data-lang", l);
+      BODY.setAttribute("data-lang", l);
+      DOC.title = l === "ar"
         ? "أوكتسن — يوسف · كاتب تجربة المستخدم والمهندس الرقمي"
         : "OCSTEN — Youssef · UX Copywriter & Digital Architect";
     };
 
-    const apply = (lang, silent = false) => {
-      current = lang === "ar" ? "ar" : "en";
+    const apply = (l) => {
+      current = l === "ar" ? "ar" : "en";
       paint(current);
       write(current);
-      if (!silent && typeof onSwitch === "function") onSwitch(current);
     };
 
     const toggle = () => apply(current === "en" ? "ar" : "en");
 
-    const init = (opts = {}) => {
-      onSwitch = opts.onSwitch || null;
-      apply(readStored(), true);
-
-      const btn = $("[data-lang-toggle]");
+    const init = () => {
+      apply(read());
+      const btn = $("[data-lang-btn]");
       if (btn) btn.addEventListener("click", toggle);
     };
 
     return { init, toggle, apply, get current() { return current; } };
   })();
 
-  /* ============================================================
-     PRELOADER
-     ============================================================ */
-  const Preloader = (() => {
-    const ROOTS = ["OCSTEN", "YOUSSEF", "SYSTEMS", "OVER", "EMOTIONS"];
+  const BOOT = (() => {
+    const WORDS = ["LANGUAGE", "SYSTEMS", "ARCHITECT", "COPY", "VOICE", "OCSTEN"];
+    let cancelled = false;
 
     const run = () => {
-      const root = $("[data-preloader]");
+      const root = $("[data-boot]");
       if (!root) {
-        BODY.classList.remove("is-loading");
+        BODY.classList.remove("boot");
         return;
       }
-
-      const word = $("[data-preloader-word]", root);
-      const count = $("[data-preloader-count]", root);
-      const fill = $("[data-preloader-fill]", root);
-
-      let idx = 0;
+      const word = $("[data-boot-word]", root);
+      const bar = $("[data-boot-bar]", root);
+      const pct = $("[data-boot-percent]", root);
+      let i = 0;
       let progress = 0;
-      let wordTimer = null;
 
-      if (word) {
-        word.style.transition = "opacity 0.35s cubic-bezier(0.22,1,0.36,1)";
-        wordTimer = WIN.setInterval(() => {
-          idx = (idx + 1) % ROOTS.length;
+      const wordTimer = WIN.setInterval(() => {
+        if (cancelled) return;
+        i = (i + 1) % WORDS.length;
+        if (word) {
           word.style.opacity = "0";
           WIN.setTimeout(() => {
-            word.textContent = ROOTS[idx];
+            word.textContent = WORDS[i];
             word.style.opacity = "1";
           }, 180);
-        }, 520);
-      }
+        }
+      }, 420);
+      if (word) word.style.transition = "opacity 0.35s cubic-bezier(0.22,1,0.36,1)";
 
       const tick = () => {
-        const delta = (100 - progress) * 0.055 + 0.85;
-        progress = Math.min(progress + delta, 100);
-
-        if (count) count.textContent = String(Math.floor(progress)).padStart(3, "0");
-        if (fill) fill.style.width = progress + "%";
+        if (cancelled) return;
+        progress = Math.min(progress + (100 - progress) * 0.06 + 0.9, 100);
+        if (pct) pct.textContent = String(Math.floor(progress)).padStart(3, "0");
+        if (bar) bar.style.width = progress + "%";
 
         if (progress < 100) {
           raf(tick);
         } else {
+          WIN.clearInterval(wordTimer);
           WIN.setTimeout(() => {
-            if (wordTimer) WIN.clearInterval(wordTimer);
-            root.classList.add("is-hidden");
-            BODY.classList.remove("is-loading");
+            root.classList.add("is-done");
+            BODY.classList.remove("boot");
             BODY.classList.add("is-ready");
-            WIN.setTimeout(() => root.remove(), 1100);
-          }, 380);
+            WIN.setTimeout(() => root.remove(), 1000);
+          }, 340);
         }
       };
 
-      WIN.setTimeout(tick, 260);
+      WIN.setTimeout(tick, 280);
     };
 
-    return { run };
+    return { run, cancel: () => { cancelled = true; } };
   })();
 
-  /* ============================================================
-     CUSTOM CURSOR
-     ============================================================ */
-  const Cursor = (() => {
+  const POINTER = (() => {
     let rafId = null;
     let running = false;
 
     const start = () => {
-      if (!FINE || REDUCED) return;
-      const cursor = $("[data-cursor]");
-      if (!cursor) return;
+      if (!FINE || RM) return;
+      const root = $("[data-pointer]");
+      if (!root) return;
 
-      const label = $("[data-cursor-label]", cursor);
+      const verb = $("[data-pointer-verb]", root);
       let mx = WIN.innerWidth / 2;
       let my = WIN.innerHeight / 2;
       let rx = mx;
@@ -523,13 +417,13 @@
         mx = e.clientX;
         my = e.clientY;
         if (!visible) {
-          cursor.style.opacity = "1";
+          root.style.opacity = "1";
           visible = true;
         }
       };
 
       const onLeave = () => {
-        cursor.style.opacity = "0";
+        root.style.opacity = "0";
         visible = false;
       };
 
@@ -537,9 +431,9 @@
       DOC.addEventListener("mouseleave", onLeave);
 
       const loop = () => {
-        rx = lerp(rx, mx, 0.18);
-        ry = lerp(ry, my, 0.18);
-        cursor.style.transform = `translate3d(${rx.toFixed(2)}px, ${ry.toFixed(2)}px, 0)`;
+        rx = lerp(rx, mx, 0.2);
+        ry = lerp(ry, my, 0.2);
+        root.style.transform = `translate3d(${rx.toFixed(2)}px, ${ry.toFixed(2)}px, 0)`;
         rafId = raf(loop);
       };
 
@@ -548,31 +442,26 @@
         loop();
       }
 
-      const attachHover = (root = DOC) => {
-        $$("[data-cursor-hover], a, button", root).forEach((node) => {
-          if (node.__cursorBound) return;
-          node.__cursorBound = true;
+      const bind = () => {
+        $$("[data-cursor], a, button").forEach((el) => {
+          if (el.__pointerBound) return;
+          el.__pointerBound = true;
 
-          node.addEventListener("pointerenter", () => {
-            cursor.classList.add("is-hover");
-            const txt = node.getAttribute("data-cursor-text");
-            if (label) label.textContent = txt || "";
+          el.addEventListener("pointerenter", () => {
+            root.classList.add("is-hover");
+            const t = el.getAttribute("data-cursor-text");
+            if (verb) verb.textContent = t || "";
           });
 
-          node.addEventListener("pointerleave", () => {
-            cursor.classList.remove("is-hover");
-            if (label) label.textContent = "";
+          el.addEventListener("pointerleave", () => {
+            root.classList.remove("is-hover");
+            if (verb) verb.textContent = "";
           });
         });
       };
 
-      attachHover();
-
-      Language.init({
-        onSwitch: () => {}
-      });
-
-      return { attachHover };
+      bind();
+      return { bind };
     };
 
     const destroy = () => {
@@ -583,649 +472,14 @@
     return { start, destroy };
   })();
 
-  /* ============================================================
-     NAVIGATION
-     ============================================================ */
-  const Nav = (() => {
+  const TOPBAR = (() => {
     const run = () => {
-      const nav = $("[data-nav]");
-      if (!nav) return;
-
+      const bar = $("[data-topbar]");
+      if (!bar) return;
       let ticking = false;
 
       const update = () => {
-        nav.classList.toggle("is-scrolled", WIN.scrollY > 40);
-        ticking = false;
-      };
-
-      const onScroll = () => {
-        if (ticking) return;
-        ticking = true;
-        raf(update);
-      };
-
-      WIN.addEventListener("scroll", onScroll, { passive: true });
-      update();
-    };
-
-    return { run };
-  })();
-
-  /* ============================================================
-     MENU PANEL
-     ============================================================ */
-  const Menu = (() => {
-    let bound = false;
-
-    const bind = () => {
-      if (bound) return;
-      bound = true;
-
-      const nav = $("[data-nav]");
-      const menu = $("[data-menu]");
-      const toggle = $("[data-menu-toggle]");
-      if (!menu || !toggle) return;
-
-      let scrollY = 0;
-
-      const open = () => {
-        scrollY = WIN.scrollY;
-        menu.classList.add("is-open");
-        menu.setAttribute("aria-hidden", "false");
-        toggle.setAttribute("aria-expanded", "true");
-        nav && nav.classList.add("is-menu-open");
-        HTML.classList.add("is-locked");
-        BODY.classList.add("is-locked");
-        BODY.style.top = `-${scrollY}px`;
-      };
-
-      const close = () => {
-        menu.classList.remove("is-open");
-        menu.setAttribute("aria-hidden", "true");
-        toggle.setAttribute("aria-expanded", "false");
-        nav && nav.classList.remove("is-menu-open");
-        HTML.classList.remove("is-locked");
-        BODY.classList.remove("is-locked");
-        BODY.style.top = "";
-        WIN.scrollTo({ top: scrollY, behavior: "instant" });
-      };
-
-      toggle.addEventListener("click", () => {
-        menu.classList.contains("is-open") ? close() : open();
-      });
-
-      $$("[data-menu-close]").forEach((n) => n.addEventListener("click", close));
-      $$("[data-menu-link]").forEach((n) => n.addEventListener("click", close));
-
-      DOC.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && menu.classList.contains("is-open")) close();
-      });
-    };
-
-    return { bind };
-  })();
-
-  /* ============================================================
-     SMOOTH SCROLL
-     ============================================================ */
-  const SmoothScroll = (() => {
-    const run = () => {
-      if (REDUCED) return;
-
-      $$('a[href^="#"]').forEach((a) => {
-        a.addEventListener("click", (e) => {
-          const id = a.getAttribute("href");
-          if (!id || id === "#" || id.length < 2) return;
-          const target = DOC.getElementById(id.slice(1));
-          if (!target) return;
-          e.preventDefault();
-          const top = target.getBoundingClientRect().top + WIN.scrollY - 60;
-          WIN.scrollTo({ top, behavior: "smooth" });
-        });
-      });
-    };
-
-    return { run };
-  })();
-
-  /* ============================================================
-     REVEAL OBSERVER
-     ============================================================ */
-  const Reveal = (() => {
-    const run = () => {
-      const nodes = $$("[data-reveal]");
-      if (!nodes.length) return;
-
-      if (REDUCED || !("IntersectionObserver" in WIN)) {
-        nodes.forEach((n) => n.classList.add("is-visible"));
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          obs.unobserve(entry.target);
-        });
-      }, {
-        threshold: 0.14,
-        rootMargin: "0px 0px -6% 0px"
-      });
-
-      nodes.forEach((n) => observer.observe(n));
-    };
-
-    return { run };
-  })();
-
-  /* ============================================================
-     COUNTERS
-     ============================================================ */
-  const Counters = (() => {
-    const run = () => {
-      const nodes = $$("[data-counter]");
-      if (!nodes.length) return;
-
-      if (!("IntersectionObserver" in WIN)) {
-        nodes.forEach((n) => {
-          n.textContent = n.getAttribute("data-counter");
-        });
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const node = entry.target;
-          const target = parseFloat(node.getAttribute("data-counter")) || 0;
-          const pad = parseInt(node.getAttribute("data-counter-pad"), 10) || 0;
-          const duration = 1800;
-          const start = WIN.performance.now();
-
-          const step = (now) => {
-            const t = clamp((now - start) / duration, 0, 1);
-            const eased = 1 - Math.pow(1 - t, 4);
-            const value = Math.round(target * eased);
-            node.textContent = pad ? String(value).padStart(pad, "0") : String(value);
-            if (t < 1) raf(step);
-          };
-
-          raf(step);
-          obs.unobserve(node);
-        });
-      }, { threshold: 0.55 });
-
-      nodes.forEach((n) => observer.observe(n));
-    };
-
-    return { run };
-  })();
-
-  /* ============================================================
-     3D TILT — PHYSICS BASED (MOUSE + TOUCH)
-     ============================================================ */
-  const Tilt = (() => {
-    let rafId = null;
-    let running = false;
-    const state = new WeakMap();
-
-    const bind = (node) => {
-      const strength = parseFloat(node.getAttribute("data-tilt-strength")) || 10;
-      state.set(node, { rx: 0, ry: 0, trx: 0, try: 0, strength, active: false });
-
-      const onMove = (e) => {
-        if (e.pointerType === "touch" && COARSE) return;
-        const rect = node.getBoundingClientRect();
-        const nx = (e.clientX - rect.left) / rect.width - 0.5;
-        const ny = (e.clientY - rect.top) / rect.height - 0.5;
-        const s = state.get(node);
-        if (!s) return;
-        s.try = nx * s.strength;
-        s.trx = -ny * s.strength;
-        s.active = true;
-        node.style.setProperty("--mx", (e.clientX - rect.left).toFixed(1) + "px");
-        node.style.setProperty("--my", (e.clientY - rect.top).toFixed(1) + "px");
-      };
-
-      const onLeave = () => {
-        const s = state.get(node);
-        if (!s) return;
-        s.trx = 0;
-        s.try = 0;
-        s.active = false;
-      };
-
-      node.addEventListener("pointermove", onMove, { passive: true });
-      node.addEventListener("pointerleave", onLeave);
-      node.addEventListener("pointercancel", onLeave);
-      node.addEventListener("blur", onLeave);
-    };
-
-    const tick = () => {
-      state.forEach ? null : null;
-    };
-
-    const run = () => {
-      if (REDUCED) return;
-      const nodes = $$("[data-tilt]");
-      if (!nodes.length) return;
-      nodes.forEach(bind);
-
-      const loop = () => {
-        nodes.forEach((node) => {
-          const s = state.get(node);
-          if (!s) return;
-          const isIdle = !s.active && Math.abs(s.rx) < 0.02 && Math.abs(s.ry) < 0.02;
-          if (isIdle) {
-            if (node.style.transform) node.style.transform = "";
-            return;
-          }
-          s.rx = lerp(s.rx, s.trx, 0.14);
-          s.ry = lerp(s.ry, s.try, 0.14);
-          node.style.transform = `perspective(1100px) rotateX(${s.rx.toFixed(2)}deg) rotateY(${s.ry.toFixed(2)}deg)`;
-        });
-        rafId = raf(loop);
-      };
-
-      if (!running) {
-        running = true;
-        loop();
-      }
-    };
-
-    const destroy = () => {
-      if (rafId) caf(rafId);
-      running = false;
-    };
-
-    return { run, destroy };
-  })();
-
-  /* ============================================================
-     MAGNETIC BUTTONS
-     ============================================================ */
-  const Magnetic = (() => {
-    const run = () => {
-      if (REDUCED || COARSE) return;
-      const nodes = $$("[data-magnetic]");
-      if (!nodes.length) return;
-
-      nodes.forEach((node) => {
-        let mx = 0, my = 0, tx = 0, ty = 0;
-        const strength = 0.32;
-        const radius = 130;
-
-        const onMove = (e) => {
-          const rect = node.getBoundingClientRect();
-          const cx = rect.left + rect.width / 2;
-          const cy = rect.top + rect.height / 2;
-          const dx = e.clientX - cx;
-          const dy = e.clientY - cy;
-          const dist = Math.hypot(dx, dy);
-          const reach = radius + Math.max(rect.width, rect.height) / 2;
-
-          if (dist < reach) {
-            tx = dx * strength;
-            ty = dy * strength;
-          } else {
-            tx = 0;
-            ty = 0;
-          }
-        };
-
-        const onLeave = () => {
-          tx = 0;
-          ty = 0;
-        };
-
-        WIN.addEventListener("pointermove", onMove, { passive: true });
-        node.addEventListener("pointerleave", onLeave);
-
-        const loop = () => {
-          if (Math.abs(mx - tx) > 0.05 || Math.abs(my - ty) > 0.05) {
-            mx = lerp(mx, tx, 0.16);
-            my = lerp(my, ty, 0.16);
-            node.style.transform = `translate3d(${mx.toFixed(2)}px, ${my.toFixed(2)}px, 0)`;
-          }
-          raf(loop);
-        };
-
-        loop();
-      });
-    };
-
-    return { run };
-  })();
-
-  /* ============================================================
-     PARTICLE CANVAS — MORPHING TEXT FIELD
-     ============================================================ */
-  const Particles = (() => {
-    let rafId = null;
-    let destroy = null;
-
-    const run = () => {
-      const canvas = DOC.getElementById("particles");
-      if (!canvas || REDUCED) return;
-
-      const ctx = canvas.getContext("2d", { alpha: true });
-      if (!ctx) return;
-
-      let W = 0;
-      let H = 0;
-      let dpr = 1;
-      let particles = [];
-      let targetPoints = [];
-      let pointerX = 0, pointerY = 0;
-      let targetPX = 0, targetPY = 0;
-      let mode = "float";
-      let morph = 0;
-      let started = WIN.performance.now();
-
-      const buildTargetPoints = () => {
-        const off = DOC.createElement("canvas");
-        const oW = 720;
-        const oH = 200;
-        off.width = oW;
-        off.height = oH;
-        const octx = off.getContext("2d");
-        octx.fillStyle = "#ffffff";
-        octx.font = `900 ${Math.min(112, oW / 6.1)}px "Unbounded", system-ui, sans-serif`;
-        octx.textAlign = "center";
-        octx.textBaseline = "middle";
-        octx.fillText("YOUSSEF", oW / 2, oH / 2);
-
-        const data = octx.getImageData(0, 0, oW, oH).data;
-        const gap = 5;
-        const scale = Math.min(W / oW, H / oH) * 0.72;
-        const points = [];
-
-        for (let y = 0; y < oH; y += gap) {
-          for (let x = 0; x < oW; x += gap) {
-            const i = (y * oW + x) * 4;
-            if (data[i + 3] > 128) {
-              points.push({
-                x: (x - oW / 2) * scale + W / 2,
-                y: (y - oH / 2) * scale + H / 2
-              });
-            }
-          }
-        }
-        targetPoints = points;
-      };
-
-      const buildParticles = () => {
-        const count = Math.min(170, Math.floor((W * H) / 13500));
-        particles = [];
-        for (let i = 0; i < count; i++) {
-          particles.push({
-            x: Math.random() * W,
-            y: Math.random() * H,
-            vx: (Math.random() - 0.5) * 0.32,
-            vy: (Math.random() - 0.5) * 0.32,
-            r: Math.random() * 1.55 + 0.35,
-            a: Math.random() * 0.5 + 0.14,
-            hue: Math.random() > 0.86 ? "gold" : "cyber",
-            tx: 0,
-            ty: 0,
-            cx: 0,
-            cy: 0
-          });
-        }
-
-        particles.forEach((p, i) => {
-          if (targetPoints.length) {
-            const tp = targetPoints[i % targetPoints.length];
-            p.tx = tp.x;
-            p.ty = tp.y;
-          }
-        });
-      };
-
-      const resize = () => {
-        dpr = Math.min(WIN.devicePixelRatio || 1, 2);
-        W = canvas.offsetWidth;
-        H = canvas.offsetHeight;
-        canvas.width = W * dpr;
-        canvas.height = H * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        buildTargetPoints();
-        buildParticles();
-      };
-
-      const onPointer = (e) => {
-        targetPX = (e.clientX / WIN.innerWidth - 0.5) * 2;
-        targetPY = (e.clientY / WIN.innerHeight - 0.5) * 2;
-      };
-
-      WIN.addEventListener("pointermove", onPointer, { passive: true });
-
-      let resizeTimer = null;
-      const onResize = () => {
-        if (resizeTimer) WIN.clearTimeout(resizeTimer);
-        resizeTimer = WIN.setTimeout(resize, 180);
-      };
-      WIN.addEventListener("resize", onResize);
-
-      const frame = (now) => {
-        ctx.clearRect(0, 0, W, H);
-
-        pointerX = lerp(pointerX, targetPX, 0.05);
-        pointerY = lerp(pointerY, targetPY, 0.05);
-
-        if (mode === "float" && targetPoints.length && now - started > 3600) {
-          morph = Math.min(morph + 0.0075, 1);
-          if (morph >= 1) mode = "text";
-        }
-
-        const len = particles.length;
-
-        if (mode === "float") {
-          for (let i = 0; i < len; i++) {
-            const p = particles[i];
-            p.x += p.vx;
-            p.y += p.vy;
-
-            if (p.x < -4) p.x = W + 4;
-            if (p.x > W + 4) p.x = -4;
-            if (p.y < -4) p.y = H + 4;
-            if (p.y > H + 4) p.y = -4;
-
-            const rgb = p.hue === "gold" ? "212, 175, 55" : "0, 229, 255";
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${rgb}, ${p.a})`;
-            ctx.fill();
-          }
-
-          ctx.lineWidth = 0.5;
-          for (let i = 0; i < len; i++) {
-            for (let j = i + 1; j < len; j++) {
-              const a = particles[i];
-              const b = particles[j];
-              const dx = a.x - b.x;
-              const dy = a.y - b.y;
-              const d2 = dx * dx + dy * dy;
-              if (d2 < 12500) {
-                const alpha = (1 - d2 / 12500) * 0.11;
-                ctx.beginPath();
-                ctx.moveTo(a.x, a.y);
-                ctx.lineTo(b.x, b.y);
-                ctx.strokeStyle = `rgba(0, 229, 255, ${alpha})`;
-                ctx.stroke();
-              }
-            }
-          }
-        } else {
-          for (let i = 0; i < len; i++) {
-            const p = particles[i];
-            const depth = 1 + (i % 9) * 0.055;
-            const gx = p.tx + pointerX * 22 * depth;
-            const gy = p.ty + pointerY * 16 * depth;
-
-            p.x = lerp(p.x, gx, 0.065);
-            p.y = lerp(p.y, gy, 0.065);
-
-            const rgb = p.hue === "gold" ? "212, 175, 55" : "0, 229, 255";
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${rgb}, ${p.a * 0.92})`;
-            ctx.fill();
-          }
-        }
-
-        rafId = raf(frame);
-      };
-
-      resize();
-      rafId = raf(frame);
-
-      destroy = () => {
-        if (rafId) caf(rafId);
-        WIN.removeEventListener("pointermove", onPointer);
-        WIN.removeEventListener("resize", onResize);
-      };
-    };
-
-    const destroyFn = () => {
-      if (typeof destroy === "function") destroy();
-    };
-
-    return { run, destroy: destroyFn };
-  })();
-
-  /* ============================================================
-     MARQUEE
-     ============================================================ */
-  const Marquee = (() => {
-    const run = () => {
-      const track = $("[data-marquee]");
-      if (!track || REDUCED) return;
-
-      let x = 0;
-      const speed = 0.55;
-      const baseWidth = track.scrollWidth;
-      const half = baseWidth / 2;
-
-      const loop = () => {
-        x -= speed;
-        if (-x >= half) x += half;
-        track.style.transform = `translate3d(${x.toFixed(2)}px, 0, 0)`;
-        raf(loop);
-      };
-
-      raf(loop);
-    };
-
-    return { run };
-  })();
-
-  /* ============================================================
-     WORK FILTERS
-     ============================================================ */
-  const Filters = (() => {
-    const run = () => {
-      const buttons = $$("[data-filter]");
-      const projects = $$("[data-category]");
-      const current = $("[data-work-current]");
-
-      if (!buttons.length || !projects.length) return;
-
-      const refreshCounter = () => {
-        if (!current) return;
-        const visible = projects.filter((p) => !p.classList.contains("is-hidden"));
-        current.textContent = String(visible.length).padStart(2, "0");
-      };
-
-      refreshCounter();
-
-      buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          buttons.forEach((b) => b.classList.remove("is-active"));
-          btn.classList.add("is-active");
-          const cat = btn.getAttribute("data-filter");
-
-          projects.forEach((p) => {
-            const match = cat === "all" || p.getAttribute("data-category") === cat;
-            if (match) {
-              p.classList.remove("is-hidden");
-              p.style.opacity = "0";
-              p.style.transform = "translateY(14px)";
-              raf(() => {
-                p.style.transition = "opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)";
-                p.style.opacity = "1";
-                p.style.transform = "translateY(0)";
-              });
-            } else {
-              p.classList.add("is-hidden");
-            }
-          });
-
-          WIN.setTimeout(refreshCounter, 120);
-        });
-      });
-    };
-
-    return { run };
-  })();
-
-  /* ============================================================
-     HUD — TIME · SCROLL · STATUS
-     ============================================================ */
-  const Hud = (() => {
-    let timer = null;
-
-    const run = () => {
-      const timeNode = $("[data-hud-time]");
-      const scrollNode = $("[data-hud-scroll]");
-      const statusNode = $("[data-hud-status]");
-
-      if (statusNode) statusNode.textContent = "ONLINE";
-
-      if (timeNode) {
-        const tick = () => {
-          const now = new Date();
-          const h = String(now.getHours()).padStart(2, "0");
-          const m = String(now.getMinutes()).padStart(2, "0");
-          const s = String(now.getSeconds()).padStart(2, "0");
-          timeNode.textContent = `${h}:${m}:${s}`;
-        };
-        tick();
-        timer = WIN.setInterval(tick, 1000);
-      }
-
-      if (scrollNode) {
-        const update = () => {
-          const max = HTML.scrollHeight - WIN.innerHeight;
-          const pct = max > 0 ? Math.round((WIN.scrollY / max) * 100) : 0;
-          scrollNode.textContent = String(pct).padStart(3, "0") + "%";
-        };
-        WIN.addEventListener("scroll", update, { passive: true });
-        update();
-      }
-    };
-
-    const destroy = () => {
-      if (timer) WIN.clearInterval(timer);
-    };
-
-    return { run, destroy };
-  })();
-
-  /* ============================================================
-     SCROLL PROGRESS BAR
-     ============================================================ */
-  const ScrollProgress = (() => {
-    const run = () => {
-      const fill = $("[data-scroll-fill]");
-      if (!fill) return;
-
-      let ticking = false;
-
-      const update = () => {
-        const max = HTML.scrollHeight - WIN.innerHeight;
-        const pct = max > 0 ? (WIN.scrollY / max) * 100 : 0;
-        fill.style.width = pct.toFixed(2) + "%";
+        bar.classList.toggle("is-scrolled", WIN.scrollY > 40);
         ticking = false;
       };
 
@@ -1241,66 +495,594 @@
     return { run };
   })();
 
-  /* ============================================================
-     BACK TO TOP
-     ============================================================ */
-  const BackToTop = (() => {
+  const OVERLAY = (() => {
+    let bound = false;
+
+    const bind = () => {
+      if (bound) return;
+      bound = true;
+
+      const root = $("[data-overlay]");
+      const burger = $("[data-burger]");
+      if (!root || !burger) return;
+
+      let y = 0;
+
+      const open = () => {
+        y = WIN.scrollY;
+        root.classList.add("is-open");
+        root.setAttribute("aria-hidden", "false");
+        burger.classList.add("is-open");
+        burger.setAttribute("aria-expanded", "true");
+        HTML.classList.add("is-locked");
+        BODY.classList.add("is-locked");
+        BODY.style.top = `-${y}px`;
+      };
+
+      const close = () => {
+        root.classList.remove("is-open");
+        root.setAttribute("aria-hidden", "true");
+        burger.classList.remove("is-open");
+        burger.setAttribute("aria-expanded", "false");
+        HTML.classList.remove("is-locked");
+        BODY.classList.remove("is-locked");
+        BODY.style.top = "";
+        WIN.scrollTo({ top: y, behavior: "instant" });
+      };
+
+      burger.addEventListener("click", () => {
+        root.classList.contains("is-open") ? close() : open();
+      });
+
+      $$("[data-overlay-close], [data-overlay-veil]").forEach((n) => n.addEventListener("click", close));
+      $$("[data-overlay-link]").forEach((n) => n.addEventListener("click", close));
+
+      DOC.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && root.classList.contains("is-open")) close();
+      });
+    };
+
+    return { bind };
+  })();
+
+  const SCROLLER = (() => {
     const run = () => {
-      const btn = $("[data-back-to-top]");
+      if (RM) return;
+      $$('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href");
+          if (!href || href === "#" || href.length < 2) return;
+          const target = DOC.getElementById(href.slice(1));
+          if (!target) return;
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + WIN.scrollY - 70;
+          WIN.scrollTo({ top, behavior: "smooth" });
+        });
+      });
+    };
+    return { run };
+  })();
+
+  const REVEAL = (() => {
+    const run = () => {
+      const nodes = $$("[data-reveal]");
+      if (!nodes.length) return;
+
+      if (RM || !("IntersectionObserver" in WIN)) {
+        nodes.forEach((n) => n.classList.add("is-visible"));
+        return;
+      }
+
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+      nodes.forEach((n) => io.observe(n));
+    };
+    return { run };
+  })();
+
+  const FIGURES = (() => {
+    const run = () => {
+      const nodes = $$("[data-count]");
+      if (!nodes.length) return;
+
+      const runCount = (el) => {
+        const target = parseFloat(el.getAttribute("data-count")) || 0;
+        const dur = 1900;
+        const start = WIN.performance.now();
+
+        const step = (now) => {
+          const t = clamp((now - start) / dur, 0, 1);
+          const eased = 1 - Math.pow(1 - t, 4);
+          const v = Math.round(target * eased);
+          el.textContent = String(v).padStart(2, "0");
+          if (t < 1) raf(step);
+        };
+
+        raf(step);
+      };
+
+      if (!("IntersectionObserver" in WIN)) {
+        nodes.forEach(runCount);
+        return;
+      }
+
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const fig = entry.target.closest(".figure");
+          if (fig) fig.classList.add("is-live");
+          runCount(entry.target);
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: 0.5 });
+
+      nodes.forEach((n) => io.observe(n));
+    };
+    return { run };
+  })();
+
+  const TILT = (() => {
+    let rafId = null;
+    let running = false;
+    const state = new WeakMap();
+
+    const bind = (node) => {
+      const strength = parseFloat(node.getAttribute("data-tilt-strength")) || 8;
+      state.set(node, { rx: 0, ry: 0, trx: 0, try: 0, strength, active: false });
+
+      const move = (e) => {
+        if (e.pointerType === "touch" && COARSE) return;
+        const r = node.getBoundingClientRect();
+        const nx = (e.clientX - r.left) / r.width - 0.5;
+        const ny = (e.clientY - r.top) / r.height - 0.5;
+        const s = state.get(node);
+        if (!s) return;
+        s.try = nx * s.strength;
+        s.trx = -ny * s.strength;
+        s.active = true;
+        node.style.setProperty("--mx", (e.clientX - r.left).toFixed(1) + "px");
+        node.style.setProperty("--my", (e.clientY - r.top).toFixed(1) + "px");
+      };
+
+      const leave = () => {
+        const s = state.get(node);
+        if (!s) return;
+        s.trx = 0;
+        s.try = 0;
+        s.active = false;
+      };
+
+      node.addEventListener("pointermove", move, { passive: true });
+      node.addEventListener("pointerleave", leave);
+      node.addEventListener("pointercancel", leave);
+    };
+
+    const run = () => {
+      if (RM) return;
+      const nodes = $$("[data-tilt]");
+      if (!nodes.length) return;
+      nodes.forEach(bind);
+
+      const loop = () => {
+        nodes.forEach((node) => {
+          const s = state.get(node);
+          if (!s) return;
+          if (!s.active && Math.abs(s.rx) < 0.02 && Math.abs(s.ry) < 0.02) {
+            if (node.style.transform) node.style.transform = "";
+            return;
+          }
+          s.rx = lerp(s.rx, s.trx, 0.14);
+          s.ry = lerp(s.ry, s.try, 0.14);
+          node.style.transform = `perspective(1200px) rotateX(${s.rx.toFixed(2)}deg) rotateY(${s.ry.toFixed(2)}deg)`;
+        });
+        rafId = raf(loop);
+      };
+
+      if (!running) {
+        running = true;
+        loop();
+      }
+    };
+
+    const destroy = () => {
+      if (rafId) caf(rafId);
+      running = false;
+    };
+
+    return { run, destroy };
+  })();
+
+  const MAGNET = (() => {
+    const run = () => {
+      if (RM || COARSE) return;
+      const nodes = $$("[data-magnetic]");
+      if (!nodes.length) return;
+
+      nodes.forEach((node) => {
+        let mx = 0, my = 0, tx = 0, ty = 0;
+        const strength = 0.34;
+        const radius = 140;
+
+        const move = (e) => {
+          const r = node.getBoundingClientRect();
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const dx = e.clientX - cx;
+          const dy = e.clientY - cy;
+          const dist = Math.hypot(dx, dy);
+          const reach = radius + Math.max(r.width, r.height) / 2;
+          if (dist < reach) {
+            tx = dx * strength;
+            ty = dy * strength;
+          } else {
+            tx = 0;
+            ty = 0;
+          }
+        };
+
+        const leave = () => { tx = 0; ty = 0; };
+
+        WIN.addEventListener("pointermove", move, { passive: true });
+        node.addEventListener("pointerleave", leave);
+
+        const loop = () => {
+          if (Math.abs(mx - tx) > 0.05 || Math.abs(my - ty) > 0.05) {
+            mx = lerp(mx, tx, 0.16);
+            my = lerp(my, ty, 0.16);
+            node.style.transform = `translate3d(${mx.toFixed(2)}px, ${my.toFixed(2)}px, 0)`;
+          }
+          raf(loop);
+        };
+
+        loop();
+      });
+    };
+    return { run };
+  })();
+
+  const STAGE = (() => {
+    let rafId = null;
+    let destroyFn = null;
+
+    const run = () => {
+      const canvas = DOC.getElementById("stage");
+      if (!canvas || RM) return;
+      const ctx = canvas.getContext("2d", { alpha: true });
+      if (!ctx) return;
+
+      let W = 0, H = 0, dpr = 1;
+      let particles = [];
+      let targets = [];
+      let px = 0, py = 0, tpx = 0, tpy = 0;
+      let mode = "float";
+      let morph = 0;
+      const start = WIN.performance.now();
+
+      const buildTargets = () => {
+        const off = DOC.createElement("canvas");
+        const oW = 800;
+        const oH = 240;
+        off.width = oW;
+        off.height = oH;
+        const octx = off.getContext("2d");
+        octx.fillStyle = "#fff";
+        octx.textAlign = "center";
+        octx.textBaseline = "middle";
+        const size = Math.min(160, oW / 5.2);
+        octx.font = `900 ${size}px "Anton", Impact, sans-serif`;
+        octx.fillText("YOUSSEF", oW / 2, oH / 2);
+
+        const data = octx.getImageData(0, 0, oW, oH).data;
+        const gap = 6;
+        const scale = Math.min(W / oW, H / oH) * 0.72;
+        const pts = [];
+
+        for (let y = 0; y < oH; y += gap) {
+          for (let x = 0; x < oW; x += gap) {
+            const i = (y * oW + x) * 4;
+            if (data[i + 3] > 128) {
+              pts.push({
+                x: (x - oW / 2) * scale + W / 2,
+                y: (y - oH / 2) * scale + H / 2
+              });
+            }
+          }
+        }
+        targets = pts;
+      };
+
+      const buildParticles = () => {
+        const count = Math.min(200, Math.floor((W * H) / 12000));
+        particles = [];
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
+            r: Math.random() * 1.6 + 0.35,
+            a: Math.random() * 0.55 + 0.16,
+            hue: Math.random() > 0.85 ? "gold" : "cyber",
+            tx: 0,
+            ty: 0
+          });
+        }
+        particles.forEach((p, i) => {
+          if (targets.length) {
+            const t = targets[i % targets.length];
+            p.tx = t.x;
+            p.ty = t.y;
+          }
+        });
+      };
+
+      const resize = () => {
+        dpr = Math.min(WIN.devicePixelRatio || 1, 2);
+        W = canvas.offsetWidth;
+        H = canvas.offsetHeight;
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        buildTargets();
+        buildParticles();
+      };
+
+      const onMove = (e) => {
+        tpx = (e.clientX / WIN.innerWidth - 0.5) * 2;
+        tpy = (e.clientY / WIN.innerHeight - 0.5) * 2;
+      };
+
+      WIN.addEventListener("pointermove", onMove, { passive: true });
+
+      let rzT = null;
+      const onResize = () => {
+        if (rzT) WIN.clearTimeout(rzT);
+        rzT = WIN.setTimeout(resize, 180);
+      };
+      WIN.addEventListener("resize", onResize);
+
+      const frame = (now) => {
+        ctx.clearRect(0, 0, W, H);
+
+        px = lerp(px, tpx, 0.05);
+        py = lerp(py, tpy, 0.05);
+
+        if (mode === "float" && targets.length && now - start > 3600) {
+          morph = Math.min(morph + 0.008, 1);
+          if (morph >= 1) mode = "text";
+        }
+
+        const len = particles.length;
+
+        if (mode === "float") {
+          for (let i = 0; i < len; i++) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < -4) p.x = W + 4;
+            if (p.x > W + 4) p.x = -4;
+            if (p.y < -4) p.y = H + 4;
+            if (p.y > H + 4) p.y = -4;
+            const rgb = p.hue === "gold" ? "212, 175, 55" : "0, 229, 255";
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${rgb}, ${p.a})`;
+            ctx.fill();
+          }
+
+          ctx.lineWidth = 0.5;
+          for (let i = 0; i < len; i++) {
+            for (let j = i + 1; j < len; j++) {
+              const a = particles[i];
+              const b = particles[j];
+              const dx = a.x - b.x;
+              const dy = a.y - b.y;
+              const d2 = dx * dx + dy * dy;
+              if (d2 < 13000) {
+                const alpha = (1 - d2 / 13000) * 0.12;
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.strokeStyle = `rgba(0, 229, 255, ${alpha})`;
+                ctx.stroke();
+              }
+            }
+          }
+        } else {
+          for (let i = 0; i < len; i++) {
+            const p = particles[i];
+            const depth = 1 + (i % 9) * 0.06;
+            const gx = p.tx + px * 26 * depth;
+            const gy = p.ty + py * 18 * depth;
+
+            p.x = lerp(p.x, gx, 0.07);
+            p.y = lerp(p.y, gy, 0.07);
+
+            const rgb = p.hue === "gold" ? "212, 175, 55" : "0, 229, 255";
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${rgb}, ${p.a * 0.92})`;
+            ctx.fill();
+          }
+        }
+
+        rafId = raf(frame);
+      };
+
+      resize();
+      rafId = raf(frame);
+
+      destroyFn = () => {
+        if (rafId) caf(rafId);
+        WIN.removeEventListener("pointermove", onMove);
+        WIN.removeEventListener("resize", onResize);
+      };
+    };
+
+    const destroy = () => {
+      if (typeof destroyFn === "function") destroyFn();
+    };
+
+    return { run, destroy };
+  })();
+
+  const TICKER = (() => {
+    const run = () => {
+      const track = $("[data-ticker]");
+      if (!track || RM) return;
+      let x = 0;
+      const speed = 0.6;
+      const half = track.scrollWidth / 2;
+
+      const loop = () => {
+        x -= speed;
+        if (-x >= half) x += half;
+        track.style.transform = `translate3d(${x.toFixed(2)}px, 0, 0)`;
+        raf(loop);
+      };
+      raf(loop);
+    };
+    return { run };
+  })();
+
+  const VAULT = (() => {
+    const run = () => {
+      const chips = $$("[data-chip]");
+      const entries = $$(".entry");
+      const countEl = $("[data-vault-count]");
+      if (!chips.length || !entries.length) return;
+
+      const refresh = () => {
+        if (!countEl) return;
+        const visible = entries.filter((e) => !e.classList.contains("is-gone"));
+        countEl.textContent = String(visible.length).padStart(2, "0");
+      };
+
+      refresh();
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          chips.forEach((c) => c.classList.remove("is-on"));
+          chip.classList.add("is-on");
+          const tag = chip.getAttribute("data-chip");
+
+          entries.forEach((e) => {
+            const match = tag === "*" || e.getAttribute("data-tag") === tag;
+            if (match) {
+              e.classList.remove("is-gone");
+              e.style.opacity = "0";
+              e.style.transform = "translateY(14px)";
+              raf(() => {
+                e.style.transition = "opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1)";
+                e.style.opacity = "1";
+                e.style.transform = "translateY(0)";
+              });
+            } else {
+              e.classList.add("is-gone");
+            }
+          });
+
+          WIN.setTimeout(refresh, 120);
+        });
+      });
+    };
+    return { run };
+  })();
+
+  const RAIL = (() => {
+    const run = () => {
+      const num = $("[data-rail-num]");
+      if (!num || !("IntersectionObserver" in WIN)) return;
+
+      const sections = $$("section[id]");
+      if (!sections.length) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+            const idx = sections.indexOf(entry.target);
+            num.textContent = String(Math.max(idx, 0)).padStart(2, "0");
+          }
+        });
+      }, { threshold: [0.3, 0.6] });
+
+      sections.forEach((s) => io.observe(s));
+    };
+    return { run };
+  })();
+
+  const CLOCK = (() => {
+    const run = () => {
+      const nodes = $$("[data-clock]");
+      if (!nodes.length) return;
+
+      const tick = () => {
+        const d = new Date();
+        const h = String(d.getHours()).padStart(2, "0");
+        const m = String(d.getMinutes()).padStart(2, "0");
+        nodes.forEach((n) => { n.textContent = `${h}:${m}`; });
+      };
+
+      tick();
+      WIN.setInterval(tick, 30000);
+    };
+    return { run };
+  })();
+
+  const ASCEND = (() => {
+    const run = () => {
+      const btn = $("[data-ascend]");
       if (!btn) return;
 
       const update = () => {
-        btn.classList.toggle("is-visible", WIN.scrollY > WIN.innerHeight * 0.75);
+        btn.classList.toggle("is-live", WIN.scrollY > WIN.innerHeight * 0.7);
       };
 
       WIN.addEventListener("scroll", update, { passive: true });
-
       btn.addEventListener("click", () => {
-        WIN.scrollTo({ top: 0, behavior: REDUCED ? "auto" : "smooth" });
+        WIN.scrollTo({ top: 0, behavior: RM ? "auto" : "smooth" });
       });
 
       update();
     };
-
     return { run };
   })();
 
-  /* ============================================================
-     CTA REVEAL
-     ============================================================ */
-  const CtaReveal = (() => {
+  const CTA_REVEAL = (() => {
     const run = () => {
-      const cta = $("[data-cta]");
-      const contact = DOC.getElementById("contact");
-      if (!cta || !contact) return;
+      const cta = $("[data-dispatch-cta]");
+      const section = DOC.getElementById("dispatch");
+      if (!cta || !section) return;
 
       if (!("IntersectionObserver" in WIN)) {
-        cta.classList.add("is-visible");
+        cta.classList.add("is-live");
         return;
       }
 
-      const observer = new IntersectionObserver((entries, obs) => {
+      const io = new IntersectionObserver((entries, obs) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          cta.classList.add("is-visible");
+          cta.classList.add("is-live");
           obs.disconnect();
         });
-      }, { threshold: 0.32 });
+      }, { threshold: 0.3 });
 
-      observer.observe(contact);
+      io.observe(section);
     };
-
     return { run };
   })();
 
-  /* ============================================================
-     HERO CHARACTER PARALLAX
-     ============================================================ */
-  const HeroChars = (() => {
+  const GLYPHS = (() => {
     const run = () => {
-      if (REDUCED || COARSE) return;
-      const chars = $$(".hero__char");
-      if (!chars.length) return;
+      if (RM || COARSE) return;
+      const glyphs = $$(".glyph");
+      if (!glyphs.length) return;
 
       let tx = 0, ty = 0, px = 0, py = 0;
 
@@ -1309,42 +1091,36 @@
         ty = (e.clientY / WIN.innerHeight - 0.5) * 2;
       }, { passive: true });
 
-      const state = chars.map((node, i) => ({
-        node,
-        depth: parseFloat(node.getAttribute("data-depth")) || 1,
+      const state = glyphs.map((el, i) => ({
+        el,
         x: 0,
         y: 0,
-        center: (i - (chars.length - 1) / 2) / chars.length
+        center: (i - (glyphs.length - 1) / 2) / glyphs.length
       }));
 
       const loop = () => {
-        px = lerp(px, tx, 0.065);
-        py = lerp(py, ty, 0.065);
+        px = lerp(px, tx, 0.06);
+        py = lerp(py, ty, 0.06);
 
         state.forEach((s) => {
-          const targetX = px * 26 * s.depth * (1 + Math.abs(s.center));
-          const targetY = py * 18 * s.depth;
-          s.x = lerp(s.x, targetX, 0.09);
-          s.y = lerp(s.y, targetY, 0.09);
-          s.node.style.transform = `translate3d(${s.x.toFixed(2)}px, ${s.y.toFixed(2)}px, 0)`;
+          const tX = px * 30 * (1 + Math.abs(s.center));
+          const tY = py * 20;
+          s.x = lerp(s.x, tX, 0.09);
+          s.y = lerp(s.y, tY, 0.09);
+          s.el.style.transform = `translate3d(${s.x.toFixed(2)}px, ${s.y.toFixed(2)}px, 0)`;
         });
 
         raf(loop);
       };
-
       raf(loop);
     };
-
     return { run };
   })();
 
-  /* ============================================================
-     PARALLAX SCENE
-     ============================================================ */
-  const ParallaxScene = (() => {
+  const PARALLAX = (() => {
     const run = () => {
-      if (REDUCED || COARSE) return;
-      const scene = $("[data-parallax-scene]");
+      if (RM || COARSE) return;
+      const scene = $("[data-parallax]");
       if (!scene) return;
       const layers = $$("[data-depth]", scene);
       if (!layers.length) return;
@@ -1360,74 +1136,130 @@
         px = lerp(px, tx, 0.05);
         py = lerp(py, ty, 0.05);
 
-        layers.forEach((node) => {
-          const d = parseFloat(node.getAttribute("data-depth")) || 1;
-          node.style.transform = `translate3d(${(px * 12 * d).toFixed(2)}px, ${(py * 8 * d).toFixed(2)}px, 0)`;
+        layers.forEach((el) => {
+          const d = parseFloat(el.getAttribute("data-depth")) || 1;
+          el.style.transform = `translate3d(${(px * 14 * d).toFixed(2)}px, ${(py * 10 * d).toFixed(2)}px, 0)`;
         });
 
         raf(loop);
       };
-
       raf(loop);
     };
-
     return { run };
   })();
 
-  /* ============================================================
-     YEAR
-     ============================================================ */
-  const Year = (() => {
+  const SCRAMBLE = (() => {
     const run = () => {
-      const node = DOC.getElementById("year");
-      if (node) node.textContent = new Date().getFullYear();
-    };
+      const nodes = $$("[data-scramble]");
+      if (!nodes.length || RM) return;
 
+      const CHARS = "!<>-_\\/[]{}—=+*^?#________";
+
+      nodes.forEach((node) => {
+        const original = node.textContent;
+        let frame = 0;
+        let rafId = null;
+
+        const scramble = () => {
+          const len = original.length;
+          const progress = frame / 40;
+          let out = "";
+
+          for (let i = 0; i < len; i++) {
+            if (i < progress * len) {
+              out += original[i];
+            } else if (original[i] === " ") {
+              out += " ";
+            } else {
+              out += CHARS[Math.floor(Math.random() * CHARS.length)];
+            }
+          }
+
+          node.textContent = out;
+          frame++;
+
+          if (frame <= 40) {
+            rafId = raf(scramble);
+          } else {
+            node.textContent = original;
+          }
+        };
+
+        if (!("IntersectionObserver" in WIN)) return;
+
+        const io = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            frame = 0;
+            scramble();
+            obs.disconnect();
+          });
+        }, { threshold: 0.4 });
+
+        io.observe(node);
+      });
+    };
     return { run };
   })();
 
-  /* ============================================================
-     PAGE VISIBILITY — FREEZE ANIMATIONS
-     ============================================================ */
-  const Visibility = (() => {
+  const FOOT_YEAR = (() => {
+    const run = () => {
+      const el = DOC.getElementById("foot-year");
+      if (el) el.textContent = new Date().getFullYear();
+    };
+    return { run };
+  })();
+
+  const VISIBILITY = (() => {
     const run = () => {
       DOC.addEventListener("visibilitychange", () => {
-        if (DOC.hidden) {
-          BODY.classList.add("is-paused");
-        } else {
-          BODY.classList.remove("is-paused");
+        BODY.classList.toggle("is-hidden", DOC.hidden);
+      });
+    };
+    return { run };
+  })();
+
+  const KEYBOARD = (() => {
+    const run = () => {
+      DOC.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          const overlay = $("[data-overlay]");
+          if (overlay && overlay.classList.contains("is-open")) return;
+        }
+        if (e.key.toLowerCase() === "l" && !e.metaKey && !e.ctrlKey && !e.altKey) {
+          const target = e.target;
+          if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) return;
+          LANG.toggle();
         }
       });
     };
-
     return { run };
   })();
 
-  /* ============================================================
-     BOOTSTRAP
-     ============================================================ */
   const boot = () => {
-    Language.init();
-    Preloader.run();
-    Cursor.start();
-    Nav.run();
-    Menu.bind();
-    SmoothScroll.run();
-    Reveal.run();
-    Counters.run();
-    Tilt.run();
-    Magnetic.run();
-    Particles.run();
-    Marquee.run();
-    Filters.run();
-    Hud.run();
-    ScrollProgress.run();
-    BackToTop.run();
-    CtaReveal.run();
-    HeroChars.run();
-    ParallaxScene.run();
-    Year.run();
-    Visibility.run();
+    LANG.init();
+    BOOT.run();
+    POINTER.start();
+    TOPBAR.run();
+    OVERLAY.bind();
+    SCROLLER.run();
+    REVEAL.run();
+    FIGURES.run();
+    TILT.run();
+    MAGNET.run();
+    STAGE.run();
+    TICKER.run();
+    VAULT.run();
+    RAIL.run();
+    CLOCK.run();
+    ASCEND.run();
+    CTA_REVEAL.run();
+    GLYPHS.run();
+    PARALLAX.run();
+    SCRAMBLE.run();
+    FOOT_YEAR.run();
+    VISIBILITY.run();
+    KEYBOARD.run();
   };
 
   if (DOC.readyState === "loading") {
